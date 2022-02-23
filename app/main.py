@@ -1,6 +1,6 @@
 import init_django_orm  # noqa: F401
 
-from db.models import Actors, Genre
+from db.models import Actor, Genre
 
 
 def main():
@@ -9,37 +9,37 @@ def main():
     Genre.objects.create(name="Action",)
     Genre.objects.create(name="Dramma",)
 
-    Actors.objects.create(
+    Actor.objects.create(
         first_name="George",
         last_name="Klooney"
     )
-    Actors.objects.create(
+    Actor.objects.create(
         first_name="Kianu",
         last_name="Reaves"
     )
-    Actors.objects.create(
+    Actor.objects.create(
         first_name="Scarlett",
         last_name="Keegan"
     )
-    Actors.objects.create(
+    Actor.objects.create(
         first_name="Will",
         last_name="Smith"
     )
-    Actors.objects.create(
+    Actor.objects.create(
         first_name="Jaden",
         last_name="Smith"
     )
-    Actors.objects.create(
+    Actor.objects.create(
         first_name="Scarlett",
         last_name="Johansson"
     )
     # Update
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actors.objects.filter(
+    Actor.objects.filter(
         last_name="Klooney").update(
         last_name="Clooney"
     )
-    Actors.objects.filter(
+    Actor.objects.filter(
         first_name="Kianu",
         last_name="Reaves").update(
         first_name="Keanu",
@@ -47,9 +47,9 @@ def main():
     )
     # Delete
     Genre.objects.filter(name="Action").delete()
-    Actors.objects.filter(first_name="Scarlett").delete()
+    Actor.objects.filter(first_name="Scarlett").delete()
     # Return
-    return Actors.objects.filter(
+    return Actor.objects.filter(
         last_name="Smith"
     ).order_by("first_name")
 
