@@ -11,6 +11,7 @@ def main():
         'Dramma',
     ]
     actors_to_create = [
+        'George Klooney',
         'Kianu Reaves',
         'Scarlett Keegan',
         'Will Smith',
@@ -31,26 +32,37 @@ def main():
 
     Genre.objects.filter(
         name='Dramma'
-    ).update(name='Drama')
+    ).update(
+        name='Drama'
+    )
 
     Actor.objects.filter(
         first_name='George',
         last_name='Klooney',
-    ).update(last_name='Clooney')
+    ).update(
+        last_name='Clooney'
+    )
 
     Actor.objects.filter(
         first_name='Kianu',
         last_name='Reaves',
-    ).update(last_name='Reeves')
+    ).update(
+        first_name='Keanu',
+        last_name='Reeves',
+    )
 
     Genre.objects.filter(
-        name='Actor'
+        name='Action'
     ).delete()
 
-    Actor.object.filter(
+    Actor.objects.filter(
         first_name='Scarlett'
     ).delete()
 
     return Actor.objects.filter(
         last_name='Smith'
     ).order_by('first_name')
+
+
+if __name__ == '__main__':
+    print(main())

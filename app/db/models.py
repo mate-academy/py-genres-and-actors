@@ -14,6 +14,6 @@ class Actor(models.Model):
     first_name = models.CharField(
         max_length=_first_name_max_length
     )
-    second_name = models.CharField(
+    last_name = models.CharField(
         max_length=_last_name_max_length
     )
