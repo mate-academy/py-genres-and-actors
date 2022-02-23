@@ -7,7 +7,7 @@ In `db/models.py` create table `Genre` with such fields:
 - Char field `name`, name of the genre with the maximum length of 255 
 characters.
 
-Also, create table `Actors` with such fields:
+Also, create table `Actor` with such fields:
 - Char field `first_name`, name of the actor with the maximum length of 255 
 characters.
 - Char field `last_name`, surname of the actor with the maximum length of 255 
