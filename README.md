@@ -1,6 +1,5 @@
 # Cinema Hall
 
-- Warning: Use `pytest app` for testing - not simple `pytest`
 - Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start
 
 In `db/models.py` create table `Genre` with such fields:
@@ -13,7 +12,7 @@ characters.
 - Char field `last_name`, surname of the actor with the maximum length of 255 
 characters.
 
-Inside `app/main.py`, create `main` function.
+Inside `main.py`, create `main` function.
 This function should perform these actions:
 1. Create:
    - genre Western
