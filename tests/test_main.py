@@ -1,6 +1,8 @@
 import pytest
 
-from ..main import main, Genre, Actor
+from db.models import Genre, Actor
+
+from main import main
 
 
 @pytest.mark.django_db
