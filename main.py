@@ -8,17 +8,17 @@ def main():
               "Will Smith", "Jaden Smith", "Scarlett Johansson"]
 
     for genre in genres:
-        # try:
-        #     Genre.objects.get(name=genre)
-        # except Genre.DoesNotExist:
-        Genre.objects.create(name=genre)
+        try:
+            Genre.objects.get(name=genre)
+        except Genre.DoesNotExist:
+            Genre.objects.create(name=genre)
 
     for actor in actors:
         first_name, last_name = actor.split()
-        # try:
-        #     Actor.objects.get(first_name=first_name, last_name=last_name)
-        # except Actor.DoesNotExist:
-        Actor.objects.create(first_name=first_name, last_name=last_name)
+        try:
+            Actor.objects.get(first_name=first_name, last_name=last_name)
+        except Actor.DoesNotExist:
+            Actor.objects.create(first_name=first_name, last_name=last_name)
 
     Genre.objects.filter(name=genres[-1]).update(name="Drama")
     Actor.objects.filter(first_name="George", last_name="Klooney").update(
