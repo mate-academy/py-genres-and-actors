@@ -41,6 +41,7 @@ def main():
         name="Dramma"
     ).update(name="Drama")
     Actor.objects.filter(
+        first_name="George",
         last_name="Klooney"
     ).update(last_name="Clooney")
     Actor.objects.filter(
