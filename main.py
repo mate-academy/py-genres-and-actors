@@ -4,8 +4,8 @@ from db.models import Genre, Actor
 
 
 def main():
-    Genre.objects.create(name='Western')
-    Genre.objects.create(name='Action')
+    Genre.objects.create(name="Western")
+    Genre.objects.create(name="Action")
     Genre.objects.create(name="Dramma")
 
     Actor.objects.create(first_name="George", last_name="Klooney")
@@ -26,8 +26,10 @@ def main():
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    return Actor.objects.filter(last_name="Smith").order_by('first_name')
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
 
-if __name__ == '__main__':
+print(Genre.objects.all())
+
+if __name__ == "__main__":
     main()
