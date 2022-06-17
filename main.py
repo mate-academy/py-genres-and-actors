@@ -1,5 +1,30 @@
 import init_django_orm  # noqa: F401
+from db.models import Actor, Genre
 
 
 def main():
-    pass
+    genres = ["Western", "Action", "Dramma"]
+    actors = ["George Klooney", "Keanu Reaves", "Scarlett Keegan", "Will Smith", "Jaden Smith", "Scarlett Johansson"]
+    for genre in genres:
+        Genre.objects.create(name=genre)
+
+    for actor in actors:
+        separated_actor = actor.split()
+        name = separated_actor[0]
+        last_name = separated_actor[1]
+        Actor.objects.create(first_name=name, last_name=last_name)
+
+    Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
+    Actor.objects.filter(last_name="Reaves").update(last_name="Reeves")
+    Actor.objects.filter(first_name="Scarlett").delete()
+
+    Genre.objects.filter(name="Dramma").update(name="Drama")
+    Genre.objects.filter(name="Action").delete()
+
+    actors_with_smith_last = Actor.objects.filter(last_name="Smith").order_by("first_name").all()
+    return actors_with_smith_last
+
+
+if __name__ == "__main__":
+    main()
+
