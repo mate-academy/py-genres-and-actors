@@ -29,7 +29,5 @@ def main():
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
 
-print(Genre.objects.all())
-
 if __name__ == "__main__":
     main()
