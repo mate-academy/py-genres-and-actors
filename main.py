@@ -4,7 +4,8 @@ from db.models import Actor, Genre
 
 def main():
     genres = ["Western", "Action", "Dramma"]
-    actors = ["George Klooney", "Keanu Reaves", "Scarlett Keegan", "Will Smith", "Jaden Smith", "Scarlett Johansson"]
+    actors = ["George Klooney", "Keanu Reaves",
+              "Scarlett Keegan", "Will Smith", "Jaden Smith", "Scarlett Johansson"]
     for genre in genres:
         Genre.objects.create(name=genre)
 
@@ -21,10 +22,7 @@ def main():
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Genre.objects.filter(name="Action").delete()
 
-    actors_with_smith_last = Actor.objects.filter(last_name="Smith").order_by("first_name").all()
-    return actors_with_smith_last
-
+    return Actor.objects.filter(last_name="Smith").order_by("first_name").all()
 
 if __name__ == "__main__":
     main()
-
