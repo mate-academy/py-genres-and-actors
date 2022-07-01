@@ -68,10 +68,9 @@ def main():
 
     # READ
 
-    return_actors = Actor.objects.filter(
+    return Actor.objects.filter(
         last_name="Smith",
     ).order_by("first_name")
-    print(return_actors)
 
 
 if __name__ == "__main__":
