@@ -28,7 +28,6 @@ def main():
         last_name="Smith",).order_by('first_name')
 
 
-if __name__ == '__main__':
-    print(main())
-    print(Genre.objects.all())
-    print(Actor.objects.all())
+print(main())
+print(Genre.objects.all())
+print(Actor.objects.all())
