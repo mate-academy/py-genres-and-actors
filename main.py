@@ -38,8 +38,8 @@ def main():
         first_name="George", last_name="Klooney",
     ).update(last_name="Clooney")
     Actor.objects.filter(
-        first_name="Kianu ", last_name="Reaves",
-    ).update(last_name="Reeves")
+        last_name="Reaves",
+    ).update(first_name="Keanu", last_name="Reeves")
     Genre.objects.filter(
         name="Action",
     ).delete()
@@ -49,7 +49,7 @@ def main():
     get_queryset_of_actors = Actor.objects.all().filter(
         last_name="Smith",
     ).order_by("first_name")
-    print(get_queryset_of_actors)
+    return get_queryset_of_actors
 
 
 if __name__ == "__main__":
