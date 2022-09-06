@@ -7,7 +7,7 @@ from db.models import Genre, Actor
 def main():
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma"),
+    Genre.objects.create(name="Dramma")
     Actor.objects.create(
         first_name="George",
         last_name="Klooney")
@@ -16,13 +16,13 @@ def main():
         last_name="Reaves")
     Actor.objects.create(
         first_name="Scarlett",
-        last_name="Keegan"),
+        last_name="Keegan")
     Actor.objects.create(
         first_name="Will",
-        last_name="Smith"),
+        last_name="Smith")
     Actor.objects.create(
         first_name="Jaden",
-        last_name="Smith"),
+        last_name="Smith")
     Actor.objects.create(
         first_name="Scarlett",
         last_name="Johansson")
