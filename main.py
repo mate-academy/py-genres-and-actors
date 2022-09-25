@@ -52,3 +52,7 @@ def main():
         last_name="Smith"
     ).order_by("first_name")
     return query_set
+
+
+if __name__ == '__main__':
+    main()
