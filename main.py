@@ -16,7 +16,8 @@ def main():
 
     Genre.objects.filter(name="Dramma",).update(name="Drama")
     Actor.objects.filter(last_name="Klooney",).update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu", last_name="Reaves",).update(first_name="Keanu", last_name="Reeves",)
+    Actor.objects.filter(first_name="Kianu", last_name="Reaves",)\
+        .update(first_name="Keanu", last_name="Reeves",)
 
     Actor.objects.filter(first_name="Scarlett",).delete()
     Genre.objects.filter(name="Action",).delete()
