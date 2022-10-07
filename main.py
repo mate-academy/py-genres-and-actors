@@ -50,7 +50,3 @@ def main():
         last_name="Smith"
     ).order_by("first_name")
     return return_queryset_with_smith
-
-
-if __name__ == '__main__':
-    main()
