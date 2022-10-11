@@ -1,6 +1,7 @@
 from django.db.models import QuerySet
 
 import init_django_orm  # noqa: F401
+
 from db.models import Actor, Genre
 
 
@@ -37,7 +38,3 @@ def main() -> QuerySet:
 
     # RETRIEVE
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
-
-
-if __name__ == "__main__":
-    main()
