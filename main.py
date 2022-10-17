@@ -39,10 +39,10 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="Kianu", last_name="Reaves").\
         update(first_name="Keanu", last_name="Reeves")
 
-    # deleting from Genre table (DELETE)
+    # deleting from Genre table  (DELETE)
     Genre.objects.filter(name="Action").delete()
 
-    # deleting from Actor table (DELETE)
+    # deleting from Actor table  (DELETE)
     Actor.objects.filter(first_name="Scarlett").delete()
 
     return read_from_table
