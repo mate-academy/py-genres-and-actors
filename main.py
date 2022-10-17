@@ -4,9 +4,6 @@ from django.db.models import QuerySet
 
 from db.models import Genre, Actor
 
-'''
-
-'''
 
 def main() -> QuerySet:
     # create
@@ -21,7 +18,7 @@ def main() -> QuerySet:
     Actor.objects.create(first_name="Jaden", last_name="Smith")
     Actor.objects.create(first_name="Scarlett", last_name="Johansson")
     # update
-    Genre.objects.filter(name="Dramma").update(name="Dramma")
+    Genre.objects.filter(name="Dramma").update(name="Drama")
 
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
     Actor.objects.filter(last_name="Reaves").update(
@@ -33,9 +30,3 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="Scarlett").delete()
     # read
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
-
-
-if __name__ == '__main__':
-    actors: QuerySet[Actor] = main()
-    for actor in actors:
-        print(actor.id, actor.first_name, actor.last_name)
