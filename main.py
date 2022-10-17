@@ -26,7 +26,8 @@ def main() -> QuerySet:
         )
 
     # read from Actors table (READ)
-    read_from_table = Actor.objects.filter(last_name="Smith").order_by("first_name")
+    read_from_table = Actor.objects.filter(last_name="Smith").\
+        order_by("first_name")
 
     # updating Genre table (UPDATE)
     Genre.objects.filter(name="Dramma").update(name="Drama")
