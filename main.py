@@ -57,3 +57,7 @@ def main() -> Callable:
         last_name="Smith"
     ).order_by("first_name")
     return smith_family
+
+
+if __name__ == '__main__':
+    main()
