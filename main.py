@@ -48,5 +48,5 @@ def main() -> QuerySet:
     return read_from_table
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     main()
