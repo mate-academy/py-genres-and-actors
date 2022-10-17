@@ -8,22 +8,19 @@ from db.models import Actor, Genre
 def main() -> QuerySet:
     film_genres = ["Western", "Action", "Dramma"]
     actors = [
-        ["George", "Klooney"],
-        ["Kianu", "Reaves"],
-        ["Scarlett", "Keegan"],
-        ["Will", "Smith"],
-        ["Jaden", "Smith"],
-        ["Scarlett", "Johansson"]
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
     ]
 
     for genre in film_genres:       # creating Genre table (CREATE)
         Genre.objects.create(name=genre)
 
-    for actor in actors:        # creating Actor table (CREATE)
-        Actor.objects.create(
-            first_name=actor[0],
-            last_name=actor[1]
-        )
+    for first_name, last_name in actors:        # creating Actor table (CREATE)
+        Actor.objects.create(first_name=first_name, last_name=last_name)
 
     # read from Actors table (READ)
     read_from_table = Actor.objects.filter(last_name="Smith").\
@@ -46,7 +43,3 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="Scarlett").delete()
 
     return read_from_table
-
-
-if __name__ == "__main__":
-    main()
