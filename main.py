@@ -10,7 +10,7 @@ def main() -> Callable:
     genres = ["Western", "Action", "Dramma"]
     for genre in genres:
         Genre.objects.create(
-            name=genre,
+            name=genre
         )
 
     actors = [
@@ -24,7 +24,7 @@ def main() -> Callable:
     for name, surname in actors:
         Actor.objects.create(
             first_name=name,
-            last_name=surname,
+            last_name=surname
         )
 
     Genre.objects.filter(
@@ -53,10 +53,10 @@ def main() -> Callable:
     Actor.objects.filter(
         first_name="Scarlett"
     ).delete()
-    smith_family = Actor.objects.filter(
+
+    return Actor.objects.filter(
         last_name="Smith"
     ).order_by("first_name")
-    return smith_family
 
 
 if __name__ == "__main__":
