@@ -19,8 +19,7 @@ def main() -> QuerySet:
               ("Scarlett", "Keegan"),
               ("Will", "Smith"),
               ("Jaden", "Smith"),
-              ("Scarlett", "Johansson"),
-              ]
+              ("Scarlett", "Johansson")]
 
     for name, surname in actors:
         Actor.objects.create(
