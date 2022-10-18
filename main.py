@@ -51,5 +51,5 @@ def delete() -> None:
     Actor.objects.filter(first_name="Scarlett").delete()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
