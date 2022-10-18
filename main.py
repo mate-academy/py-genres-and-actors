@@ -1,8 +1,10 @@
+from django.db.models import QuerySet
+
 import init_django_orm  # noqa: F401
 from db.models import Genre, Actor
 
 
-def main():
+def main() -> QuerySet:
     create()
     update()
     delete()
@@ -10,18 +12,16 @@ def main():
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
 
-def create():
+def create() -> None:
     genres = ["Western", "Action", "Dramma"]
     actors = [
-        "George Klooney",
-        "Kianu Reaves",
-        "Scarlett Keegan",
-        "Will Smith",
-        "Jaden Smith",
-        "Scarlett Johansson"
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
     ]
-
-    actors = [actor.split() for actor in actors]
 
     for genre in genres:
         Genre.objects.create(name=genre)
@@ -33,7 +33,7 @@ def create():
         )
 
 
-def update():
+def update() -> None:
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
     Actor.objects.filter(
@@ -45,7 +45,7 @@ def update():
     ).update(first_name="Keanu", last_name="Reeves")
 
 
-def delete():
+def delete() -> None:
     Genre.objects.filter(name="Action").delete()
 
     Actor.objects.filter(first_name="Scarlett").delete()
