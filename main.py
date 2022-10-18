@@ -40,6 +40,7 @@ def main() -> Callable:
     )
 
     Actor.objects.filter(
+        first_name="Kianu",
         last_name="Reaves"
     ).update(
         first_name="Keanu",
@@ -57,7 +58,3 @@ def main() -> Callable:
     return Actor.objects.filter(
         last_name="Smith"
     ).order_by("first_name")
-
-
-if __name__ == "__main__":
-    main()
