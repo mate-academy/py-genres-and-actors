@@ -16,30 +16,37 @@ def main() -> QuerySet:
         ("Scarlett", "Johansson")
     ]
 
-    for genre in film_genres:       # creating Genre table (CREATE)
+    # creating records in Genre table (CREATE)
+    for genre in film_genres:
         Genre.objects.create(name=genre)
 
-    for first_name, last_name in actors:        # creating Actor table (CREATE)
+    # creating records in Actor table (CREATE)
+    for first_name, last_name in actors:
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
     # read from Actors table (READ)
-    read_from_table = Actor.objects.filter(last_name="Smith").\
-        order_by("first_name")
+    retrieve = Actor.objects.filter(
+        last_name="Smith").order_by("first_name")
 
-    # updating Genre table (UPDATE)
+    # updating records in Genre table (UPDATE)
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
-    # updating Actor table (UPDATE)
+    # updating records in Actor table (UPDATE)
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
 
-    # updating Actor table (UPDATE)
-    Actor.objects.filter(first_name="Kianu", last_name="Reaves").\
-        update(first_name="Keanu", last_name="Reeves")
+    # updating records in Actor table (UPDATE)
+    Actor.objects.filter(
+        first_name="Kianu",
+        last_name="Reaves"
+    ).update(
+        first_name="Keanu",
+        last_name="Reeves"
+    )
 
-    # deleting from Genre table  (DELETE)
+    # deleting records from Genre table  (DELETE)
     Genre.objects.filter(name="Action").delete()
 
-    # deleting from Actor table  (DELETE)
+    # deleting records from Actor table  (DELETE)
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    return read_from_table
+    return retrieve
