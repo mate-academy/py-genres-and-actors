@@ -25,8 +25,9 @@ def main() -> QuerySet:
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
     # read from Actors table (READ)
-    retrieve = Actor.objects.filter(
-        last_name="Smith").order_by("first_name")
+    actors = Actor.objects.filter(
+        last_name="Smith"
+    ).order_by("first_name")
 
     # updating records in Genre table (UPDATE)
     Genre.objects.filter(name="Dramma").update(name="Drama")
@@ -49,4 +50,4 @@ def main() -> QuerySet:
     # deleting records from Actor table  (DELETE)
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    return retrieve
+    return actors
