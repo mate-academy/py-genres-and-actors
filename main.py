@@ -9,8 +9,8 @@ def main() -> QuerySet:
 
     # CREATE
     Genre.objects.create(name="Western")
+    Genre.objects.create(name="Action")
     Genre.objects.create(name="Dramma")
-    Genre.objects.create(name="Western")
     Actor.objects.create(first_name="George", last_name="Klooney")
     Actor.objects.create(first_name="Kianu", last_name="Reaves")
     Actor.objects.create(first_name="Scarlett", last_name="Keegan")
@@ -19,8 +19,8 @@ def main() -> QuerySet:
     Actor.objects.create(first_name="Scarlett", last_name="Johansson")
 
     # UPDATE
-    Genre.objects.filter(name="Dramma").update("Drama")
-    Actor.objects.filter(last_name="Klooney").update("Clooney")
+    Genre.objects.filter(name="Dramma").update(name="Drama")
+    Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
     Actor.objects.filter(first_name="Kianu").update(
         first_name="Keanu", last_name="Reeves")
 
