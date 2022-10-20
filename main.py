@@ -52,8 +52,3 @@ def main() -> QuerySet:
     ).order_by(
         "first_name"
     )
-
-
-# res = main()
-# for line in res:
-#     print(line.first_name, line.last_name)
