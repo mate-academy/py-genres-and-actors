@@ -16,9 +16,9 @@ def main() -> QuerySet:
         ("Scarlett", "Johansson"),
     ]
 
-    for item in list_of_genre:
+    for genre in list_of_genre:
         Genre.objects.create(
-            name=item
+            name=genre
         )
 
     for person_first, person_second in list_of_actors:
