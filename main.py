@@ -11,7 +11,7 @@ def main() -> QuerySet:
         name="Action"
     )
     Genre.objects.create(
-        name="Dramma"
+        name="Dramma"     # :)
     )
     Actor.objects.create(
         first_name="George", last_name="Klooney"
