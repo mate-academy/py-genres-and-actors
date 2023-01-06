@@ -1,9 +1,11 @@
 import init_django_orm  # noqa: F401
 
-from db.models import Actor, Genre
+from db.models import Actors, Genres
 
 
 def main() -> any:
+    Actors.objects.filter().delete()
+    Genres.objects.filter().delete()
     genres = [
         "Western",
         "Action",
@@ -19,27 +21,31 @@ def main() -> any:
     ]
 
     for genre in genres:
-        Genre.objects.create(name=genre)
+        Genres.objects.create(name=genre)
 
     for actor in actors:
         first_name, last_name = actor.split()
-        Actor.objects.create(
+        Actors.objects.create(
             first_name=first_name,
             last_name=last_name
         )
 
-    Genre.objects.filter(name="Dramma").update(name="Drama")
+    Genres.objects.filter(name="Dramma").update(name="Drama")
 
-    Actor.objects.filter(
+    Actors.objects.filter(
         last_name="Klooney"
     ).update(last_name="Clooney")
 
-    Actor.objects.filter(
+    Actors.objects.filter(
         first_name="Kianu"
     ).update(first_name="Keanu", last_name="Reeves")
 
-    Genre.objects.filter(name="Action").delete()
+    Genres.objects.filter(name="Action").delete()
 
-    Actor.objects.filter(first_name="Scarlett").delete()
+    Actors.objects.filter(first_name="Scarlett").delete()
 
-    return Actor.objects.filter(last_name="Smith").order_by("first_name")
+
+
+    return Actors.objects.filter(last_name="Smith").order_by("first_name")
+
+main()
