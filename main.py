@@ -4,8 +4,6 @@ from db.models import Actors, Genres
 
 
 def main() -> any:
-    Actors.objects.filter().delete()
-    Genres.objects.filter().delete()
     genres = [
         "Western",
         "Action",
@@ -44,8 +42,4 @@ def main() -> any:
 
     Actors.objects.filter(first_name="Scarlett").delete()
 
-
-
     return Actors.objects.filter(last_name="Smith").order_by("first_name")
-
-main()
