@@ -11,13 +11,13 @@ def main() -> QuerySet:
         Genre.objects.create(name=genre)
 
     list_of_actors = [
-                      ("George", "Klooney"),
-                      ("Kianu", "Reaves"),
-                      ("Scarlett", "Keegan"),
-                      ("Will", "Smith"),
-                      ("Jaden", "Smith"),
-                      ("Scarlett", "Johansson")
-                      ]
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
+    ]
     for first_name, last_name in list_of_actors:
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
