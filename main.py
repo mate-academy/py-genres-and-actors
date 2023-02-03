@@ -5,7 +5,6 @@ from db.models import Actor, Genre
 
 
 def main() -> QuerySet:
-    pass
     genres = ["Western", "Action", "Dramma"]
     actors = [("George", "Klooney"), ("Kianu", "Reaves"),
               ("Scarlett", "Keegan"), ("Will", "Smith"),
