@@ -23,10 +23,10 @@ def main() -> QuerySet:
             name=genre
         )
 
-    for first_n, last_n in ACTORS:
+    for first_name, last_name in ACTORS:
         Actor.objects.create(
-            first_name=first_n,
-            last_name=last_n
+            first_name=first_name,
+            last_name=last_name
         )
 
     Genre.objects.filter(
