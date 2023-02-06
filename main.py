@@ -19,10 +19,12 @@ def main() -> QuerySet:
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Genre.objects.filter(name="Action").delete()
 
-    for first_name_, last_name_ in actors:
-        Actor.objects.create(first_name=first_name_, last_name=last_name_)
-    upd_name_ls = [("George", "Clooney"), ("Kianu", "Reeves")]
-    for filter_, new_ in upd_name_ls:
+    for first_name_to_set, last_name_to_set in actors:
+        Actor.objects.create(
+            first_name=first_name_to_set, last_name=last_name_to_set
+        )
+    names_to_update = [("George", "Clooney"), ("Kianu", "Reeves")]
+    for filter_, new_ in names_to_update:
         Actor.objects.filter(first_name=filter_).update(last_name=new_)
     Actor.objects.filter(first_name="Kianu").update(first_name="Keanu")
     Actor.objects.filter(first_name="Scarlett").delete()
