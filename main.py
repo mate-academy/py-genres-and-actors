@@ -20,23 +20,17 @@ def main() -> QuerySet:
             first_name=first_name,
             last_name=last_name
         )
-    genre_drama = Genre.objects.get(name="Dramma")
-    genre_drama.name = "Drama"
-    genre_drama.save()
+    Genre.objects.filter(name="Dramma").update(name="Drama")
 
-    clooney = Actor.objects.get(first_name="George", last_name="Klooney")
-    clooney.last_name = "Clooney"
-    clooney.save()
+    Actor.objects.filter(first_name="George", last_name="Klooney").update(
+        last_name="Clooney")
 
-    keanu_reeves = Actor.objects.get(first_name="Kianu", last_name="Reaves")
-    keanu_reeves.first_name, keanu_reeves.last_name = ("Keanu", "Reeves")
-    keanu_reeves.save()
+    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(
+        first_name="Keanu", last_name="Reeves")
 
-    action = Genre.objects.get(name="Action")
-    action.delete()
+    Genre.objects.filter(name="Action").delete()
 
-    scarlets = Actor.objects.filter(first_name="Scarlett")
-    scarlets.delete()
+    Actor.objects.filter(first_name="Scarlett").delete()
 
     smiths = Actor.objects.filter(last_name="Smith").order_by("first_name")
 
