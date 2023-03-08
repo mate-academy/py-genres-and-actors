@@ -14,9 +14,9 @@ def main() -> QuerySet:
               ("Jaden", "Smith"),
               ("Scarlett", "Johansson")]
 
-    for i in range(len(genre_names)):
+    for genre in genre_names:
         Genre.objects.create(
-            name=genre_names[i],
+            name=genre,
         )
 
     for first_name_, last_name_ in actors:
