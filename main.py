@@ -1,6 +1,6 @@
-import init_django_orm  # noqa: F401
-
 from django.db.models import QuerySet
+
+import init_django_orm  # noqa: F401
 from db.models import Genre, Actor
 
 
@@ -40,5 +40,4 @@ def main() -> QuerySet:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    smiths = Actor.objects.filter(last_name="Smith").order_by("first_name")
-    return smiths
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
