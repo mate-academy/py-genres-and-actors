@@ -22,10 +22,10 @@ def main() -> QuerySet:
         ["Jaden", "Smith"],
         ["Scarlett", "Johansson"]
     ]
-    for f_name, l_name in actors:
+    for first_name, last_name in actors:
         Actor.objects.create(
-            first_name=f_name,
-            last_name=l_name
+            first_name=first_name,
+            last_name=last_name
         )
 
     Genre.objects.filter(
