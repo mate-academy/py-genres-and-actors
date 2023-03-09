@@ -3,17 +3,16 @@ import init_django_orm  # noqa: F401
 from django.db.models import QuerySet
 
 from db.models import Genre, Actor
-from db.data import DATA
+from db.data import GENRES, ACTORS
 
 
 def main() -> QuerySet:
-    genres, actors = DATA
 
-    for genre in genres:
+    for genre in GENRES:
         Genre.objects.create(name=genre)
 
-    for actor in actors:
-        first_name, last_name = actor.split()
+    for actor in ACTORS:
+        first_name, last_name = actor
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")

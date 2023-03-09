@@ -1,15 +1,14 @@
-DATA = [
-    (
-        "Western",
-        "Action",
-        "Dramma"
-    ),
-    (
-        "George Klooney",
-        "Kianu Reaves",
-        "Scarlett Keegan",
-        "Will Smith",
-        "Jaden Smith",
-        "Scarlett Johansson"
-    )
+GENRES = (
+    "Western",
+    "Action",
+    "Dramma"
+)
+
+ACTORS = [
+    ("George", "Klooney"),
+    ("Kianu", "Reaves"),
+    ("Scarlett", "Keegan"),
+    ("Will", "Smith"),
+    ("Jaden", "Smith"),
+    ("Scarlett", "Johansson")
 ]
