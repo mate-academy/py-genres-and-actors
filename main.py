@@ -9,7 +9,7 @@ def main() -> QuerySet:
     genres = ["Western", "Action", "Dramma"]
 
     for genre in genres:
-        print(Genre.objects.create(name=genre))
+        Genre.objects.create(name=genre)
 
     actors = [
         ["George", "Klooney"],
@@ -20,6 +20,7 @@ def main() -> QuerySet:
         ["Scarlett", "Johansson"]
     ]
     for name, surname in actors:
+
         Actor.objects.create(
             first_name=name,
             last_name=surname
@@ -41,4 +42,5 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="Scarlett").delete()
 
     return Actor.objects.filter(
-        last_name="Smith").order_by("first_name")
+        last_name="Smith"
+    ).order_by("first_name")
