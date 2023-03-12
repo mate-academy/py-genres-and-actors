@@ -5,12 +5,12 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet[Actor]:
-    def add_genres():
+    def add_genres() -> None:
         Genre.objects.create(name="Western")
         Genre.objects.create(name="Action")
         Genre.objects.create(name="Drama")
 
-    def add_actors():
+    def add_actors() -> None:
         Actor.objects.create(first_name="George", last_name="Klooney")
         Actor.objects.create(first_name="Kianu", last_name="Reaves")
         Actor.objects.create(first_name="Scarlett", last_name="Keegan")
@@ -18,28 +18,28 @@ def main() -> QuerySet[Actor]:
         Actor.objects.create(first_name="Jaden", last_name="Smith")
         Actor.objects.create(first_name="Scarlett", last_name="Johansson")
 
-    def update_drama_genre():
+    def update_drama_genre() -> None:
         try:
             drama_genre = Genre.objects.get(name="Drama")
         except Genre.DoesNotExist:
             drama_genre = Genre(name="Drama")
             drama_genre.save()
 
-    def update_klooney_actor():
+    def update_klooney_actor() -> None:
         Actor.objects.filter(
             last_name="Klooney"
         ).update(last_name="Clooney")
 
-    def update_reaves_actor():
+    def update_reaves_actor() -> None:
         Actor.objects.filter(
             first_name="Kianu", last_name="Reaves"
         ).update(first_name="Keanu", last_name="Reeves")
 
-    def delete_action_genre():
+    def delete_action_genre() -> None:
         action_genre = Genre.objects.get(name="Action")
         action_genre.delete()
 
-    def delete_scarlett_actors():
+    def delete_scarlett_actors() -> None:
         actresses = Actor.objects.filter(first_name="Scarlett")
         actresses.delete()
 
