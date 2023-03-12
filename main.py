@@ -19,9 +19,11 @@ def main() -> QuerySet[Actor]:
         Actor.objects.create(first_name="Scarlett", last_name="Johansson")
 
     def update_drama_genre():
-        drama_genre = Genre.objects.get(name="Dramma")
-        drama_genre.name = "Drama"
-        drama_genre.save()
+        try:
+            drama_genre = Genre.objects.get(name="Drama")
+        except Genre.DoesNotExist:
+            drama_genre = Genre(name="Drama")
+            drama_genre.save()
 
     def update_klooney_actor():
         Actor.objects.filter(
@@ -41,9 +43,22 @@ def main() -> QuerySet[Actor]:
         actresses = Actor.objects.filter(first_name="Scarlett")
         actresses.delete()
 
-    def get_smith_actors():
+    def get_smith_actors() -> QuerySet[Actor]:
         actors = Actor.objects.filter(last_name="Smith").order_by("first_name")
         return actors
+
+    add_genres()
+    add_actors()
+
+    update_drama_genre()
+    update_klooney_actor()
+    update_reaves_actor()
+
+    delete_action_genre()
+    delete_scarlett_actors()
+
+    actors = get_smith_actors()
+    return actors
 
 
 if __name__ == "__main__":
