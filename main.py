@@ -33,7 +33,10 @@ def main() -> QuerySet:
         name="Dramma"
     ).update(name="Drama")
 
-    Actor.objects.filter(first_name="George", last_name="Klooney").update(
+    Actor.objects.filter(
+        first_name="George",
+        last_name="Klooney"
+    ).update(
         last_name="Clooney"
     )
 
