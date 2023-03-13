@@ -1,7 +1,7 @@
-import init_django_orm  # noqa: F401
-
-from db.models import Actor, Genre
 from django.db.models.query import QuerySet
+
+import init_django_orm  # noqa: F401
+from db.models import Actor, Genre
 
 
 def main() -> QuerySet:
