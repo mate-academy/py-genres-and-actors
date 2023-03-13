@@ -6,8 +6,10 @@ from django.db.models import QuerySet
 
 def main() -> QuerySet:
     genres = ["Western", "Action", "Drama"]
+
     for item in genres:
         Genre.objects.create(name=item)
+
     actors = [
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
@@ -16,6 +18,7 @@ def main() -> QuerySet:
         ("Jaden", "Smith"),
         ("Scarlett", "Johansson")
     ]
+
     for first_name, last_name in actors:
         Actor.objects.create(
             first_name=first_name,
@@ -26,8 +29,8 @@ def main() -> QuerySet:
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
     Actor.objects.filter(
         first_name="Kianu",
-        last_name="Reaves").update(first_name="Keanu", last_name="Reeves")
-
+        last_name="Reaves"
+    ).update(first_name="Keanu", last_name="Reeves")
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
