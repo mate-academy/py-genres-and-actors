@@ -5,33 +5,21 @@ from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
+actors = [
+    ("George", "Klooney"), ("Kianu", "Reaves"), ("Scarlett", "Keegan"),
+    ("Scarlett", "Keegan"), ("Will", "Smith"), ("Jaden", "Smith"),
+    ("Scarlett", "Johansson")
+]
+
+genre = ["Western", "Action", "Dramma"]
+
+
 def main() -> QuerySet:
-    genre1 = Genre(name="Western")
-    genre1.save()
+    for genre_name in genre:
+        Genre.objects.create(name=genre_name)
 
-    genre2 = Genre(name="Action")
-    genre2.save()
-
-    genre3 = Genre(name="Dramma")
-    genre3.save()
-
-    actor1 = Actor(first_name="George", last_name="Klooney")
-    actor1.save()
-
-    actor2 = Actor(first_name="Kianu", last_name="Reaves")
-    actor2.save()
-
-    actress1 = Actor(first_name="Scarlett", last_name="Keegan")
-    actress1.save()
-
-    actor3 = Actor(first_name="Will", last_name="Smith")
-    actor3.save()
-
-    actor4 = Actor(first_name="Jaden", last_name="Smith")
-    actor4.save()
-
-    actress2 = Actor(first_name="Scarlett", last_name="Johansson")
-    actress2.save()
+    for f_name, l_name in actors:
+        Actor.objects.create(first_name=f_name, last_name=l_name)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(first_name="George").update(last_name="Clooney")
@@ -46,7 +34,3 @@ def main() -> QuerySet:
         "first_name"
     )
     return queryset
-
-
-if __name__ == "__main__":
-    print(main())
