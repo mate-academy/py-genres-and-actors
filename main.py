@@ -17,6 +17,7 @@ actors = [
 
 
 def main() -> QuerySet:
+
     for genre in genres:
         Genre.objects.create(name=genre)
 
