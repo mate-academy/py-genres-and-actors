@@ -7,15 +7,21 @@ from django.db.models import QuerySet
 def main() -> QuerySet:
 
     # Create elements
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")
-    Actor.objects.create(first_name="George", last_name="Klooney")
-    Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    list_of_genres = ["Western", "Action", "Dramma"]
+    for i in list_of_genres:
+        Genre.objects.create(name=i)
+
+    actors_name_list = [
+        "George", "Kianu", "Scarlett", "Will", "Jaden", "Scarlett"
+    ]
+    actors_surname_list = [
+        "Klooney", "Reaves", "Keegan", "Smith", "Smith", "Johansson"
+    ]
+    for i in range(len(actors_name_list)):
+        Actor.objects.create(
+            first_name=actors_name_list[i],
+            last_name=actors_surname_list[i]
+        )
 
     # Update elements
     Genre.objects.filter(name="Dramma").update(name="Drama")
