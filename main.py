@@ -24,10 +24,11 @@ def main() -> QuerySet:
     Actor.objects.bulk_create(
         [
             Actor(
-                first_name=actor[0],
-                last_name=actor[1],
+                first_name=actor_first_name,
+                last_name=actor_last_name,
             )
-            for actor in actor_data
+            for actor_first_name,
+            actor_last_name in actor_data
         ]
     )
     # for genre in genres:
