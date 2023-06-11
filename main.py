@@ -4,24 +4,24 @@ from django.db.models import QuerySet
 
 from db.models import Genre, Actor
 
-genre_names = [
+genre_objects = [
     Genre(name="Western"),
     Genre(name="Action"),
     Genre(name="Dramma"),
 ]
-actors_to_create = [
+actors_objects = [
     Actor(first_name="George", last_name="Klooney"),
     Actor(first_name="Kianu", last_name="Reaves"),
     Actor(first_name="Scarlett", last_name="Keegan"),
     Actor(first_name="Will", last_name="Smith"),
     Actor(first_name="Jaden", last_name="Smith"),
-    Actor(first_name="Scarlett", last_name="Johansson")
+    Actor(first_name="Scarlett", last_name="Johansson"),
 ]
 
 
 def main() -> QuerySet:
-    Genre.objects.bulk_create(genre_names)
-    Actor.objects.bulk_create(actors_to_create)
+    Genre.objects.bulk_create(genre_objects)
+    Actor.objects.bulk_create(actors_objects)
     Genre.objects.filter(
         name="Dramma",
     ).update(name="Drama")
