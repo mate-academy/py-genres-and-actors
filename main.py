@@ -40,7 +40,6 @@ def main() -> QuerySet:
     ).update(first_name="Keanu",
              last_name="Reeves")
 
-
     # Delete
     Genre.objects.filter(
         name="Action"
@@ -49,7 +48,6 @@ def main() -> QuerySet:
     Actor.objects.filter(
         first_name="Scarlett"
     ).delete()
-
 
     # Return
     return Actor.objects.filter(
