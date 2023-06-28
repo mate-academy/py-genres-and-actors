@@ -5,7 +5,6 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    
     genres = ["Western", "Action", "Dramma"]
     actors = [
         ("George", "Klooney"),
@@ -49,14 +48,3 @@ def main() -> QuerySet:
     return Actor.objects.filter(
         last_name="Smith"
     ).order_by("first_name").all()
-
-
-if __name__ == '__main__':
-    print(main())
-    # <QuerySet [<Actor: Jaden Smith>, <Actor: Will Smith>]>
-
-    print(Genre.objects.all())
-    # <QuerySet [<Genre: Western>, <Genre: Drama>]>
-
-    print(Actor.objects.all())
-    # <QuerySet [<Actor: George Clooney>, <Actor: Keanu Reeves>, <Actor: Will Smith>, <Actor: Jaden Smith>]>
