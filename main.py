@@ -21,12 +21,17 @@ def main() -> QuerySet:
         Actor(first_name="Scarlett", last_name="Johansson"),
     ])
 
-    Genre.objects.filter(name="Dramma")\
-        .update(name="Drama")
-    Actor.objects.filter(first_name="George", last_name="Klooney")\
-        .update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu", last_name="Reeves")\
-        .update(first_name="Keanu", last_name="Reeves")
+    Genre.objects.filter(
+        name="Dramma"
+        ).update(name="Drama")
+    Actor.objects.filter(
+        first_name="George",
+        last_name="Klooney"
+        ).update(last_name="Clooney")
+    Actor.objects.filter(
+        first_name="Kianu",
+        last_name="Reeves"
+        ).update(first_name="Keanu", last_name="Reeves")
 
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
