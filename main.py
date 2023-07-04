@@ -6,18 +6,18 @@ from db.models import Actor, Genre
 
 
 def main() -> QuerySet:
-    create_genre = [
+    genres = [
         "Western",
         "Action",
         "Dramma"
     ]
 
-    for name in create_genre:
+    for name in genres:
         Genre.objects.create(
             name=name
         )
 
-    create_actors = [
+    actors = [
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
         ("Scarlett", "Keegan"),
@@ -26,14 +26,8 @@ def main() -> QuerySet:
         ("Scarlett", "Johansson")
     ]
 
-    checklist = [
-        {"field": "first_name", "index": 0},
-        {"field": "last_name", "index": 1}
-    ]
-
-    for data in create_actors:
-        actor_data = {item["field"]: data[item["index"]] for item in checklist}
-        Actor.objects.create(**actor_data)
+    for first_name, last_name in actors:
+        Actor.objects.create(first_name=first_name, last_name=last_name)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(
