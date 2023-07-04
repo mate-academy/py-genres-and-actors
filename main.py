@@ -6,19 +6,25 @@ from db.models import Actor, Genre
 
 
 def main() -> QuerySet:
-    Genre(name="Western").save()
-    Genre(name="Action").save()
-    Genre(name="Dramma").save()
-    Actor(first_name="George", last_name="Klooney").save()
-    Actor(first_name="Kianu", last_name="Reaves").save()
-    Actor(first_name="Scarlett", last_name="Keegan").save()
-    Actor(first_name="Will", last_name="Smith").save()
-    Actor(first_name="Jaden", last_name="Smith").save()
-    Actor(first_name="Scarlett", last_name="Johansson").save()
+    genres = ["Western", "Action", "Dramma"]
+    for genre in genres:
+        Genre.objects.create(name=genre)
 
-    drama = Genre.objects.get(name="Dramma")
-    drama.name = "Drama"
-    drama.save()
+    actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
+    ]
+    for first_name, last_name in actors:
+        Actor.objects.create(
+            first_name=first_name,
+            last_name=last_name
+        )
+
+    Genre.objects.filter(name="Dramma").update(name="Drama")
 
     Actor.objects.filter(first_name="George", last_name="Klooney").update(
         last_name="Clooney"
