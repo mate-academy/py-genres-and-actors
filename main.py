@@ -5,27 +5,27 @@ from django.db.models import QuerySet
 
 
 def main() -> QuerySet:
-    genres = ["Western", "Action", "Dramma"]
+    genres = [Genre(name=genre) for genre in ["Western", "Action", "Dramma"]]
     actors = [
-        ("George", "Klooney"),
-        ("Kianu", "Reaves"),
-        ("Scarlett", "Keegan"),
-        ("Will", "Smith"),
-        ("Jaden", "Smith"),
-        ("Scarlett", "Johansson")
+        Actor(first_name="George", last_name="Klooney"),
+        Actor(first_name="Kianu", last_name="Reaves"),
+        Actor(first_name="Scarlett", last_name="Keegan"),
+        Actor(first_name="Will", last_name="Smith"),
+        Actor(first_name="Jaden", last_name="Smith"),
+        Actor(first_name="Scarlett", last_name="Johansson")
     ]
-    Genre.objects.bulk_create([Genre(name=genre) for genre in genres])
-    Actor.objects.bulk_create([
-        Actor(
-            first_name=first_name, last_name=last_name
-        ) for first_name, last_name in actors
-    ])
+    Genre.objects.bulk_create(genres)
+    Actor.objects.bulk_create(actors)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
-    Actor.objects.filter(last_name="Reaves").update(
-        first_name="Keanu", last_name="Reeves"
-    )
+    Actor.objects.filter(
+        last_name="Klooney",
+        first_name="George"
+    ).update(last_name="Clooney")
+    Actor.objects.filter(
+        last_name="Reaves",
+        first_name="Kianu"
+    ).update(first_name="Keanu", last_name="Reeves")
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
