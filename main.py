@@ -18,8 +18,8 @@ def main() -> QuerySet:
         ["Jaden", "Smith"],
         ["Scarlett", "Johansson"]
     ]
-    # for genre in genres:
-    Genre.objects.create(genres[1])
+    for genre in genres:
+        Genre.objects.create(genre)
     for actor in actors:
         Actor.objects.create(actor[0], actor[1])
     Genre.objects.filter(name="Dramma").update(name="Drama")
