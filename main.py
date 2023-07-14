@@ -36,5 +36,3 @@ def main() -> QuerySet:
 
 if __name__ == "__main__":
     main()
-    # Genre.objects.all().delete()
-    # Actor.objects.all().delete()
