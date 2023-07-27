@@ -25,6 +25,7 @@ def main() -> QuerySet:
         first_name="Keanu",
         last_name="Reeves"
     )
+    # deleted
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
     return (
