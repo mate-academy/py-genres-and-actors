@@ -55,4 +55,3 @@ def main() -> QuerySet:
     ).order_by(
         "first_name"
     )
-
