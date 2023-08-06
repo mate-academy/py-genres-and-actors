@@ -10,7 +10,7 @@ def main() -> QuerySet:
         "Western",
         "Action",
         "Drama",
-)
+    )
     for genre in genres_list:
         Genre.objects.create(name=genre)
 
