@@ -40,15 +40,12 @@ def main() -> QuerySet:
         name="Action"
     ).delete()
 
+    Actor.objects.filter(
+        first_name="Scarlett"
+    ).delete()
+
     final_return = Actor.objects.filter(
         last_name="Smith"
     ).order_by("first_name")
 
     return final_return
-
-
-print(main())
-
-print(Genre.objects.all())
-
-print(Actor.objects.all())
