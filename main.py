@@ -1,4 +1,5 @@
 from django.db.models import QuerySet
+
 from db.models import Actor, Genre
 
 
@@ -27,3 +28,7 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="Scarlett").delete()
     Genre.objects.filter(name="Action").delete()
     return Actor.objects.filter(last_name="Smith").order_by("first_name").all()
+
+
+if __name__ == "__main__":
+    main()
