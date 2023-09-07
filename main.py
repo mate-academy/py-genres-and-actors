@@ -48,3 +48,5 @@ def main() -> QuerySet:
     ).order_by("first_name")
 
     return final_return
+
+main( )
