@@ -49,4 +49,5 @@ def main() -> QuerySet:
 
     return final_return
 
-main( )
+
+main()
