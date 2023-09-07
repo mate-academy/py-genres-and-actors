@@ -28,7 +28,7 @@ def main() -> QuerySet | None:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    return Actor.objects.filter(last_name="Smith").order_by("first_name").all()
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
 
 def put_values(table_name: str, data: list) -> None:
