@@ -50,5 +50,4 @@ print(Actor.objects.all())
 # <QuerySet [<Actor: George Clooney>, <Actor: Keanu Reeves>, <Actor: Will Smith>, <Actor: Jaden Smith>]>
 ```
 
-### Note: Check your code using this [checkl
-ist](checklist.md) before pushing your solution.
+### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
