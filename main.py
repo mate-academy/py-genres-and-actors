@@ -1,12 +1,12 @@
+from django.db.models import QuerySet
+
 import init_django_orm  # noqa: F401
 from db.models import Genre, Actor
 
-from django.db.models import QuerySet
-
 
 def main() -> QuerySet:
-    genres: list[str] = ["Western", "Action", "Dramma"]
-    actors: list[tuple[str, str]] = [
+    genres = ["Western", "Action", "Dramma"]
+    actors = [
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
         ("Scarlett", "Keegan"),
