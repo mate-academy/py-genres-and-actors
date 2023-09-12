@@ -29,4 +29,4 @@ def main() -> QuerySet:
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(first_name="Scarlett").delete()
     Genre.objects.filter(name="Action").delete()
-    return Actor.objects.filter(last_name="Smith").order_by("first_name").all()
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
