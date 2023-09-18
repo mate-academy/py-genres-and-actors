@@ -6,16 +6,35 @@ from db.models import Genre, Actor
 
 def main() -> QuerySet:
 
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")
+    cinema_area = {
+        "genre":
+            [
+                "Western",
+                "Action",
+                "Dramma"
+            ],
+        "actor":
+            [
+                "George Klooney",
+                "Kianu Reaves",
+                "Scarlett Keegan",
+                "Will Smith",
+                "Jaden Smith",
+                "Scarlett Johansson"
+            ]
+    }
 
-    Actor.objects.create(first_name="George", last_name="Klooney")
-    Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    for compound in cinema_area:
+        if compound == "genre":
+            for work_genre in cinema_area[compound]:
+                Genre.objects.create(name=work_genre)
+        if compound == "actor":
+            for work_actor in cinema_area[compound]:
+                actor_breakdown = work_actor.split()
+                Actor.objects.create(
+                    first_name=actor_breakdown[0],
+                    last_name=actor_breakdown[1]
+                )
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
