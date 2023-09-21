@@ -51,9 +51,3 @@ def main() -> QuerySet:
         first_name="Scarlett"
     ).delete()
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
-
-
-if __name__ == "__main__":
-    result = main()
-    for actor in result:
-        print(f"{actor.first_name} {actor.last_name}")
