@@ -1,7 +1,19 @@
+from django.test import TestCase
 from db.models import Genre, Actor
 
 
-def main() -> QuerySet:
+class YourTestCase(TestCase):
+    def setUp(self) -> None:
+        pass
+
+    def tearDown(self) -> None:
+        pass
+
+    def test_main(self) -> None:
+        pass
+
+
+def main() -> list:
     pass
     genres = ["Western", "Action", "Dramma"]
     actors = [
