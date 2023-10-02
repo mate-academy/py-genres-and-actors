@@ -10,13 +10,14 @@ def main() -> QuerySet:
             name=name,
         )
 
+    first_names = ("George", "Kianu", "Scarlett",
+                   "Will", "Jaden", "Scarlett")
+    last_names = ("Klooney", "Reaves", "Keegan",
+                  "Smith", "Smith", "Johansson")
+
     actor_data = [
-        Actor(first_name="George", last_name="Klooney"),
-        Actor(first_name="Kianu", last_name="Reaves"),
-        Actor(first_name="Scarlett", last_name="Keegan"),
-        Actor(first_name="Will", last_name="Smith"),
-        Actor(first_name="Jaden", last_name="Smith"),
-        Actor(first_name="Scarlett", last_name="Johansson"),
+        Actor(first_name=first, last_name=last) for first, last
+        in zip(first_names, last_names)
     ]
 
     Actor.objects.bulk_create(actor_data)
@@ -25,19 +26,19 @@ def main() -> QuerySet:
         name="Dramma",
     ).update(name="Drama")
 
-    (Actor.objects.filter(
+    Actor.objects.filter(
         first_name="Kianu",
     ).update(first_name="Keanu"), Actor.objects.filter(
         last_name="Reaves",
     ).update(last_name="Reeves"), Actor.objects.filter(
         last_name="Klooney",
-    ).update(last_name="Clooney"))
+    ).update(last_name="Clooney")
 
-    (Genre.objects.filter(
+    Genre.objects.filter(
         name="Action",
     ).delete(), Actor.objects.filter(
         first_name="Scarlett",
-    ).delete())
+    ).delete()
 
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
