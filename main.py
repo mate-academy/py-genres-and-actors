@@ -21,10 +21,10 @@ def main() -> QuerySet:
 
     # CREATE
     for genre in genres:
-        Genre.object.create(name=genre)
+        Genre.objects.create(name=genre)
 
     for first_name, last_name in splited_actors:
-        Actor.object.models(first_name=first_name,
+        Actor.objects.models(first_name=first_name,
                             last_name=last_name)
 
     # UPDATE
