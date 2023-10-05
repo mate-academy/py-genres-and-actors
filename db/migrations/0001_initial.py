@@ -12,30 +12,30 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Actor',
+            name="Actor",
             fields=[
-                ('id',
+                ("id",
                  models.AutoField(auto_created=True,
                                   primary_key=True,
                                   serialize=False,
-                                  verbose_name='ID'
+                                  verbose_name="ID"
                                   )
                  ),
-                ('first_name', models.CharField(max_length=255)),
-                ('last_name', models.CharField(max_length=255)),
+                ("first_name", models.CharField(max_length=255)),
+                ("last_name", models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
-            name='Genre',
+            name="Genre",
             fields=[
-                ('id',
+                ("id",
                  models.AutoField(auto_created=True,
                                   primary_key=True,
                                   serialize=False,
-                                  verbose_name='ID'
+                                  verbose_name="ID"
                                   )
                  ),
-                ('name', models.CharField(max_length=255)),
+                ("name", models.CharField(max_length=255)),
             ],
         ),
     ]
