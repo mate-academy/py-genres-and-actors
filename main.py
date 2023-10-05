@@ -32,7 +32,7 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="George",
                          last_name="Klooney"
                          ).update(last_name="Clooney")
-    Actor.object.filter(first_name="Kianu",
+    Actor.objects.filter(first_name="Kianu",
                         last_name="Reaves").update(first_name="Keanu",
                                                    last_name="Reeves"
                                                    )
