@@ -25,7 +25,7 @@ def main() -> QuerySet:
 
     for first_name, last_name in splited_actors:
         Actor.objects.models(first_name=first_name,
-                            last_name=last_name)
+                             last_name=last_name)
 
     # UPDATE
     Genre.objects.filter(name="Dramma").update(name="Drama")
