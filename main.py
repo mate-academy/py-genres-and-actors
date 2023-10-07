@@ -9,7 +9,7 @@ def main() -> QuerySet:
     genres = [
         "Western",
         "Action",
-        "Dramma"
+        "Drama"
     ]
     actors = [
         ("George", "Klooney"),
