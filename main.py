@@ -6,18 +6,20 @@ from db.models import Actor, Genre
 
 
 def main() -> QuerySet:
-    genres = ["Western",
-              "Action",
-              "Dramma"
-              ]
-    actors = ["George Klooney",
-              "Kianu Reaves",
-              "Scarlett Keegan",
-              "Will Smith",
-              "Will Smith",
-              "Scarlett Johansson"
-              ]
-    splited_actors = [actor.split() for actor in actors]
+    genres = [
+        "Western",
+        "Action",
+        "Dramma"
+    ]
+    actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
+
+    ]
 
     # CREATE
     for genre in genres:
