@@ -9,40 +9,34 @@ def main() -> QuerySet:
         Genre.objects.create(name=genre)
 
     create_actors = [
-        {"first_name": "George", "last_name": "Klooney"},
-        {"first_name": "Kianu", "last_name": "Reaves"},
-        {"first_name": "Scarlett", "last_name": "Keegan"},
-        {"first_name": "Will", "last_name": "Smith"},
-        {"first_name": "Jaden", "last_name": "Smith"},
-        {"first_name": "Scarlett", "last_name": "Johansson"}
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
     ]
-    for actor_data in create_actors:
-        Actor.objects.create(**actor_data)
+
+    for first_name, last_name in create_actors:
+        Actor.objects.create(first_name=first_name, last_name=last_name)
 
     update_genres = {"Dramma": "Drama"}
     for old_name, new_name in update_genres.items():
         Genre.objects.filter(name=old_name).update(name=new_name)
 
-    update_actors = [
-        {"last_name": "Klooney", "new_last_name": "Clooney"},
-        {"first_name": "Kianu", "new_first_name": "Keanu",
-         "last_name": "Reaves", "new_last_name": "Reeves"}
-    ]
-    for actor_data in update_actors:
-        filter_fields = {
-            key: value for key, value in actor_data.items() if
-            not key.startswith("new_")
-        }
-        update_fields = {
-            key.replace("new_", ""): value for key, value in
-            actor_data.items() if key.startswith("new_")
-        }
+        Actor.objects.filter(
+            last_name="Klooney"
+        ).update(
+            last_name="Clooney"
+        )
 
-        Actor.objects.filter(**filter_fields).update(**update_fields)
+        Actor.objects.filter(
+            first_name="Kianu", last_name="Reaves"
+        ).update(
+            first_name="Keanu", last_name="Reeves"
+        )
 
-    delete_genres = ["Action"]
-    for genre_name in delete_genres:
-        Genre.objects.filter(name=genre_name).delete()
+        Genre.objects.filter(name="Action").delete()
 
     delete_actors = {"first_name": "Scarlett"}
     Actor.objects.filter(**delete_actors).delete()
