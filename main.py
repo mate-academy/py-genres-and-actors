@@ -26,8 +26,5 @@ def main() -> QuerySet:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
     # return
-    list_of_smith = []
-    for smith in Actor.objects.all():
-        if smith.last_name == "Smith":
-            list_of_smith.append(smith)
-    return QuerySet.order_by(list_of_smith[1], list_of_smith[0])
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
+
