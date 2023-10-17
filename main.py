@@ -31,7 +31,3 @@ def main() -> QuerySet:
         if smith.last_name == "Smith":
             list_of_smith.append(smith)
     return QuerySet.order_by(list_of_smith[1], list_of_smith[0])
-
-
-if __name__ == "__main__":
-    main()

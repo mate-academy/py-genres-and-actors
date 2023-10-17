@@ -8,6 +8,3 @@ class Genre(models.Model):
 class Actor(models.Model):
     first_name = models.CharField(max_length=63)
     last_name = models.CharField(max_length=63)
-
-
-
