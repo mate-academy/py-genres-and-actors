@@ -5,12 +5,12 @@ class Genre(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self) -> None:
-        print(f"{self.name}")
+        return self.name
 
 
 class Actor(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
 
-    def __str__(self) -> str:
-        print(f"{self.first_name}, {self.last_name}")
+    def __str__(self) -> None:
+        return self.first_name, self.last_name
