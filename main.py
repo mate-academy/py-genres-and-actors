@@ -12,15 +12,17 @@ def main() -> QuerySet:
     for genre in list_of_genre:
         Genre.objects.create(name=genre,)
 
-    actors_first_name = ["George", "Kianu", "Scarlett",
-                         "Will", "Jaden", "Scarlett"]
-    actors_last_name = ["Klooney", "Reaves", "Keegan",
-                        "Smith", "Smith", "Johansson"]
+    actors_list = [("George", "Klooney"),
+                   ("Kianu", "Reaves"),
+                   ("Scarlett", "Keegan"),
+                   ("Will", "Smith"),
+                   ("Jaden", "Smith"),
+                   ("Scarlett", "Johansson")]
 
-    for number in range(len(actors_first_name)):
+    for first_name, last_name in actors_list:
         Actor.objects.create(
-            first_name=actors_first_name[number],
-            last_name=actors_last_name[number]
+            first_name=first_name,
+            last_name=last_name
         )
 
     Genre.objects.filter(
