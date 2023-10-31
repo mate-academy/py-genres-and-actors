@@ -37,5 +37,6 @@ def main() -> QuerySet:
 
     return actors_with_last_name_smith
 
+
 if __name__ == "__main__":
     main()
