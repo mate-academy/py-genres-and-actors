@@ -36,3 +36,6 @@ def main() -> QuerySet:
     ).order_by("first_name")
 
     return actors_with_last_name_smith
+
+if __name__ == "__main__":
+    main()
