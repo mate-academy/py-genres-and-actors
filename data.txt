@@ -1,0 +1,9 @@
+genre Western
+genre Action
+genre Dramma
+actor George Klooney
+actor Kianu Reaves
+actress Scarlett Keegan
+actor Will Smith
+actor Jaden Smith
+actress Scarlett Johansson
