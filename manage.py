@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
+import django  # noqa: F401
 
 
 if __name__ == "__main__":
