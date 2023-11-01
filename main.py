@@ -6,16 +6,20 @@ from django.db.models import QuerySet
 
 def main() -> QuerySet:
     genres = ["Western", "Action", "Dramma"]
-    actors_names = ["George Klooney", "Kianu Reaves", "Scarlett Keegan",
-                    "Will Smith", "Jaden Smith", "Scarlett Johansson"]
+    actors_names = [("George", "Klooney"),
+                    ("Kianu", "Reaves"),
+                    ("Scarlett", "Keegan"),
+                    ("Will", "Smith"),
+                    ("Jaden", "Smith"),
+                    ("Scarlett", "Johansson")]
     for genre_name in genres:
         Genre.objects.create(
             name=genre_name
         )
-    for actor_full_name in actors_names:
-        actor_names = actor_full_name.split()
+    for actor_first_name, actor_last_name in actors_names:
         Actor.objects.create(
-            first_name=actor_names[0], last_name=actor_names[1]
+            first_name=actor_first_name,
+            last_name=actor_last_name
         )
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
