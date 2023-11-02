@@ -13,7 +13,6 @@ def main() -> QuerySet:
               ("Will", "Smith"),
               ("Jaden", "Smith"),
               ("Scarlett", "Johansson")]
-    
     for genre in genres:
         Genre.objects.create(name=genre)
 
