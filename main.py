@@ -10,16 +10,15 @@ def main() -> QuerySet:
         Genre.objects.create(name=genre)
 
     actors = [
-        "George Klooney",
-        "Kianu Reaves",
-        "Scarlett Keegan",
-        "Will Smith",
-        "Jaden Smith",
-        "Scarlett Johansson",
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
     ]
-    actors_tuple = [(actor.split()[0], actor.split()[1]) for actor in actors]
 
-    for item_first, item_second in actors_tuple:
+    for item_first, item_second in actors:
         Actor.objects.create(
             first_name=item_first,
             last_name=item_second
