@@ -5,11 +5,7 @@ from django.db.models import QuerySet
 
 
 def main() -> QuerySet:
-    genres = (
-        "Western",
-        "Action",
-        "Dramma"
-    )
+    genres = ("Western", "Action", "Dramma")
 
     actors = (
         ("George", "Klooney"),
@@ -20,39 +16,27 @@ def main() -> QuerySet:
         ("Scarlett", "Johansson")
     )
 
-    [Genre.objects.create(name=genre) for genre in genres]
-    [Actor.objects.create(
-        first_name=name,
-        last_name=surname
-    ) for name, surname in actors]
+    for genre in genres:
+        Genre.objects.create(name=genre)
 
-    Genre.objects.filter(
-        name="Dramma"
-    ).update(name="Drama")
+    for name, surname in actors:
+        Actor.objects.create(first_name=name, last_name=surname)
 
-    Actor.objects.filter(
-        first_name="George",
-        last_name="Klooney"
-    ).update(last_name="Clooney")
+    Genre.objects.filter(name="Dramma").update(name="Drama")
 
-    Actor.objects.filter(
-        first_name="Kianu",
-        last_name="Reaves"
-    ).update(
+    Actor.objects.filter(first_name="George", last_name="Klooney").update(
+        last_name="Clooney"
+    )
+
+    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(
         first_name="Keanu",
         last_name="Reeves"
     )
 
-    Genre.objects.filter(
-        name="Action"
-    ).delete()
+    Genre.objects.filter(name="Action").delete()
 
-    Actor.objects.filter(
-        first_name="Scarlett"
-    ).delete()
+    Actor.objects.filter(first_name="Scarlett").delete()
 
-    actors = Actor.objects.filter(
-        last_name="Smith"
-    ).order_by("first_name")
+    actors = Actor.objects.filter(last_name="Smith").order_by("first_name")
 
     return actors
