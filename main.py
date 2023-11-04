@@ -8,44 +8,43 @@ def main() -> QuerySet:
     # create
     genres = ["Western", "Action", "Dramma"]
     for genre in genres:
-        print(Genre.objects.create(
+        Genre.objects.create(
             name=genre
-        ))
-    actors = [{"George": "Klooney"},
-              {"Kianu": "Reaves"},
-              {"Scarlett": "Keegan"},
-              {"Will": "Smith"},
-              {"Jaden": "Smith"},
-              {"Scarlett": "Johansson"}]
+        )
+    actors = [("George", "Klooney"),
+              ("Kianu", "Reaves"),
+              ("Scarlett", "Keegan"),
+              ("Will", "Smith"),
+              ("Jaden", "Smith"),
+              ("Scarlett", "Johansson")]
     for actor in actors:
-        for first_name, last_name in actor.items():
-            print(Actor.objects.create(
-                first_name=first_name,
-                last_name=last_name
-            ))
+        Actor.objects.create(
+            first_name=actor[0],
+            last_name=actor[1]
+        )
     # update
-    print(Genre.objects.filter(
+    Genre.objects.filter(
         name="Dramma"
-    ).update(name="Drama"))
-    print(Actor.objects.filter(
+    ).update(name="Drama")
+    Actor.objects.filter(
         first_name="George",
         last_name="Klooney"
     ).update(
         last_name="Clooney"
-    ))
-    print(Actor.objects.filter(
+    )
+    Actor.objects.filter(
         first_name="Kianu",
         last_name="Reaves"
     ).update(
         first_name="Keanu",
-        last_name="Reeves"))
+        last_name="Reeves")
     # delete
-    print(Genre.objects.filter(
+    Genre.objects.filter(
         name="Action"
-    ).delete())
-    print(Actor.objects.filter(
+    ).delete()
+    Actor.objects.filter(
         first_name="Scarlett"
-    ).delete())
+    ).delete()
     return Actor.objects.filter(
         last_name="Smith"
     ).order_by(
