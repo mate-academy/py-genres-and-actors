@@ -5,19 +5,19 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    genres = [
+    genres = (
         "Western",
         "Action",
         "Dramma"
-    ]
-    actors = [
+    )
+    actors = (
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
         ("Scarlett", "Keegan"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
         ("Scarlett", "Johansson")
-    ]
+    )
     for genre in genres:
         Genre.objects.create(name=genre)
 
