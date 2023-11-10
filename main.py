@@ -46,9 +46,3 @@ def main() -> QuerySet:
         last_name="Smith"
     ).order_by("first_name")
     return all_actor
-
-
-if __name__ == "__main__":
-    print(main())
-    print(Genre.objects.all())
-    print(Actor.objects.all())
