@@ -1,3 +1,4 @@
+from django.db import models
 import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet
@@ -12,8 +13,8 @@ def main() -> QuerySet:
               ("Jaden", "Smith"), ("Scarlett", "Johansson")]
 
     # Create items
-    for item in genres:
-        Genre.objects.create(name=item)
+    for genre in genres:
+        Genre.objects.create(name=genre)
 
     for first, last in actors:
         Actor.objects.create(first_name=first, last_name=last)
@@ -38,3 +39,19 @@ def main() -> QuerySet:
 
     # Return items
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
+
+
+class Band(models.Model):
+    name = models.CharField(max_length=63)
+    country = models.CharField(max_length=63, blank=True, null=True)
+
+
+class Album(models.Model):
+    title = models.CharField(max_length=63)
+    description = models.TextField(blank=True, null=True)
+    price = models.IntegerField(blank=True, null=True)
+
+
+class Concert(models.Model):
+    name = models.CharField(max_length=63)
+    audience = models.IntegerField(default=100)
