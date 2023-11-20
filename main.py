@@ -14,7 +14,7 @@ def main() -> QuerySet:
                    ["Scarlett", "Johansson"]
                    ]
 
-    for item in genre_list: 
+    for item in genre_list:
         Genre.objects.create(name=item)
 
     for item in actors_list:
@@ -24,8 +24,8 @@ def main() -> QuerySet:
                          last_name="Klooney").update(last_name="Clooney")
     Actor.objects.filter(first_name="Kianu",
                          last_name="Reaves").update(first_name="Keanu",
-                         last_name="Reeves")
+                                                    last_name="Reeves")
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
-    actors_with_last_name_smith = Actor.objects.filter(last_name="Smith").order_by('first_name')
-    return actors_with_last_name_smith
+    actors = Actor.objects.filter(last_name="Smith").order_by("first_name")
+    return actors
