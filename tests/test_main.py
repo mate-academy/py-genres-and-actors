@@ -1,7 +1,7 @@
 import pytest
 
-from db.models import Genre, Actor
 
+from db.models import Genre, Actor
 from main import main
 
 
