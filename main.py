@@ -13,7 +13,7 @@ def main() -> QuerySet:
     genre_dramma =\
         Genre.objects.create(name="Dramma")
     actor_george_klooney =\
-        Actor.objects.create(first_name="George", last_name= "Klooney")
+        Actor.objects.create(first_name="George", last_name="Klooney")
     actor_kianu_reaves =\
         Actor.objects.create(first_name="Kianu", last_name="Reaves")
     actress_scarlett_keegan =\
@@ -33,7 +33,7 @@ def main() -> QuerySet:
     actor_kianu_reaves.save()
     Actor.objects.filter(first_name="Scarlett").delete()
     Genre.objects.filter(name="Action").delete()
-    result = Actor.objects.filter(last_name="Smith").order_by('first_name')
+    result = Actor.objects.filter(last_name="Smith").order_by("first_name")
     return result
 
 
