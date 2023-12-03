@@ -7,19 +7,19 @@ from db.models import Genre, Actor
 
 def main() -> QuerySet:
     genres = ["Western", "Action", "Dramma", ]
-    actors = {
-        1: {"first_name": "George", "last_name": "Klooney"},
-        2: {"first_name": "Kianu", "last_name": "Reaves"},
-        3: {"first_name": "Scarlett", "last_name": "Keegan"},
-        4: {"first_name": "Will", "last_name": "Smith"},
-        5: {"first_name": "Jaden", "last_name": "Smith"},
-        6: {"first_name": "Scarlett", "last_name": "Johansson"}
-    }
+    actors = [
+        {"first_name": "George", "last_name": "Klooney"},
+        {"first_name": "Kianu", "last_name": "Reaves"},
+        {"first_name": "Scarlett", "last_name": "Keegan"},
+        {"first_name": "Will", "last_name": "Smith"},
+        {"first_name": "Jaden", "last_name": "Smith"},
+        {"first_name": "Scarlett", "last_name": "Johansson"}
+    ]
 
     for genre in genres:
         Genre.objects.create(name=genre,)
 
-    for _, actor in actors.items():
+    for actor in actors:
         Actor.objects.create(
             first_name=actor["first_name"],
             last_name=actor["last_name"]
