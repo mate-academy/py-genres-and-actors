@@ -7,12 +7,12 @@ from db.models import Genre, Actor
 def main() -> QuerySet:
     genres = ["Western", "Action", "Dramma"]
     actors = [
-        ("George Klooney",
-         "Kianu Reaves",
-         "Scarlett Keegan",
-         "Will Smith",
-         "Jaden Smith",
-         "Scarlett Johansson")
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
     ]
 
     for genre in genres:
