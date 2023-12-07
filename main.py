@@ -35,3 +35,7 @@ def main() -> QuerySet:
         print(f"{actor.first_name} {actor.last_name}")
 
     return smith_actors
+
+
+if __name__ == "__main__":
+    main()
