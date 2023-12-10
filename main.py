@@ -5,7 +5,7 @@ from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def main() -> QuerySet:
+def main() -> QuerySet[Genre, Actor]:
     genres = [("Western",), ("Action",), ("Dramma",)]
 
     for genre, in genres:
