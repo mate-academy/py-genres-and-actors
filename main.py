@@ -9,24 +9,26 @@ genres = [
     "Dramma"
 ]
 
-actors = {
-    "first_name": [
+actors = [
+    (
         "George",
         "Kianu",
         "Scarlett",
         "Will",
         "Jaden",
         "Scarlett"
-    ],
-    "second_name": [
+    ),
+
+    (
         "Klooney",
         "Reaves",
         "Keegan",
         "Smith",
         "Smith",
         "Johansson"
-    ]
-}
+    )
+
+]
 
 
 def main() -> None:
@@ -35,8 +37,8 @@ def main() -> None:
 
     for first_name, second_name in actors:
         Actor.objects.create(
-            first_name=first_name,
-            last_name=second_name
+            first_name=first_name[0],
+            last_name=second_name[1]
         )
 
     Genre.objects.filter(
@@ -60,7 +62,6 @@ def main() -> None:
         first_name="Scarlett"
     ).delete()
 
-    query_set = Actor.objects.get(
+    Actor.objects.get(
         last_name="Smith"
     )
-    return query_set.order_by("first_name")
