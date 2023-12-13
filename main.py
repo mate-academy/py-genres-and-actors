@@ -2,32 +2,19 @@ import init_django_orm  # noqa: F401
 
 from db.models import Genre, Actor
 
-
 genres = [
-    "Genre",
+    "Western",
     "Action",
     "Dramma"
 ]
 
 actors = [
-    (
-        "George",
-        "Kianu",
-        "Scarlett",
-        "Will",
-        "Jaden",
-        "Scarlett"
-    ),
-
-    (
-        "Klooney",
-        "Reaves",
-        "Keegan",
-        "Smith",
-        "Smith",
-        "Johansson"
-    )
-
+    ("George", "Klooney"),
+    ("Kianu", "Reaves"),
+    ("Scarlett", "Keegan"),
+    ("Will", "Smith"),
+    ("Jaden", "Smith"),
+    ("Scarlett", "Johansson")
 ]
 
 
@@ -35,11 +22,12 @@ def main() -> None:
     for genre in genres:
         Genre.objects.create(name=genre)
 
-    for first_name, second_name in actors:
-        Actor.objects.create(
-            first_name=first_name[0],
-            last_name=second_name[1]
-        )
+    for actor in actors:
+        for first_name, last_name in actor:
+            Actor.objects.create(
+                first_name=first_name[0],
+                last_name=last_name[1]
+            )
 
     Genre.objects.filter(
         name="Dramma"
