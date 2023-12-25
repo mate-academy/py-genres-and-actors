@@ -3,16 +3,21 @@ from db.models import Genre, Actor
 
 
 def main() -> None:
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")
+    genres_data = ["Western", "Action", "Dramma"]
+    actors_data = [
+        {"first_name": "George", "last_name": "Klooney"},
+        {"first_name": "Kianu", "last_name": "Reaves"},
+        {"first_name": "Scarlett", "last_name": "Keegan"},
+        {"first_name": "Will", "last_name": "Smith"},
+        {"first_name": "Jaden", "last_name": "Smith"},
+        {"first_name": "Scarlett", "last_name": "Johansson"},
+    ]
 
-    Actor.objects.create(first_name="George", last_name="Klooney")
-    Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    for genre_name in genres_data:
+        Genre.objects.create(name=genre_name)
+
+    for actor_data in actors_data:
+        Actor.objects.create(**actor_data)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(
@@ -25,5 +30,4 @@ def main() -> None:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    result = Actor.objects.filter(last_name="Smith").order_by("first_name")
-    return result
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
