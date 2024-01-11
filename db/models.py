@@ -5,7 +5,7 @@ class Genre(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self) -> str:
-        return f"Name: {self.name}"
+        return f"Genre: {self.name}"
 
 
 class Actor(models.Model):
