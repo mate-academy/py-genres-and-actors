@@ -7,22 +7,21 @@ from db.models import Genre, Actor
 def main() -> QuerySet:
     Actor.objects.all().delete()
     Genre.objects.all().delete()
-    aktors_tuple = (
-        {"George": "Klooney"},
-        {"Kianu": "Reaves"},
-        {"Scarlett": "Keegan"},
-        {"Will": "Smith"},
-        {"Jaden": "Smith"},
-        {"Scarlett": "Johansson"},
-    )
+    aktors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
 
     genres = ["Western", "Action", "Dramma"]
-    for aktors in aktors_tuple:
-        for actor_name, actor_surname in aktors.items():
-            Actor.objects.create(
-                first_name=actor_name,
-                last_name=actor_surname,
-            )
+    for actor_name, actor_surname in aktors:
+        Actor.objects.create(
+            first_name=actor_name,
+            last_name=actor_surname,
+        )
 
     for genre_name in genres:
         Genre.objects.create(
