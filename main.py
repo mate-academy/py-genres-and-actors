@@ -1,52 +1,53 @@
-import os
+from typing import List
 from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def main() -> QuerySet:
-    # Create
-    genre_western = Genre.objects.create(name="Western") # noqa
-    genre_action = Genre.objects.create(name="Action")
-    genre_drama = Genre.objects.create(name="Drama")
+def create_genres(genre_names: List[str]) -> List[Genre]:
+    created_genres = []
+    for genre_name in genre_names:
+        genre = Genre.objects.create(name=genre_name)
+        created_genres.append(genre)
+    return created_genres
 
-    actor_george_klooney = Actor.objects.create(
-        first_name="George",
-        last_name="Klooney"
-    )
-    actor_kianu_reaves = Actor.objects.create(
-        first_name="Kianu",
-        last_name="Reaves"
-    )
-    actress_scarlett_keegan = Actor.objects.create( # noqa
-        first_name="Scarlett",
-        last_name="Keegan"
-    )
-    actor_will_smith = Actor.objects.create( # noqa
-        first_name="Will",
-        last_name="Smith"
-    )
-    actor_jaden_smith = Actor.objects.create( # noqa
-        first_name="Jaden",
-        last_name="Smith"
-    )
-    actress_scarlett_johansson = Actor.objects.create( # noqa
-        first_name="Scarlett",
-        last_name="Johansson"
-    )
+
+def create_actors(actors_data: List[dict]) -> List[Actor]:
+    created_actors = []
+    for actor_data in actors_data:
+        actor = Actor.objects.create(**actor_data)
+        created_actors.append(actor)
+    return created_actors
+
+
+def main() -> QuerySet[Actor]:
+    # Create genres
+    genre_names = ["Western", "Action", "Drama"]
+    created_genres = create_genres(genre_names)
+
+    # Create actors
+    actors_data = [
+        {"first_name": "George", "last_name": "Klooney"},
+        {"first_name": "Kianu", "last_name": "Reaves"},
+        {"first_name": "Scarlett", "last_name": "Keegan"},
+        {"first_name": "Will", "last_name": "Smith"},
+        {"first_name": "Jaden", "last_name": "Smith"},
+        {"first_name": "Scarlett", "last_name": "Johansson"}
+    ]
+    created_actors = create_actors(actors_data)
 
     # Update
-    genre_drama.name = "Drama"
-    genre_drama.save()
+    created_genres[2].name = "Drama"
+    created_genres[2].save()
 
-    actor_george_klooney.last_name = "Clooney"
-    actor_george_klooney.save()
+    created_actors[0].last_name = "Clooney"
+    created_actors[0].save()
 
-    actor_kianu_reaves.first_name = "Keanu"
-    actor_kianu_reaves.last_name = "Reeves"
-    actor_kianu_reaves.save()
+    created_actors[1].first_name = "Keanu"
+    created_actors[1].last_name = "Reeves"
+    created_actors[1].save()
 
     # Delete
-    genre_action.delete()
+    Genre.objects.get(name="Action").delete()
 
     actresses_scarlett = Actor.objects.filter(first_name="Scarlett")
     actresses_scarlett.delete()
@@ -57,11 +58,3 @@ def main() -> QuerySet:
     ).order_by("first_name")
 
     return actors_with_last_name_smith
-
-
-if __name__ == "__main__":
-    os.environ.setdefault(
-        "DJANGO_SETTINGS_MODULE",
-        "py_genres_and_actors.settings"
-    )
-    main()
