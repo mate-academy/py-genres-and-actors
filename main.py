@@ -1,6 +1,13 @@
 from typing import List
 from django.db.models import QuerySet
-from db.models import Genre, Actor
+import os
+import django
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
+
+django.setup()
+
+from db.models import Genre, Actor  # noqa E402
 
 
 def create_genres(genre_names: List[str]) -> List[Genre]:
@@ -21,7 +28,7 @@ def create_actors(actors_data: List[dict]) -> List[Actor]:
 
 def main() -> QuerySet[Actor]:
     # Create genres
-    genre_names = ["Western", "Action", "Drama"]
+    genre_names = ["Western", "Action", "Dramma"]  # noqa
     created_genres = create_genres(genre_names)
 
     # Create actors
@@ -36,15 +43,20 @@ def main() -> QuerySet[Actor]:
     created_actors = create_actors(actors_data)
 
     # Update
-    created_genres[2].name = "Drama"
-    created_genres[2].save()
+    for genre in created_genres:  # noqa
+        if genre.name == "Dramma":  # noqa
+            genre.name = "Drama"
+            genre.save()
 
-    created_actors[0].last_name = "Clooney"
-    created_actors[0].save()
+    for actor in created_actors:
+        if actor.last_name == "Klooney":  # noqa
+            actor.last_name = "Clooney"
+            actor.save()
 
-    created_actors[1].first_name = "Keanu"
-    created_actors[1].last_name = "Reeves"
-    created_actors[1].save()
+        if actor.first_name == "Kianu":  # noqa
+            actor.first_name = "Keanu"
+            actor.last_name = "Reeves"
+            actor.save()
 
     # Delete
     Genre.objects.get(name="Action").delete()
