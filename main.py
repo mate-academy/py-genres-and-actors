@@ -36,4 +36,4 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="Scarlett").delete()
 
     # Return
-    return Actor.objects.all().filter(last_name="Smith").order_by("first_name")
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
