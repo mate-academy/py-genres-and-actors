@@ -16,7 +16,7 @@ def main() -> QuerySet:
     ]
     genres = [Genre.objects.create(name=genre_name) for genre_name
               in genres_data]
-    actors = [Actor.objects.create(first_name=first_name, last_name=last_name) 
+    actors = [Actor.objects.create(first_name=first_name, last_name=last_name)
               for first_name, last_name in actors_data]
     genres[-1].name = "Drama"
     genres[-1].save()
