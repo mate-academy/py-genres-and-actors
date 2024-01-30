@@ -11,8 +11,11 @@ def main() -> QuerySet:
         Genre.objects.create(
             name=genre
         )
-    actors_to_create = [("George", "Klooney"), ("Kianu", "Reaves"), ("Scarlett", "Keegan"), ("Will", "Smith"),
-                        ("Jaden", "Smith")]
+    actors_to_create = [
+        ("George", "Klooney"), ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"), ("Will", "Smith"),
+        ("Jaden", "Smith")
+    ]
     for first_name, last_name in actors_to_create:
         Actor.objects.create(
             first_name=first_name,
@@ -48,6 +51,6 @@ def main() -> QuerySet:
     res_queryset = Actor.objects.filter(
         last_name="Smith"
     ).order_by(
-        'first_name'
+        "first_name"
     )
     return res_queryset
