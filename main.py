@@ -48,9 +48,9 @@ def main() -> QuerySet:
     )
     for el in queryset:
         el.delete()
-    res_queryset = Actor.objects.filter(
+
+    return Actor.objects.filter(
         last_name="Smith"
     ).order_by(
         "first_name"
     )
-    return res_queryset
