@@ -12,8 +12,10 @@ def main() -> QuerySet:
             name=genre
         )
     actors_to_create = [
-        ("George", "Klooney"), ("Kianu", "Reaves"),
-        ("Scarlett", "Keegan"), ("Will", "Smith"),
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
         ("Jaden", "Smith")
     ]
     for first_name, last_name in actors_to_create:
