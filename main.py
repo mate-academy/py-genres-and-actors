@@ -43,11 +43,9 @@ def main() -> QuerySet:
     Genre.objects.filter(
         name="Action"
     ).delete()
-    queryset = Actor.objects.filter(
+    Actor.objects.filter(
         first_name="Scarlett"
-    )
-    for el in queryset:
-        el.delete()
+    ).delete()
 
     return Actor.objects.filter(
         last_name="Smith"
