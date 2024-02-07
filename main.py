@@ -13,6 +13,8 @@ actors = (
     ("Jaden", "Smith"),
     ("Scarlett", "Johansson")
 )
+
+
 def main() -> QuerySet:
     filter_genre = Genre.objects.filter
     filter_actor = Actor.objects.filter
