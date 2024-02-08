@@ -12,12 +12,12 @@ def main() -> QuerySet:
         ("Scarlett", "Keegan"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
-        ("Scarlett", "Johansson")
+        ("Scarlett", "Johansson"),
     ]
 
     #  create genres
 
-    for genre_name, in genres:
+    for (genre_name,) in genres:
         Genre.objects.create(name=genre_name)
 
     #  create actors
@@ -29,9 +29,9 @@ def main() -> QuerySet:
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
-    Actor.objects.filter(
-        first_name="Kianu", last_name="Reaves"
-    ).update(first_name="Keanu", last_name="Reeves")
+    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(
+        first_name="Keanu", last_name="Reeves"
+    )
 
     # delete genres and actors
 
@@ -40,13 +40,9 @@ def main() -> QuerySet:
 
     # return
 
-    smith_actors = (
-        Actor.objects.filter(last_name="Smith").order_by("first_name")
-    )
-    return smith_actors
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
 
 if __name__ == "__main__":
-    print(main())
-    print(Genre.objects.all())
-    print(Actor.objects.all())
+    main()
+
