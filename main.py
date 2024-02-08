@@ -26,10 +26,16 @@ def main() -> QuerySet:
     ).update(name="Drama",)
 
     updates = [
-        {"filter_criteria": {"last_name": "Klooney"}, "update_values": {"last_name": "Clooney"}},
-        {"filter_criteria": {"first_name": "Kianu", "last_name": "Reaves"},
-         "update_values": {"first_name": "Keanu", "last_name": "Reeves"}},
+        {
+            "filter_criteria": {"last_name": "Klooney"},
+            "update_values": {"last_name": "Clooney"}
+        },
+        {
+            "filter_criteria": {"first_name": "Kianu", "last_name": "Reaves"},
+            "update_values": {"first_name": "Keanu", "last_name": "Reeves"}
+        }
     ]
+
     for update in updates:
         filter_criteria = update["filter_criteria"]
         update_values = update["update_values"]
@@ -42,4 +48,9 @@ def main() -> QuerySet:
         first_name="Scarlett",
     ).delete()
 
-    return Actor.objects.filter(last_name="Smith").order_by("first_name").values()
+    return (
+        Actor.objects
+        .filter(last_name="Smith")
+        .order_by("first_name")
+        .values()
+    )
