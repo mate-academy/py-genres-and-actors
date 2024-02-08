@@ -17,7 +17,7 @@ def main() -> QuerySet:
 
     #  create genres
 
-    for (genre_name,) in genres:
+    for genre_name in genres:
         Genre.objects.create(name=genre_name)
 
     #  create actors
@@ -45,3 +45,4 @@ def main() -> QuerySet:
 
 if __name__ == "__main__":
     main()
+
