@@ -25,21 +25,14 @@ def main() -> QuerySet:
         name="Dramma",
     ).update(name="Drama",)
 
-    updates = [
-        {
-            "filter_criteria": {"last_name": "Klooney"},
-            "update_values": {"last_name": "Clooney"}
-        },
-        {
-            "filter_criteria": {"first_name": "Kianu", "last_name": "Reaves"},
-            "update_values": {"first_name": "Keanu", "last_name": "Reeves"}
-        }
-    ]
+    Genre.objects.filter(name="Dramma").update(name="Drama")
 
-    for update in updates:
-        filter_criteria = update["filter_criteria"]
-        update_values = update["update_values"]
-        Actor.objects.filter(**filter_criteria).update(**update_values)
+    Actor.objects.filter(
+        last_name="Klooney"
+    ).update(last_name="Clooney")
+    Actor.objects.filter(
+        first_name="Kianu", last_name="Reaves"
+    ).update(first_name="Keanu", last_name="Reeves")
 
     Genre.objects.filter(
         name="Action",
