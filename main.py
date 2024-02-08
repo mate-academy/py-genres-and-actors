@@ -40,7 +40,9 @@ def main() -> QuerySet:
 
     # return
 
-    smith_actors = Actor.objects.filter(last_name="Smith").order_by("first_name")
+    smith_actors = (
+        Actor.objects.filter(last_name="Smith").order_by("first_name")
+    )
     return smith_actors
 
 
