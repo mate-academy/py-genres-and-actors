@@ -23,15 +23,15 @@ def main() -> QuerySet:
         ("Scarlett", "Johansson")
     ]
 
-    for actor in actors_to_add:
-        first_name, last_name = actor
+    for first_name, last_name in actors_to_add:
         Actor.objects.create(
             first_name=first_name,
             last_name=last_name
         )
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
+    Actor.objects.filter(first_name="George", last_name="Klooney"
+                         ).update(last_name="Clooney")
 
     Actor.objects.filter(
         first_name="Kianu",
@@ -46,9 +46,4 @@ def main() -> QuerySet:
 
     return (Actor.objects.filter(
         last_name="Smith"
-    ).order_by(
-        "first_name"
-    ).values_list(
-        "first_name",
-        "last_name")
-    )
+    ).order_by("first_name").all())
