@@ -7,4 +7,4 @@ actors = [
         ("Will", "Smith"),
         ("Jaden", "Smith"),
         ("Scarlett", "Johansson")
-    ]
+]
