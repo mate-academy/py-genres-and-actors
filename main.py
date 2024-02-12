@@ -8,13 +8,13 @@ from db.models import Actor, Genre
 def main() -> QuerySet:
     genre_list = ["Western", "Action", "Dramma"]
     actor_list = [
-        ("George", "Klooney"), 
+        ("George", "Klooney"),
         ("Kianu", "Reaves"),
-        ("Scarlett", "Keegan"), 
+        ("Scarlett", "Keegan"),
         ("Will", "Smith"),
-        ("Jaden", "Smith"), 
-        ("Scarlett", "Johansson"), 
-                 ]
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
     for genre in genre_list:
         Genre.objects.create(name=genre)
     for first_name, last_name in actor_list:
