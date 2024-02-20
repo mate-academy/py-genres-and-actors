@@ -8,17 +8,18 @@ from db.models import Actor
 
 
 def main() -> QuerySet:
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")
-
     with open("file.json") as f:
         data = json.load(f)
 
-    for i in range(len(data)):
+    for item in data["genre"]:
+        Genre.objects.create(
+            name=item["name"]
+        )
+
+    for item in data["actors"]:
         Actor.objects.create(
-            first_name=data[i]["first_name"],
-            last_name=data[i]["last_name"]
+            first_name=item["first_name"],
+            last_name=item["last_name"]
         )
 
     Genre.objects.filter(
