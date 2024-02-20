@@ -1,4 +1,5 @@
 import init_django_orm  # noqa: F401
+import json
 
 from django.db.models import QuerySet
 
@@ -11,12 +12,15 @@ def main() -> QuerySet:
     Genre.objects.create(name="Action")
     Genre.objects.create(name="Dramma")
 
-    Actor.objects.create(first_name="George", last_name="Klooney")
-    Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    with open("file.json") as f:
+        data = json.load(f)
+
+    for i in range(len(data)):
+        Actor.objects.create(
+            first_name=data[i]["first_name"],
+            last_name=data[i]["last_name"]
+        )
+
 
     Genre.objects.filter(
         name="Dramma"
