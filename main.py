@@ -21,7 +21,6 @@ def main() -> QuerySet:
             last_name=data[i]["last_name"]
         )
 
-
     Genre.objects.filter(
         name="Dramma"
     ).update(name="Drama")
