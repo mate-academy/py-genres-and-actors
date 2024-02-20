@@ -30,7 +30,7 @@ def main() -> QuerySet:
 
     # Return
     return Actor.objects.filter(
-        last_name="Smith").order_by('first_name')
+        last_name="Smith").order_by("first_name")
 
 
 if __name__ == "__main__":
