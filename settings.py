@@ -19,4 +19,4 @@ USE_TZ = False
 
 INSTALLED_APPS = ("db",)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
