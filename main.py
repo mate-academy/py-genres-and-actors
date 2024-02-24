@@ -13,7 +13,7 @@ def main() -> QuerySet:
     for first, last in actors:
         Actor.objects.create(
             first_name=first, last_name=last
-    )
+        )
 
     for genre in genres:
         Genre.objects.create(name=genre)
