@@ -21,9 +21,7 @@ def main() -> QuerySet:
         )
 
     for actor_data in actor_list:
-        Actor.objects.create(
-            **actor_data
-        )
+        Actor.objects.create(**actor_data)
 
     Genre.objects.filter(
         name="Dramma"
