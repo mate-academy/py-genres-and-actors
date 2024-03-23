@@ -5,14 +5,11 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")
-    # Genre.objects.bulk_create(
-    #     [Genre(name="Western"),
-    #      Genre(name="Action"),
-    #      Genre(name="Dramma")]
-    # )
+    Genre.objects.bulk_create(
+        [Genre(name="Western"),
+         Genre(name="Action"),
+         Genre(name="Dramma")]
+    )
     Actor.objects.bulk_create(
         [
             Actor(first_name="George", last_name="Klooney"),
