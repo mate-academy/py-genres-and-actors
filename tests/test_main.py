@@ -2,7 +2,7 @@ import pytest
 
 from db.models import Genre, Actor
 
-from db.main import main
+from main import main
 
 
 @pytest.mark.django_db
