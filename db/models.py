@@ -3,9 +3,9 @@ from django.db.models import CharField
 
 
 class Genre(models.Model):
-    name = models.CharField(max_length=255)
+    name = CharField(max_length=255)
 
 
 class Actor(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+    first_name = CharField(max_length=255)
+    last_name = CharField(max_length=255)
