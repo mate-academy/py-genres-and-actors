@@ -11,14 +11,12 @@ def main() -> QuerySet:
          Genre(name="Dramma")]
     )
     Actor.objects.bulk_create(
-        [
-            Actor(first_name="George", last_name="Klooney"),
-            Actor(first_name="Kianu", last_name="Reaves"),
-            Actor(first_name="Scarlett", last_name="Keegan"),
-            Actor(first_name="Will", last_name="Smith"),
-            Actor(first_name="Jaden", last_name="Smith"),
-            Actor(first_name="Scarlett", last_name="Johansson"),
-        ]
+        [Actor(first_name="George", last_name="Klooney"),
+         Actor(first_name="Kianu", last_name="Reaves"),
+         Actor(first_name="Scarlett", last_name="Keegan"),
+         Actor(first_name="Will", last_name="Smith"),
+         Actor(first_name="Jaden", last_name="Smith"),
+         Actor(first_name="Scarlett", last_name="Johansson")]
     )
 
     Genre.objects.filter(name="Dramma").update(
