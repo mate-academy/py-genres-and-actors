@@ -64,6 +64,3 @@ def main() -> QuerySet:
 
     return total
 
-
-if __name__ == "__main__":
-    main()
