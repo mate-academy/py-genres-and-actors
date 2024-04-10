@@ -3,6 +3,7 @@ import init_django_orm  # noqa: F401
 from django.db.models import QuerySet
 from db.models import Actor, Genre
 
+
 def main() -> QuerySet:
     genres_to_create = ["Western", "Action", "Dramma"]
     for curr_genre in genres_to_create:
