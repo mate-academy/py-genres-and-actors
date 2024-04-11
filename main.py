@@ -24,10 +24,10 @@ def main() -> QuerySet:
             name=genre
         )
 
-    for actor in actors:
+    for first_name, last_name in actors:
         Actor.objects.create(
-            first_name=actor[0],
-            last_name=actor[1]
+            first_name=first_name,
+            last_name=last_name
         )
     Genre.objects.filter(
         name="Dramma"
