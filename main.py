@@ -16,14 +16,14 @@ def create_section() -> None:
     for genre in genres:
         Genre.objects.create(name=genre)
 
-    actors = [
+    actors = (
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
         ("Scarlett", "Keegan"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
         ("Scarlett", "Johansson"),
-    ]
+    )
     for first_name, last_name in actors:
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
