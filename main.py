@@ -31,6 +31,7 @@ def create_row() -> None:
             last_name=last
         )
 
+
 def update_row() -> None:
     Genre.objects.filter(
         name="Dramma"
