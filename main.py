@@ -6,41 +6,35 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    pass
-    genres_data = [("Western",), ("Action",), ("Drama",)]
+    genres_data = ["Western", "Action", "Drama"]
 
-    for genre_name, in genres_data:
+    # Creating genres
+    for genre_name in genres_data:
         Genre.objects.create(name=genre_name)
 
     actors_data = [
-        ("George", "Klooney"),
-        ("Kianu", "Reaves"),
-        ("Scarlett", "Keegan"),
+        ("George", "Clooney"),
+        ("Keanu", "Reeves"),
         ("Will", "Smith"),
-        ("Jaden", "Smith"),
-        ("Scarlett", "Johansson")
+        ("Jaden", "Smith")
     ]
 
+    # Creating actors
     for first_name, last_name in actors_data:
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
+    # Updating genre names
     Genre.objects.filter(name="Drama").update(name="Drama")
 
-    Actor.objects.filter(
-        first_name="George",
-        last_name="Klooney"
-    ).update(
-        last_name="Clooney")
+    # Updating actor names
+    Actor.objects.filter(first_name="George", last_name="Klooney").update(last_name="Clooney")
+    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(first_name="Keanu", last_name="Reeves")
 
-    Actor.objects.filter(
-        first_name="Kianu",
-        last_name="Reaves"
-    ).update(
-        first_name="Keanu",
-        last_name="Reeves"
-    )
-
+    # Deleting the genre "Action"
     Genre.objects.filter(name="Action").delete()
+
+    # Deleting actors with the first name "Scarlett"
     Actor.objects.filter(first_name="Scarlett").delete()
 
+    # Returning actors with the last name "Smith"
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
