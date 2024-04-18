@@ -49,5 +49,3 @@ def tables_create() -> None:
 
     for first_name, last_name in actors_to_create:
         Actor.objects.create(first_name=first_name, last_name=last_name)
-
-print(Genre.objects.all())
