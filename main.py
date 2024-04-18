@@ -5,26 +5,27 @@ from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def main() -> QuerySet:
-    Genre.objects.bulk_create(
-        [
-            Genre(name="Western"),
-            Genre(name="Action"),
-            Genre(name="Dramma"),
-        ]
-    )
+def create_row() -> None:
+    genres = ["Western", "Action", "Dramma"]
+    actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
+    for genre in genres:
+        Genre.objects.create(name=genre)
 
-    Actor.objects.bulk_create(
-        [
-            Actor(first_name="George", last_name="Klooney"),
-            Actor(first_name="Kianu", last_name="Reaves"),
-            Actor(first_name="Scarlett", last_name="Keegan"),
-            Actor(first_name="Will", last_name="Smith"),
-            Actor(first_name="Jaden", last_name="Smith"),
-            Actor(first_name="Scarlett", last_name="Johansson"),
-        ]
-    )
+    for first_name, last_name in actors:
+        Actor.objects.create(
+            first_name=first_name,
+            last_name=last_name
+        )
 
+
+def update_row() -> None:
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(first_name="George", last_name="Klooney").update(
         last_name="Clooney"
@@ -33,13 +34,18 @@ def main() -> QuerySet:
         first_name="Keanu", last_name="Reeves"
     )
 
+
+def delete_row() -> None:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
+
+def get_sorted_actors() -> QuerySet:
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
 
-if __name__ == "__main__":
-    print(main())
-    print(Genre.objects.all())
-    print(Actor.objects.all())
+def main() -> QuerySet:
+    create_row()
+    update_row()
+    delete_row()
+    return get_sorted_actors()
