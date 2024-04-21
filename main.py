@@ -27,8 +27,11 @@ def main() -> QuerySet:
     Actor.objects.bulk_create(actors_to_create)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(first_name="Klooney").update(first_name="Clooney")
-    Actor.objects.filter(first_name="Keanu").update(first_name="Reeves")
+    Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
+    Actor.objects.filter(
+        first_name="Kianu",
+        last_name="Reaves"
+    ).update(first_name="Keanu", last_name="Reeves")
 
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
