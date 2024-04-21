@@ -49,11 +49,11 @@ def reading() -> QuerySet:
         last_name="Smith"
     ).order_by("first_name")
 
-    print(actors_to_read)
+    return actors_to_read
 
 
 def main() -> QuerySet:
     creating()
     updating()
     deleting()
-    reading()
+    return reading()
