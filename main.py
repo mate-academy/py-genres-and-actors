@@ -1,6 +1,7 @@
 import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet
+
 from db.models import Actor, Genre
 
 
@@ -11,8 +12,8 @@ def main() -> QuerySet:
             name=genre
         )
     actors = [
-        ("George", "Klooney"),
-        ("Kianu", "Reavesm"),
+        ("George", "Clooney"),
+        ("Keanu", "Reeves"),
         ("Scarlett", "Keegan"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
@@ -29,12 +30,13 @@ def main() -> QuerySet:
         name="Drama"
     )
     Actor.objects.filter(
-        last_name="Klooney"
+        first_name="George",
+        last_name="Clooney"
     ).update(
         last_name="Clooney"
     )
     Actor.objects.filter(
-        first_name="Kianu", last_name="Reavesm"
+        first_name="Keanu", last_name="Reeves"
     ).update(
         first_name="Keanu",
         last_name="Reeves"
