@@ -7,9 +7,9 @@ from db.models import Genre, Actor
 
 def main() -> QuerySet:
     genres = [
-        ("Western",),
-        ("Action",),
-        ("Dramma",),
+        "Western",
+        "Action",
+        "Dramma",
     ]
 
     actors = [
@@ -22,7 +22,7 @@ def main() -> QuerySet:
     ]
 
     for genre_name in genres:
-        Genre.objects.create(name=genre_name[0])
+        Genre.objects.create(name=genre_name)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
