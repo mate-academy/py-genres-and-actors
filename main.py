@@ -2,6 +2,7 @@ import init_django_orm  # noqa: F401
 from db.models import Genre, Actor
 from django.db.models import QuerySet
 
+
 def create() -> None:
     genres = ["Western", "Action", "Dramma"]
 
@@ -38,6 +39,7 @@ def delete() -> None:
 
 def sort_by() -> QuerySet:
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
+
 
 def main() -> QuerySet:
     create()
