@@ -23,7 +23,8 @@ def main() -> QuerySet:
     genres = [Genre(name=name) for name in genres_data]
     Genre.objects.bulk_create(genres)
 
-    actors = [Actor(first_name=first_name, last_name=last_name) for first_name, last_name in actors_data]
+    actors = [Actor(first_name=first_name, last_name=last_name)
+              for first_name, last_name in actors_data]
     Actor.objects.bulk_create(actors)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
