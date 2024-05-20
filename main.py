@@ -6,20 +6,20 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    items = ["Western", "Action", "Dramma"]
+    genres = ["Western", "Action", "Dramma"]
 
-    for item in items:
-        Genre.objects.create(name=item)
+    for genre in genres:
+        Genre.objects.create(name=genre)
 
-    elements = [
+    actors = [
         ("George", "Klooney"), ("Kianu", "Reaves"), ("Scarlett", "Keegan"),
         ("Will", "Smith"), ("Jaden", "Smith"), ("Scarlett", "Johansson")
     ]
 
-    for item_first, item_second in elements:
+    for name, surname in actors:
         Actor.objects.create(
-            first_name=item_first,
-            last_name=item_second
+            first_name=name,
+            last_name=surname
         )
 
     Genre.objects.filter(
@@ -46,8 +46,8 @@ def main() -> QuerySet:
         first_name="Scarlett",
     ).delete()
 
-    qs = Actor.objects.filter(
+    query_set = Actor.objects.filter(
         last_name="Smith",
     ).order_by("first_name")
 
-    return qs
+    return query_set
