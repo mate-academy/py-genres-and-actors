@@ -1,9 +1,6 @@
 import pytest
-
 from db.models import Genre, Actor
-
 from main import main
-
 
 @pytest.mark.django_db
 def test_main():
@@ -13,7 +10,6 @@ def test_main():
         ("Will", "Smith"),
     ]
 
-
 @pytest.mark.django_db
 def test_genres():
     main()
@@ -21,7 +17,6 @@ def test_genres():
         ("Western",),
         ("Drama",),
     ]
-
 
 @pytest.mark.django_db
 def test_actors():
