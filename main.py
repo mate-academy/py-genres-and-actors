@@ -3,6 +3,7 @@ from django.db.models import QuerySet
 from db.models import Genre
 from db.models import Actor
 
+
 def main() -> QuerySet:
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
@@ -30,14 +31,10 @@ def main() -> QuerySet:
     Genre.objects.get(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    set_of_actors = Actor.objects.filter(last_name="Smith").order_by('first_name')
+    set_of_actors = Actor.objects.filter(
+        last_name="Smith").order_by("first_name")
     return set_of_actors
 
 
 if __name__ == "__main__":
     print(main())
-
-
-
-
-
