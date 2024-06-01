@@ -4,7 +4,6 @@ from db.models import Genre, Actor
 
 
 genres = ["Western", "Action", "Dramma"]
-
 actors = [
     {"first_name": "George", "last_name": "Klooney"},
     {"first_name": "Kianu", "last_name": "Reaves"},
@@ -41,7 +40,9 @@ def main() -> QuerySet:
     Genre.objects.get(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    set_of_actors = Actor.objects.filter(last_name="Smith").order_by("first_name")
+    set_of_actors = (
+        Actor.objects.filter(last_name="Smith").order_by("first_name")
+    )
     return set_of_actors
 
 
