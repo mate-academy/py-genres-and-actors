@@ -11,7 +11,6 @@ actors = [
     {"first_name": "Scarlett", "last_name": "Johansson"}
 ]
 
-
 def main() -> QuerySet:
     for genre_name in genres:
         Genre.objects.create(name=genre_name)
@@ -19,7 +18,6 @@ def main() -> QuerySet:
     for actor in actors:
         Actor.objects.create(first_name=actor["first_name"],
                              last_name=actor["last_name"])
-
 
     genre_dramma = Genre.objects.get(name="Dramma")
     genre_dramma.name = "Drama"
@@ -43,7 +41,6 @@ def main() -> QuerySet:
         Actor.objects.filter(last_name="Smith").order_by("first_name")
     )
     return set_of_actors
-
 
 if __name__ == "__main__":
     print(main())
