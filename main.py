@@ -18,8 +18,8 @@ def main() -> QuerySet:
     for genre in future_genres:
         Genre.objects.create(name=genre)
 
-    for first_name_, last_name_ in future_actors:
-        Actor.objects.create(first_name=first_name_, last_name=last_name_)
+    for first_name, last_name in future_actors:
+        Actor.objects.create(first_name=first_name, last_name=last_name)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
@@ -33,6 +33,6 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="Scarlett").delete()
 
     actor_query_set = (
-        Actor.objects.filter(last_name="Smith").order_by("first_name").all()
+        Actor.objects.filter(last_name="Smith").order_by("first_name")
     )
     return actor_query_set
