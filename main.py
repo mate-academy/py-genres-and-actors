@@ -1,10 +1,20 @@
 import init_django_orm  # noqa: F401
 
+from django.db import connection
 from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
+def reset_table(table_name: str):
+    with connection.cursor() as cursor:
+        cursor.execute(f'DELETE FROM "{table_name}";')
+        cursor.execute(f'DELETE FROM sqlite_sequence WHERE name="{table_name}";')
+
+
 def main() -> QuerySet:
+    reset_table('db_genre')
+    reset_table('db_actor')
+
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
     Genre.objects.create(name="Dramma")
