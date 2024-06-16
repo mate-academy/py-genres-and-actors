@@ -11,20 +11,17 @@ def main() -> QuerySet:
     for genre in genres:
         Genre.objects.create(name=genre)
 
-    first_name = ["George", "Kianu", "Scarlett", "Will", "Scarlett"]
-    last_name = ["Klooney", "Reaves", "Keegan", "Smith", "Johansson"]
+    first_name = ["George", "Kianu", "Scarlett", "Will", "Jaden", "Scarlett"]
+    last_name = ["Klooney", "Reaves", "Keegan", "Smith", "Smith", "Johansson"]
     for first, last in zip(first_name, last_name):
         Actor.objects.create(first_name=first, last_name=last)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
     Actor.objects.filter(first_name="Kianu").update(first_name="Keanu")
-    Actor.objects.filter(last_name="Reeves").update(last_name="Reeves")
+    Actor.objects.filter(last_name="Reaves").update(last_name="Reeves")
 
     Genre.objects.filter(name="Action").delete()
-    Actor.objects.filter(first_name="George").Scarlett()
+    Actor.objects.filter(first_name="Scarlett").delete()
 
-    Actor.objects.get(last_name="Smith").order_by("first_name")
-
-
-print(main())
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
