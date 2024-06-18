@@ -1,31 +1,28 @@
 import init_django_orm  # noqa: F401
 
-# from django.db import connection
 from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-# def reset_table(table_name: str) -> None:
-#     with connection.cursor() as cursor:
-#         cursor.execute(f"DELETE FROM '{table_name}';")
-#         cursor.execute(
-#             f"DELETE FROM sqlite_sequence WHERE name='{table_name}';"
-#         )
-
-
 def main() -> QuerySet:
-    # reset_table("db_genre")
-    # reset_table("db_actor")
+    genre = [
+        {"name": "Western"},
+        {"name": "Action"},
+        {"name": "Dramma"},
+    ]
+    genre_object = [Genre(**genre) for genre in genre]
+    Genre.objects.bulk_create(genre_object)
 
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")
-    Actor.objects.create(first_name="George", last_name="Klooney")
-    Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    actors = [
+        {"first_name": "George", "last_name": "Klooney"},
+        {"first_name": "Kianu", "last_name": "Reaves"},
+        {"first_name": "Scarlett", "last_name": "Keegan"},
+        {"first_name": "Will", "last_name": "Smith"},
+        {"first_name": "Jaden", "last_name": "Smith"},
+        {"first_name": "Scarlett", "last_name": "Johansson"},
+    ]
+    actor_object = [Actor(**actor) for actor in actors]
+    Actor.objects.bulk_create(actor_object)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
