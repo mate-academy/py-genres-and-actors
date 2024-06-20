@@ -16,11 +16,9 @@ actors = [("George", "Klooney"),
 def main() -> QuerySet:
     for genre in genres:
         Genre.objects.create(name=genre)
-    print(Genre.objects.all())
 
     for first_name, last_name in actors:
         Actor.objects.create(first_name=first_name, last_name=last_name)
-    print(Actor.objects.all())
 
     Genre.objects.filter(
         name="Dramma"
