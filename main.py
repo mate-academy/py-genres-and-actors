@@ -10,10 +10,16 @@ def main() -> QuerySet:
     for genre in genre:
         Genre.objects.create(name=genre)
 
-    first_name = ["George", "Kianu", "Scarlett", "Will", "Jaden", "Scarlett"]
-    last_name = ["Klooney", "Reaves", "Keegan", "Smith", "Smith", "Johansson"]
+    name = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
+    ]
 
-    for first, last in zip(first_name, last_name):
+    for first, last in name:
         Actor.objects.create(first_name=first, last_name=last)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
