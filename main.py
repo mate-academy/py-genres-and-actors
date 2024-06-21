@@ -13,44 +13,33 @@ def main() -> QuerySet:
             name=genre_name
         )
 
-    actors_names_to_create = [
+    input_actors_fullnames_to_create = [
         "George Klooney", "Kianu Reaves", "Scarlett Keegan",
         "Will Smith", "Jaden Smith", "Scarlett Johansson"
     ]
-    for actor_name in actors_names_to_create:
-        actor_name_dict = {"first_name": actor_name.split()[0],
-                           "last_name": actor_name.split()[1]}
-        Actor.objects.create(**actor_name_dict)
+    actors_names_to_create = (
+        (actor_name.split()[0], actor_name.split()[1])
+        for actor_name
+        in input_actors_fullnames_to_create
+    )
+    for first_name, last_name in actors_names_to_create:
+        Actor.objects.create(
+            first_name=first_name,
+            last_name=last_name
+        )
 
     # update
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
-    # a - automatization
-    actors_to_update = {
-        "names_to_update": [
-            "George Klooney", "Kianu Reaves"
-        ],
-        "new_atrbs": [
-            {
-                "last_name": "Clooney",
-            },
-            {
-                "first_name": "Keanu", "last_name": "Reeves"
-            }
-        ]
-    }
-    for index in range(len(actors_to_update["names_to_update"])):
-        actor_name_dict = {
-            "first_name":
-                actors_to_update["names_to_update"][index].split()[0],
-            "last_name":
-                actors_to_update["names_to_update"][index].split()[1]
-        }
-        Actor.objects.filter(
-            **actor_name_dict
-        ).update(
-            **actors_to_update["new_atrbs"][index]
-        )
+    Actor.objects.filter(
+        first_name="George",
+        last_name="Klooney"
+    ).update(last_name="Clooney")
+
+    Actor.objects.filter(
+        first_name="Kianu",
+        last_name="Reaves"
+    ).update(first_name="Keanu", last_name="Reeves")
 
     # delete
     Genre.objects.filter(name="Action").delete()
