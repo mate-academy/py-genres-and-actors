@@ -9,12 +9,15 @@ def main() -> QuerySet:
     for genre_name in genres:
         Genre.objects.create(name=genre_name)
 
-    first_name = ["George", "Kianu", "Scarlett", "Will", "Jaden", "Scarlett"]
-    last_name = ["Klooney", "Reaves", "Keegan", "Smith", "Smith", "Johansson"]
-    if len(first_name) != len(last_name):
-        raise ValueError("Value error")
-    for i in range(len(first_name)):
-        Actor.objects.create(first_name=first_name[i], last_name=last_name[i])
+    actors = [("George", "Klooney"),
+              ("Kianu", "Reaves"),
+              ("Scarlett", "Keegan"),
+              ("Will", "Smith"),
+              ("Jaden", "Smith"),
+              ("Scarlett", "Johansson")]
+
+    for first_name, last_name in actors:
+        Actor.objects.create(first_name=first_name, last_name=last_name)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(first_name="George",
