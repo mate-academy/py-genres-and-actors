@@ -30,8 +30,10 @@ def main() -> QuerySet:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    return Actor.objects.filter(last_name="Smith").order_by("first_name", "last_name")
+    return Actor.objects.filter(
+        last_name="Smith"
+    ).order_by("first_name", "last_name")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
