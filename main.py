@@ -6,41 +6,22 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    genres = ["Western", "Action", "Dramma"]
-    actors = [
-        {"first_name": "George", "last_name": "Klooney"},
-        {"first_name": "Kianu", "last_name": "Reaves"},
-        {"first_name": "Scarlett", "last_name": "Keegan"},
-        {"first_name": "Will", "last_name": "Smith"},
-        {"first_name": "Jaden", "last_name": "Smith"},
-        {"first_name": "Scarlett", "last_name": "Johansson"},
-    ]
+    Genre.objects.create(name="Western")
+    Genre.objects.create(name="Action")
+    Genre.objects.create(name="Dramma")
+    Actor.objects.create(first_name="George", last_name="Klooney")
+    Actor.objects.create(first_name="Kianu", last_name="Reaves")
+    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
+    Actor.objects.create(first_name="Will", last_name="Smith")
+    Actor.objects.create(first_name="Jaden", last_name="Smith")
+    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    Genre.objects.filter(name="Dramma").update(name="Drama")
+    Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
 
-    genre_objects = []
-    for genre_name in genres:
-        genre_objects.append(Genre.objects.create(name=genre_name))
-
-    actor_objects = []
-    for actor_data in actors:
-        actor_objects.append(Actor.objects.create(**actor_data))
-
-    drama_genre = Genre.objects.get(name="Dramma")
-    drama_genre.name = "Drama"
-    drama_genre.save()
-
-    klooney_actor = Actor.objects.get(first_name="George", last_name="Klooney")
-    klooney_actor.last_name = "Clooney"
-    klooney_actor.save()
-
-    reaves_actor = Actor.objects.get(first_name="Kianu", last_name="Reaves")
-    reaves_actor.first_name = "Keanu"
-    reaves_actor.last_name = "Reeves"
-    reaves_actor.save()
-
-    Genre.objects.get(name="Action").delete()
-
+    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(
+        first_name="Keanu", last_name="Reeves"
+    )
+    Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    smith_actors = Actor.objects.filter(last_name="Smith") \
-        .order_by("first_name")
-    return smith_actors
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
