@@ -1,3 +1,4 @@
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -15,6 +16,9 @@ DATABASES = {
     }
 }
 
+DEBUG = False
+
+ALLOWED_HOSTS = ['*']
 USE_TZ = False
 
 INSTALLED_APPS = ("db",)
