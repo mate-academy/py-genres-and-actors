@@ -61,10 +61,10 @@ def main() -> QuerySet:
         first_name="Scarlett"
     ).delete()
     smith_actors = Actor.objects.filter(
-        last_name='Smith'
-    ).order_by('first_name')
+        last_name="Smith"
+    ).order_by("first_name")
     return smith_actors
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
