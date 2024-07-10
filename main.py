@@ -35,7 +35,7 @@ def main() -> QuerySet:
     print(filter_clooney)
 
     filter_kianu = (
-        Actor.objects.filter(first_name="Kianu").update(first_name="Keanu"))
+        Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(first_name="Keanu", last_name="Reeves"))
 
     print(filter_kianu)
 
