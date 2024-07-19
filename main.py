@@ -34,9 +34,3 @@ def main() -> QuerySet:
     ).order_by("first_name")
 
     return smith_actors
-
-
-if __name__ == "__main__":
-    print(main())
-    print(list(Genre.objects.all()))
-    print(list(Actor.objects.all()))
