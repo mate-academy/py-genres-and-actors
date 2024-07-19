@@ -36,6 +36,7 @@ def main() -> QuerySet:
     return smith_actors
 
 
-print(main())
-print(list(Genre.objects.all()))
-print(list(Actor.objects.all()))
+if __name__ == "__main__":
+    print(main())
+    print(list(Genre.objects.all()))
+    print(list(Actor.objects.all()))
