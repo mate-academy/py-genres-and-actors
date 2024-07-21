@@ -18,11 +18,10 @@ def main() -> QuerySet:
         ("Jaden", "Smith"),
         ("Scarlett", "Johansson")
     ]
-    for actor in actor_objects_create:
-        first_name_, last_name_ = actor[0], actor[1]
+    for first_name, last_name in actor_objects_create:
         Actor.objects.create(
-            first_name=first_name_,
-            last_name=last_name_
+            first_name=first_name,
+            last_name=last_name
         )
 
     Genre.objects.filter(
@@ -33,16 +32,14 @@ def main() -> QuerySet:
         (("George", "Klooney"), ("George", "Clooney")),
         (("Kianu", "Reaves"), ("Keanu", "Reeves"))
     ]
-    for actor in actor_objects_update:
-        first_name_, last_name_, new_first_name, new_last_name = (
-            actor[0][0],
-            actor[0][1],
-            actor[1][0],
-            actor[1][1]
-        )
+
+    for old_values, values_to_update in actor_objects_update:
+        old_first_name, old_last_name = old_values
+        new_first_name, new_last_name = values_to_update
+
         Actor.objects.filter(
-            first_name=first_name_,
-            last_name=last_name_
+            first_name=old_first_name,
+            last_name=old_last_name
         ).update(first_name=new_first_name, last_name=new_last_name)
 
     Genre.objects.filter(
