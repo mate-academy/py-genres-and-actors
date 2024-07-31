@@ -1,20 +1,30 @@
-import os
+from pathlib import Path
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: Modify this secret key if using in production!
-SECRET_KEY = "6few3nci_q_o@l1dlbk81%wcxe!*6r29yu629&d97!hiqat9fa"
 
-DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-%uye0@ybye_v3qsj(*hge-4qk374%6^)j$)0o((tj*n*y5ga1r'
+
+
+INSTALLED_APPS = [
+    "db",
+]
+
+
+# Database
+# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-USE_TZ = False
 
-INSTALLED_APPS = ("db",)
+USE_TZ = True
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
