@@ -41,13 +41,7 @@ def main() -> QuerySet:
         last_name="Klooney"
     ).update(last_name="Clooney")
 
-    Genre.objects.filter(
-        name="Action"
-    ).delete()
-    Actor.objects.filter(
-        first_name="Scarlett"
-    ).delete()
+    Genre.objects.filter(name="Action").delete()
+    Actor.objects.filter(first_name="Scarlett").delete()
 
-    return Actor.objects.filter(
-        last_name="Smith",
-    ).order_by("first_name")
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
