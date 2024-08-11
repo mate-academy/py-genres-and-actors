@@ -6,7 +6,6 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    # Create
     actors = [
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
@@ -17,10 +16,10 @@ def main() -> QuerySet:
     ]
     genres = ["Western", "Action", "Dramma"]
 
-    for first_name_, last_name_ in actors:
+    for first_name, last_name in actors:
         Actor.objects.create(
-            first_name=first_name_,
-            last_name=last_name_
+            first_name=first_name,
+            last_name=last_name
         )
 
     for genre in genres:
@@ -28,7 +27,6 @@ def main() -> QuerySet:
             name=genre,
         )
 
-    # Update
     Genre.objects.filter(
         name="Dramma"
     ).update(name="Drama")
@@ -43,7 +41,6 @@ def main() -> QuerySet:
         last_name="Klooney"
     ).update(last_name="Clooney")
 
-    # Delete
     Genre.objects.filter(
         name="Action"
     ).delete()
@@ -51,7 +48,6 @@ def main() -> QuerySet:
         first_name="Scarlett"
     ).delete()
 
-    # Return
     return Actor.objects.filter(
         last_name="Smith",
     ).order_by("first_name")
