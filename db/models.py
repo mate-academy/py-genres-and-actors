@@ -5,7 +5,7 @@ class Genre(models.Model):
     name = models.CharField(max_length=255)
 
     class Meta:
-        db_table = 'genre'
+        db_table = "genre"
 
 
 class Actor(models.Model):
@@ -13,4 +13,4 @@ class Actor(models.Model):
     last_name = models.CharField(max_length=255)
 
     class Meta:
-        db_table = 'actor'
+        db_table = "actor"
