@@ -1,5 +1,3 @@
-from tkinter.font import names
-
 import init_django_orm  # noqa: F401
 from db.models import Genre, Actor
 
