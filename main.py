@@ -37,3 +37,4 @@ def main() -> QuerySet:
         last_name="Smith"
     ).order_by("first_name")
     return actor
+
