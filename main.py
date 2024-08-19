@@ -40,4 +40,3 @@ def main() -> QuerySet:
 
     queryset = Actor.objects.filter(last_name="Smith").order_by("first_name")
     return queryset
-#makemigrations
