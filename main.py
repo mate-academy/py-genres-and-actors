@@ -11,6 +11,7 @@ def main() -> QuerySet:
         ("Dramma",)
     ]
 
+
     actors = [
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
