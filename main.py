@@ -30,7 +30,7 @@ def main() -> QuerySet:
             first_name=old_first, last_name=old_last
         ).update(first_name=new_first, last_name=new_last)
 
-    Genre.objects.filter(name="Drama").delete()
+    Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
     set_of_actors = Actor.objects.filter(
