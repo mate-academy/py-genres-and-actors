@@ -16,21 +16,12 @@ def main() -> QuerySet:
     Actor.objects.create(first_name="Scarlett", last_name="Keegan")
     Actor.objects.create(first_name="Scarlett", last_name="Johansson")
 
-    genre = Genre.objects.get(name="Dramma")
-    genre.name = "Drama"
-    genre.save()
-
-    actor_name = Actor.objects.get(first_name="George", last_name="Clooney")
-    actor_name.second_name = "Clooney"
-    actor_name.save()
-
-    actor = Actor.objects.get(first_name="Kianu", last_name="Reaves")
-    actor.first_name = "Keanu"
-    actor.second_name = "Reeves"
-    actor.save()
-
+    Genre.objects.filter(name="Dramma").update(name="Drama")
+    Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
+    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(
+        first_name="Keanu", last_name="Reeves"
+    )
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    new_query = Actor.objects.filter(last_name="Smith").order_by("first_name")
-    return new_query
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
