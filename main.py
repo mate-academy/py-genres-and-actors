@@ -34,7 +34,10 @@ def main() -> QuerySet:
         new_first_name = new_name.get("first_name", old_first_name)
         new_last_name = new_name.get("last_name", old_last_name)
 
-        Actor.objects.filter(first_name=old_first_name, last_name=old_last_name).update(
+        Actor.objects.filter(
+            first_name=old_first_name,
+            last_name=old_last_name
+        ).update(
             first_name=new_first_name, last_name=new_last_name
         )
 
