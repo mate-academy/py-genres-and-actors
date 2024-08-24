@@ -5,9 +5,9 @@ from db.models import Genre, Actor
 
 
 def create_genres(genre_names: tuple) -> None:
-    for genre in genre_names:
+    for name in genre_names:
         Genre.objects.create(
-            name=genre
+            name=name
         )
 
 
