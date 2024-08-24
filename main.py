@@ -1,31 +1,38 @@
 import init_django_orm  # noqa: F401
 
-from django.db.models import QuerySet
+from django.db import models
+
 from db.models import Actor, Genre
 
+def create_obj(owner: type(models), **kwargs):
+    owner.objects.create(**kwargs)
 
-def main() -> QuerySet:
+def main() -> models.QuerySet:
 
     new_genres = ["Western", "Action", "Dramma"]
     for genre in new_genres:
-        Genre.objects.create(name=genre)
+        create_obj(owner=Genre, name=genre)
 
-    new_actors = ["George Klooney", "Kianu Reaves",
-                  "Scarlett Keegan", "Will Smith",
-                  "Jaden Smith", "Scarlett Johansson"]
-    for actor in new_actors:
-        first, last = actor.split(" ")
-        Actor.objects.create(first_name=first, last_name=last)
+    new_actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
+    ]
+    for first, last in new_actors:
+        create_obj(owner=Actor, first_name=first, last_name=last)
 
-    list_of_genres_updates = [("Dramma", "Drama")]
-    for old_genre, new_genre in list_of_genres_updates:
-        Genre.objects.filter(name=old_genre).update(name=new_genre)
+    Genre.objects.filter(name="Dramma").update(name="Drama")
 
-    list_of_actors_updates = [("George Klooney", "George Clooney"),
-                              ("Kianu Reaves", "Keanu Reeves")]
+    list_of_actors_updates = [
+        [("George", "Klooney"), ("George", "Clooney")],
+        [("Kianu", "Reaves"), ("Keanu", "Reeves")]
+    ]
     for old_actor, new_actor in list_of_actors_updates:
-        old_first, old_last = old_actor.split(" ")
-        new_first, new_last = new_actor.split(" ")
+        old_first, old_last = old_actor
+        new_first, new_last = new_actor
         Actor.objects.filter(
             first_name=old_first, last_name=old_last
         ).update(first_name=new_first, last_name=new_last)
