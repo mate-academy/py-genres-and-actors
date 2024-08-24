@@ -5,26 +5,25 @@ from django.db.models import QuerySet
 from db.models import Actor, Genre
 
 
-GENRES = [
-    "Western",
-    "Action",
-    "Dramma",
-]
-ACTORS = [
-    ("George", "Klooney"),
-    ("Kianu", "Reaves"),
-    ("Scarlett", "Keegan"),
-    ("Will", "Smith"),
-    ("Jaden", "Smith"),
-    ("Scarlett", "Johansson"),
-]
-
-
 def populate_db() -> None:
-    for genre in GENRES:
+    genres = [
+        "Western",
+        "Action",
+        "Dramma",
+    ]
+    actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
+
+    for genre in genres:
         Genre.objects.create(name=genre)
 
-    for first_name, last_name in ACTORS:
+    for first_name, last_name in actors:
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
 
