@@ -5,7 +5,7 @@ from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def main() -> QuerySet:
+def create_objects() -> None:
     genres = ["Western", "Action", "Dramma"]
 
     for genre in genres:
@@ -20,12 +20,14 @@ def main() -> QuerySet:
         ["Scarlett", "Johansson"]
     ]
 
-    for actor in actors:
+    for first_name, last_name in actors:
         Actor.objects.create(
-            first_name=actor[0],
-            last_name=actor[1]
+            first_name=first_name,
+            last_name=last_name
         )
 
+
+def update_objects() -> None:
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
     Actor.objects.filter(
@@ -38,12 +40,19 @@ def main() -> QuerySet:
         last_name="Reaves"
     ).update(first_name="Keanu", last_name="Reeves")
 
-    Genre.objects.filter(name="Action").delete()
 
+def delete_objects() -> None:
+    Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
+
+def main() -> QuerySet:
+
+    create_objects()
+    update_objects()
+    delete_objects()
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
 
 if __name__ == "__main__":
-    main()
+    query_result = main()
