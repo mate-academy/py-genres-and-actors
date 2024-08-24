@@ -22,7 +22,9 @@ def create_actors(actor_items: tuple) -> None:
 def update_genre(old_name: str, new_name: str) -> None:
     Genre.objects.filter(
         name=old_name
-    ).update(name=new_name)
+    ).update(
+        name=new_name
+    )
 
 
 def update_actor(
