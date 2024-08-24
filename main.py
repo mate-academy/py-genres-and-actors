@@ -1,40 +1,58 @@
-import init_django_orm  # noqa: F401
-
 from django.db.models import QuerySet
-
 from db.models import Genre, Actor
 
 
-def main() -> QuerySet:
+def create_genres() -> None:
     genres = ["Western", "Action", "Dramma"]
-    for genre in genres:
-        Genre.objects.create(name=genre)
+    Genre.objects.bulk_create([Genre(name=genre) for genre in genres])
 
+def create_actors() -> None:
     actors = [
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
         ("Scarlett", "Keegan"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
-        ("Scarlett", "Johansson")
+        ("Scarlett", "Johansson"),
     ]
     Actor.objects.bulk_create(
-        [Actor(first_name=fn, last_name=ln) for fn, ln in actors]
+        [
+            Actor(first_name=first_name, last_name=last_name)
+            for first_name, last_name in actors
+        ]
     )
-    Genre.objects.filter(
-        name="Dramma",
-    ).update(name="Drama")
-    Actor.objects.filter(
-        first_name="George", last_name="Klooney"
-    ).update(first_name="George", last_name="Clooney")
 
+def update_genres() -> None:
+    Genre.objects.filter(name="Dramma").update(name="Drama")
+
+def update_actors() -> None:
     Actor.objects.filter(
-        first_name="Kianu", last_name="Reaves"
-    ).update(first_name="Keanu", last_name="Reeves")
-    Genre.objects.filter(
-        name="Action",
-    ).delete()
+        first_name="George",
+        last_name="Klooney"
+    ).update(
+        first_name="George",
+        last_name="Clooney")
     Actor.objects.filter(
-        first_name="Scarlett",
-    ).delete()
+        first_name="Kianu",
+        last_name="Reaves"
+    ).update(
+        first_name="Keanu",
+        last_name="Reeves")
+
+def delete_genre() -> None:
+    Genre.objects.filter(name="Action").delete()
+
+def delete_scarlett_actors() -> None:
+    Actor.objects.filter(first_name="Scarlett").delete()
+
+def get_smith_actors() -> QuerySet:
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
+
+def main() -> QuerySet:
+    create_genres()
+    create_actors()
+    update_genres()
+    update_actors()
+    delete_genre()
+    delete_scarlett_actors()
+    return get_smith_actors()
