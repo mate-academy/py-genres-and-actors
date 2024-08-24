@@ -1,6 +1,7 @@
 import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet
+
 from db.models import Genre, Actor
 
 
@@ -9,7 +10,7 @@ def main() -> QuerySet:
     create_actors()
     update()
     delete()
-    return specific_actors()
+    return get_specific_actors()
 
 
 def create_genres() -> None:
@@ -26,8 +27,7 @@ def create_actors() -> None:
         "Jaden Smith",
         "Scarlett Johansson"
     ]
-    for actor in actors:
-        first_name, last_name = actor.split()
+    for first_name, last_name in (actor.split() for actor in actors):
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
 
@@ -46,6 +46,6 @@ def delete() -> None:
     Actor.objects.filter(first_name="Scarlett").delete()
 
 
-def specific_actors() -> QuerySet:
+def get_specific_actors() -> QuerySet:
     actors_smith = Actor.objects.filter(last_name="Smith")
     return actors_smith.order_by("first_name")
