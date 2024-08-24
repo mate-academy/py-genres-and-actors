@@ -6,6 +6,7 @@ def create_genres() -> None:
     genres = ["Western", "Action", "Dramma"]
     Genre.objects.bulk_create([Genre(name=genre) for genre in genres])
 
+
 def create_actors() -> None:
     actors = [
         ("George", "Klooney"),
@@ -22,8 +23,10 @@ def create_actors() -> None:
         ]
     )
 
+
 def update_genres() -> None:
     Genre.objects.filter(name="Dramma").update(name="Drama")
+
 
 def update_actors() -> None:
     Actor.objects.filter(
@@ -39,14 +42,18 @@ def update_actors() -> None:
         first_name="Keanu",
         last_name="Reeves")
 
+
 def delete_genre() -> None:
     Genre.objects.filter(name="Action").delete()
+
 
 def delete_scarlett_actors() -> None:
     Actor.objects.filter(first_name="Scarlett").delete()
 
+
 def get_smith_actors() -> QuerySet:
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
+
 
 def main() -> QuerySet:
     create_genres()
