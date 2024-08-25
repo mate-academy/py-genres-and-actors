@@ -4,8 +4,10 @@ from django.db import models
 
 from db.models import Actor, Genre
 
-def create_obj(owner: type(models), **kwargs):
+
+def create_obj(owner: type(models), **kwargs) -> None:
     owner.objects.create(**kwargs)
+
 
 def main() -> models.QuerySet:
 
