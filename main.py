@@ -52,7 +52,3 @@ def main() -> QuerySet:
     update_objects()
     delete_objects()
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
-
-
-if __name__ == "__main__":
-    query_result = main()
