@@ -1,13 +1,13 @@
+import init_django_orm  # noqa: F401
+
 from django.db.models import QuerySet
+
 from db.models import Genre, Actor
 
 
-def create_genres() -> None:
+def create_actors_and_genres() -> None:
     genres = ["Western", "Action", "Dramma"]
     Genre.objects.bulk_create([Genre(name=genre) for genre in genres])
-
-
-def create_actors() -> None:
     actors = [
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
@@ -24,11 +24,9 @@ def create_actors() -> None:
     )
 
 
-def update_genres() -> None:
+def update_actors_and_genres() -> None:
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
-
-def update_actors() -> None:
     Actor.objects.filter(
         first_name="George",
         last_name="Klooney"
@@ -43,23 +41,17 @@ def update_actors() -> None:
         last_name="Reeves")
 
 
-def delete_genre() -> None:
+def delete_actors_and_genres() -> None:
     Genre.objects.filter(name="Action").delete()
-
-
-def delete_scarlett_actors() -> None:
     Actor.objects.filter(first_name="Scarlett").delete()
 
 
-def get_smith_actors() -> QuerySet:
+def get_() -> QuerySet:
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
 
 def main() -> QuerySet:
-    create_genres()
-    create_actors()
-    update_genres()
-    update_actors()
-    delete_genre()
-    delete_scarlett_actors()
-    return get_smith_actors()
+    create_actors_and_genres()
+    update_actors_and_genres()
+    delete_actors_and_genres()
+    return get_()
