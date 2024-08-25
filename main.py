@@ -34,32 +34,11 @@ def update_genre_and_actors() -> None:
      .update(first_name="Keanu", last_name="Reeves"))
 
 
-def update_actor(
-        first_name_to_find: str,
-        last_name_to_find: str = None,
-        first_name_to_update: str = None,
-        last_name_to_update: str = None
-) -> None:
-    actors = Actor.objects.filter(first_name=first_name_to_find)
-    if last_name_to_find is not None:
-        actors = actors.filter(last_name=last_name_to_find)
-
-    if last_name_to_update and first_name_to_update:
-        actors.update(
-            first_name=first_name_to_update,
-            last_name=last_name_to_update
-        )
-    elif last_name_to_find is None:
-        actors.update(first_name=first_name_to_find)
-    else:
-        actors.update(last_name=last_name_to_update)
-
-
 def delete_genre_and_actor() -> None:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
 
 def actor_order() -> QuerySet:
-    return (Actor.objects.filter(first_name="first_name")
-            .order_by(last_name="Smith"))
+    return (Actor.objects.filter(last_name="Smith")
+            .order_by("first_name"))
