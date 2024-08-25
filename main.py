@@ -10,25 +10,9 @@ def main() -> QuerySet:
     create_actors([("George", "Klooney"), ("Kianu", "Reaves"),
                    ("Scarlett", "Keegan"), ("Will", "Smith"),
                    ("Jaden", "Smith"), ("Scarlett", "Johansson")])
-
-    update_genre("Dramma", "Drama")
-    update_actor(
-        first_name_to_find="George",
-        last_name_to_find="Klooney",
-        last_name_to_update="Clooney"
-    )
-    update_actor(
-        first_name_to_find="Kianu",
-        last_name_to_find="Reaves",
-        first_name_to_update="Keanu",
-        last_name_to_update="Reeves"
-    )
-
-    # delete
-    delete_genre("Action")
-    delete_actor(first_name="Scarlett")
-
-    return actor_order("first_name", last_name="Smith")
+    update_genre_and_actors()
+    delete_genre_and_actor()
+    return actor_order()
 
 
 def create_genres(genres_names: tuple) -> None:
@@ -42,8 +26,12 @@ def create_actors(actors: list[tuple[str, str]]) -> None:
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
 
-def update_genre(name_to_find: str, name_to_update: str) -> None:
-    Genre.objects.filter(name=name_to_find).update(name=name_to_update)
+def update_genre_and_actors() -> None:
+    Genre.objects.filter(name="Dramma").update(name="Drama")
+    (Actor.objects.filter(first_name="George", last_name="Klooney")
+     .update(last_name="Clooney"))
+    (Actor.objects.filter(first_name="Kianu", last_name="Reaves")
+     .update(first_name="Keanu", last_name="Reeves"))
 
 
 def update_actor(
@@ -67,17 +55,11 @@ def update_actor(
         actors.update(last_name=last_name_to_update)
 
 
-def delete_genre(name_to_delete: str) -> None:
-    Genre.objects.filter(name=name_to_delete).delete()
+def delete_genre_and_actor() -> None:
+    Genre.objects.filter(name="Action").delete()
+    Actor.objects.filter(first_name="Scarlett").delete()
 
 
-def delete_actor(**names_to_delete) -> None:
-    Actor.objects.filter(**names_to_delete).delete()
-
-
-def actor_order(*order_by, **filter_kwargs) -> QuerySet:
-    return Actor.objects.filter(**filter_kwargs).order_by(*order_by)
-
-
-if __name__ == "__main__":
-    print(main())
+def actor_order() -> QuerySet:
+    return (Actor.objects.filter(first_name="first_name")
+            .order_by(last_name="Smith"))
