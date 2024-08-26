@@ -20,7 +20,11 @@ def update_genres(updates: dict[str, str]) -> None:
         Genre.objects.filter(name=old_name).update(name=new_name)
 
 
-def update_actors(updates: list[tuple[dict[str, str], dict[str, str]]]) -> None:
+def update_actors(
+        updates: list[
+            tuple[dict[str, str], dict[str, str]]
+        ]
+) -> None:
     for filter_kwargs, update_kwargs in updates:
         Actor.objects.filter(**filter_kwargs).update(**update_kwargs)
 
