@@ -4,21 +4,24 @@ import init_django_orm  # noqa: F401
 from db.models import Genre, Actor
 
 
-def main() -> QuerySet:
-    Genre.objects.bulk_create([
-        Genre(name="Western"),
-        Genre(name="Action"),
-        Genre(name="Dramma"),
-    ])
-    Actor.objects.bulk_create([
-        Actor(first_name="George", last_name="Klooney"),
-        Actor(first_name="Kianu", last_name="Reaves"),
-        Actor(first_name="Scarlett", last_name="Keegan"),
-        Actor(first_name="Will", last_name="Smith"),
-        Actor(first_name="Jaden", last_name="Smith"),
-        Actor(first_name="Scarlett", last_name="Johansson"),
-    ])
+def create_data() -> None:
+    new_genres = ["Western", "Action", "Dramma"]
+    for genre in new_genres:
+        Genre.objects.create(name=genre)
 
+    new_actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
+    for first_name, last_name in new_actors:
+        Actor.objects.create(first_name=first_name, last_name=last_name)
+
+
+def update_data() -> None:
     Genre.objects.filter(
         name="Dramma"
     ).update(name="Drama")
@@ -35,6 +38,8 @@ def main() -> QuerySet:
         last_name="Reeves"
     )
 
+
+def delete_data() -> None:
     Genre.objects.filter(
         name="Action"
     ).delete()
@@ -42,8 +47,16 @@ def main() -> QuerySet:
         first_name="Scarlett"
     ).delete()
 
-    result = Actor.objects.filter(
+
+def get_result() -> QuerySet:
+    return Actor.objects.filter(
         last_name="Smith"
     ).order_by("first_name")
 
-    return result
+
+def main() -> QuerySet:
+    create_data()
+    update_data()
+    delete_data()
+
+    return get_result()
