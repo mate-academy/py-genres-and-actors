@@ -6,25 +6,33 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    genres = ["Western", "Action", "Dramma"]
-    actors = [
-        ("George", "Klooney"), ("Kianu", "Reaves"), ("Scarlett", "Keegan"),
-        ("Will", "Smith"), ("Jaden", "Smith"), ("Scarlett", "Johansson")
-    ]
-    for genre in genres:
-        Genre.objects.create(name=genre)
 
-    for name, surname in actors:
-        Actor.objects.create(first_name=name, last_name=surname)
+    def create() -> None:
+        genres = ["Western", "Action", "Dramma"]
+        actors = [
+            ("George", "Klooney"), ("Kianu", "Reaves"), ("Scarlett", "Keegan"),
+            ("Will", "Smith"), ("Jaden", "Smith"), ("Scarlett", "Johansson")
+        ]
+        for genre in genres:
+            Genre.objects.create(name=genre)
 
-    Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
-    (
-        Actor.objects.filter(first_name="Kianu", last_name="Reaves")
-        .update(first_name="Keanu", last_name="Reeves")
-    )
+        for name, surname in actors:
+            Actor.objects.create(first_name=name, last_name=surname)
 
-    Genre.objects.filter(name="Action").delete()
-    Actor.objects.filter(first_name="Scarlett").delete()
+    def update() -> None:
+        Genre.objects.filter(name="Dramma").update(name="Drama")
+        Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
+        (
+            Actor.objects.filter(first_name="Kianu", last_name="Reaves")
+            .update(first_name="Keanu", last_name="Reeves")
+        )
 
-    return Actor.objects.all().filter(last_name="Smith").order_by("first_name")
+    def delete() -> None:
+        Genre.objects.filter(name="Action").delete()
+        Actor.objects.filter(first_name="Scarlett").delete()
+
+    create()
+    update()
+    delete()
+
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
