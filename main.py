@@ -20,8 +20,8 @@ actors = [
 
 
 def main() -> QuerySet:
-    for genere in genres:
-        Genre.objects.create(name=genere)
+    for genre in genres:
+        Genre.objects.create(name=genre)
 
     for elem_first, elem_second in actors:
         Actor.objects.create(
