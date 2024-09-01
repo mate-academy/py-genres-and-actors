@@ -1,5 +1,3 @@
-from modulefinder import Module
-
 from django.db import models
 
 
