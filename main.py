@@ -13,11 +13,11 @@ def main() -> QuerySet:
         Genre.objects.create(name=genre)
 
     for first_name, last_name in (("George", "Klooney"),
-                  ("Kianu", "Reaves"),
-                  ("Scarlett", "Keegan"),
-                  ("Will", "Smith"),
-                  ("Jaden", "Smith"),
-                  ("Scarlett", "Johansson")):
+                                  ("Kianu", "Reaves"),
+                                  ("Scarlett", "Keegan"),
+                                  ("Will", "Smith"),
+                                  ("Jaden", "Smith"),
+                                  ("Scarlett", "Johansson")):
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
