@@ -4,24 +4,24 @@ from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-#  ̶C̶R̶U̶D̶ CUDR
 def main() -> QuerySet:
-    # Create
-    [Genre.objects.create(name=name)
-     for name in ["Western", "Action", "Dramma"]]
-    [Actor.objects.create(first_name=first_name, last_name=last_name)
-     for first_name, last_name in [
-         ("George", "Klooney"), ("Kianu", "Reaves"), ("Scarlett", "Keegan"),
-         ("Will", "Smith"), ("Jaden", "Smith"), ("Scarlett", "Johansson")
-    ]]
-    # Update
+    names = ["Western", "Action", "Dramma"]
+    for name in names:
+        Genre.objects.create(name=name)
+    actors = [("George", "Klooney"), ("Kianu", "Reaves"),
+              ("Scarlett", "Keegan"), ("Will", "Smith"),
+              ("Jaden", "Smith"), ("Scarlett", "Johansson")]
+    for actor in actors:
+        first_name, last_name = actor
+        Actor.objects.create(first_name=first_name, last_name=last_name)
+
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(first_name="George", last_name="Klooney"
                          ).update(last_name="Clooney")
     Actor.objects.filter(first_name="Kianu", last_name="Reaves"
                          ).update(first_name="Keanu", last_name="Reeves")
-    # Delete
+
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
-    # Return
+
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
