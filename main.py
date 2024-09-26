@@ -5,7 +5,7 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    # CREATE
+    #CREATE
     genres_list = ["Western", "Action", "Dramma"]
     for genre in genres_list:
         Genre.objects.create(name=genre)
@@ -21,7 +21,7 @@ def main() -> QuerySet:
     for first, last in actors_list:
         Actor.objects.create(first_name=first, last_name=last)
 
-    # UPDATE
+    #UPDATE
     Genre.objects.filter(
         name="Dramma"
     ).update(name="Drama")
@@ -35,7 +35,7 @@ def main() -> QuerySet:
         last_name="Reaves"
     ).update(first_name="Keanu", last_name="Reeves")
 
-    # DELITE
+    #DELITE
     Genre.objects.filter(
         name="Action"
     ).delete()
@@ -44,7 +44,7 @@ def main() -> QuerySet:
         first_name="Scarlett"
     ).delete()
 
-    # RETURN
+    #RETURN
     return Actor.objects.filter(
         last_name="Smith"
     ).order_by("first_name")
