@@ -8,6 +8,9 @@ class Genre(models.Model):
     def __str__(self) -> Any:
         return self.name
 
+    class Meta:
+        app_label = "db"
+
 
 class Actor(models.Model):
     first_name = models.CharField(max_length=255)
