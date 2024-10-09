@@ -13,7 +13,6 @@ def main() -> QuerySet:
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Genre.objects.filter(name="Action").delete()
 
-
     actors_and_actress = [
         ("George", "Klooney"), ("Kianu", "Reaves"), ("Scarlett", "Keegan"),
         ("Will", "Smith"), ("Jaden", "Smith"), ("Scarlett", "Johansson")
