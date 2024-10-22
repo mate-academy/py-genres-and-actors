@@ -4,7 +4,7 @@ from db.models import Actor, Genre
 
 
 def main() -> None:
-    list_genre = ["Western", "Action", "Dramma"]
+    list_of_genre_name = ["Western", "Action", "Dramma"]
     dict_actors = [
         {"first_name": "George", "last_name": "Clooney"},
         {"first_name": "Keanu", "last_name": "Reeves"},
@@ -16,8 +16,8 @@ def main() -> None:
 
     # Create GENRE with list genre
 
-    for genre in list_genre:
-        Genre.objects.create(genre=genre)
+    for genre_name in list_of_genre_name:
+        Genre.objects.create(name=genre_name)
 
     # Create ACTORS with dict actors
 
@@ -28,7 +28,7 @@ def main() -> None:
     # actor George Klooney, set last_name to "Clooney"
     # actor Kianu Reaves, set first_name to "Keanu" and last_name to "Reeves"
 
-    Genre.objects.filter(genre="Dramma").update(genre="Drama")
+    Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(first_name="George").update(last_name="Clooney")
     Actor.objects.filter(last_name="Reeves").update(first_name="Keanu")
 
@@ -36,14 +36,12 @@ def main() -> None:
     # genre Action
     # all actresses with the first_name "Scarlett"
 
-    Genre.objects.filter(genre="Action").delete()
+    Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
     # Return:
     # QuerySet of actors with last_name "Smith" and ordered by first_name
-    print(
-        Actor.objects.filter(last_name="Smith")
-        .order_by("first_name"))
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
 
 if __name__ == "__main__":
