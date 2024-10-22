@@ -1,9 +1,11 @@
+from django.db.models import QuerySet
+
 import init_django_orm  # noqa: F401
 
 from db.models import Actor, Genre
 
 
-def main() -> None:
+def main() -> QuerySet:
     list_of_genre_name = ["Western", "Action", "Dramma"]
     dict_actors = [
         {"first_name": "George", "last_name": "Clooney"},
