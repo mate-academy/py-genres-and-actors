@@ -34,6 +34,7 @@ def create_actors() -> None:
         first_name="Scarlett",
         last_name="Johansson", )
 
+
 def update_actors_and_ganre() -> None:
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(first_name="George").update(last_name="Clooney")
@@ -45,10 +46,12 @@ def delete_actors_and_ganres() -> None:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
+
 def return_query_set() -> None:
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
-def main():
+
+def main() -> None:
     create()
     create_actors()
     update_actors_and_ganre()
