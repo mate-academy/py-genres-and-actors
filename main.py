@@ -1,6 +1,7 @@
 import init_django_orm  # noqa: F401
 from db.models import Genre, Actor
 
+
 def main() -> None:
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
@@ -14,7 +15,8 @@ def main() -> None:
     Actor.objects.create(first_name="Scarlett", last_name="Johansson")
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(first_name="George").update(last_name="Clooney")
+    Actor.objects.filter(first_name="George").update(
+        last_name="Clooney")
     Actor.objects.filter(first_name="Kianu").update(first_name="Keanu", last_name="Reeves")
 
     Genre.objects.filter(name="Action").delete()
