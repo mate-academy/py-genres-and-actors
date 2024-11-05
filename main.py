@@ -47,4 +47,8 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="Scarlett").delete()
 
     # Return QuerySet of actors with last_name "Smith"
+<<<<<<< HEAD
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
+=======
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
+>>>>>>> d1b79e831c3a7dfd9f275c5d4b117d7643bc876a
