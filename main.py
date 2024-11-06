@@ -1,4 +1,4 @@
-from django.contrib.contenttypes.fields import GenericRel
+from django.contrib.contenttypes.fields import GenericRel # noqa: F401
 
 import init_django_orm  # noqa: F401
 
