@@ -1,4 +1,4 @@
-from django.contrib.contenttypes.fields import GenericRel # noqa: F401
+from django.contrib.contenttypes.fields import GenericRel  # noqa: F401
 
 import init_django_orm  # noqa: F401
 
@@ -8,24 +8,26 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    gernes = ["Western", "Action", "Drama"]
+    genres = ["Western", "Action", "Dramma"]
 
-    for name in gernes:
+    for name in genres:
         Genre.objects.create(
             name=name
         )
     actors = [
-        ["George", "Klooney"],
-        ["Kianu", "Reaves"],
-        ["Scarlett", "Keegan"],
-        ["Will", "Smith"],
-        ["Jaden", "Smith"],
-        ["Scarlett", "Johansson"],
+        ("George Klooney"),
+        ("Kianu Reaves"),
+        ("Scarlett Keegan"),
+        ("Will Smith"),
+        ("Jaden Smith"),
+        ("Scarlett Johansson"),
     ]
-    for name in actors:
+
+    for actor in actors:
+        first_name, last_name = actor.split(" ")
         Actor.objects.create(
-            first_name=name[0],
-            last_name=name[1]
+            first_name=first_name,
+            last_name=last_name
         )
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
