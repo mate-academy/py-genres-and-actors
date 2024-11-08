@@ -9,9 +9,7 @@ def main() -> QuerySet:
     genres = [("Western",), ("Action",), ("Dramma",)]
     for genre_name, in genres:
         Genre.objects.create(name=genre_name)
-
-
-    Genre.objects.filter(name="Dramma").update(name="Drama")
+        Genre.objects.filter(name="Dramma").update(name="Drama")
 
     actors = [
         ("George", "Klooney"),
@@ -48,4 +46,3 @@ def main() -> QuerySet:
     )
 
     return smith_actors
-
