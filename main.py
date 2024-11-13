@@ -1,32 +1,36 @@
-import init_django_orm  # noqa: F401
+from django.db.models import QuerySet
 
 from db.models import Genre, Actor
-from django.db.models import QuerySet
 
 
 def main() -> QuerySet:
-    genres = ["Western", "Action", "Dramma"]
-    actors = [
-        ("George", "Klooney"),
-        ("Kianu", "Reaves"),
-        ("Scarlett", "Keegan"),
-        ("Will", "Smith"),
-        ("Jaden", "Smith"),
-        ("Scarlett", "Johansson")
+    pass
+    Actor.objects.all().delete()
+    Genre.objects.all().delete()
+
+    actors_data = [
+        {"first_name": "George", "last_name": "Clooney"},
+        {"first_name": "Keanu", "last_name": "Reeves"},
+        {"first_name": "Will", "last_name": "Smith"},
+        {"first_name": "Jaden", "last_name": "Smith"},
     ]
-    for genre in genres:
-        Genre.objects.create(name=genre)
 
-    for first_name, last_name in actors:
-        Actor.objects.create(first_name=first_name,
-                             last_name=last_name)
+    for actor in actors_data:
+        Actor.objects.create(
+            first_name=actor["first_name"],
+            last_name=actor["last_name"]
+        )
 
-    Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu").update(first_name="Keanu",
-                                                    last_name="Reeves")
-    Genre.objects.filter(name="Action").delete()
-    Actor.objects.filter(first_name="Scarlett").delete()
+    genres_data = [
+        {"name": "Western"},
+        {"name": "Drama"},
+    ]
 
-    return (Actor.objects.filter(last_name="Smith").
-            order_by("first_name").all())
+    for genre in genres_data:
+        Genre.objects.create(name=genre["name"])
+
+    actors = Actor.objects.all()
+
+    main_actors = actors.filter(last_name="Smith").order_by("first_name")
+
+    return main_actors
