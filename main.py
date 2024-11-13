@@ -4,7 +4,6 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    pass
     Actor.objects.all().delete()
     Genre.objects.all().delete()
 
