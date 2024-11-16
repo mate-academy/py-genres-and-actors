@@ -9,8 +9,8 @@ def main() -> QuerySet:
     genres = ["Western", "Action", "Dramma"]
     actors = [
         ("George", "Klooney"), ("Kianu", "Reaves"), ("Scarlett", "Keegan"),
-        ("Willz", "Smith"), ("Jaden", "Smith"), ("Scarlett", "Johansson")
-              ]
+        ("Will", "Smith"), ("Jaden", "Smith"), ("Scarlett", "Johansson")
+    ]
 
     for genre in genres:
         Genre.objects.create(name=genre)
