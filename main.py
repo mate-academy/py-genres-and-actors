@@ -32,7 +32,3 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="Scarlett").delete()
 
     return Actor.objects.all().order_by("last_name")
-
-
-if __name__ == "__main__":
-    print(main())
