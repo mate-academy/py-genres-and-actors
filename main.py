@@ -15,6 +15,9 @@ def main() -> QuerySet:
         ("Scarlett", "Johansson")
     ]
 
+    Genre.objects.all().delete()
+    Actor.objects.all().delete()
+
     for genre in genres:
         Genre.objects.create(name=genre)
 
