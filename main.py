@@ -15,7 +15,6 @@ def main() -> QuerySet:
         ("Scarlett", "Johansson")
     ]
 
-
     for genre in genres:
         Genre.objects.create(name=genre)
 
