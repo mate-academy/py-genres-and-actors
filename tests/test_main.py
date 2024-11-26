@@ -1,6 +1,6 @@
 import pytest
 
-from db.migrations.models import Genre, Actor
+from db.models import Genre, Actor
 
 from db.main import main
 
