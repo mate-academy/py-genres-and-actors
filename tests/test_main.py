@@ -1,8 +1,8 @@
 import pytest
 
-from db.models import Genre, Actor
+from db.migrations.models import Genre, Actor
 
-from main import main
+from db.main import main
 
 
 @pytest.mark.django_db
