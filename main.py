@@ -24,16 +24,19 @@ def main():
                          last_name="Johansson")
 
     # Update operations
-    (Genre.objects.filter(name="Dramma")
+    (Genre.objects.filter(name="Drama")
      .update(name="Drama"))
     (Actor.objects.filter(last_name="Klooney")
      .update(last_name="Clooney"))
-    (Actor.objects.filter(first_name="Keanu")
-     .update(last_name="Reeves"))
+    (Actor.objects.filter(first_name="Kianu", last_name="Reaves")
+     .update(first_name="Keanu", last_name="Reeves"))
+
 
     # Delete operations
     Genre.objects.filter(name="Action").delete()
-    Actor.objects.filter(first_name="Scarlett").delete()
+    Actor.objects.filter(first_name="Scarlett",
+                         last_name="Keegan").delete()
+
 
     # Return operations
     smith_actors = (Actor.objects.filter(last_name="Smith")
