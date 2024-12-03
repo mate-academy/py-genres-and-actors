@@ -18,3 +18,9 @@ DATABASES = {
 USE_TZ = False
 
 INSTALLED_APPS = ("db",)
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+
+DEBUG = True
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
