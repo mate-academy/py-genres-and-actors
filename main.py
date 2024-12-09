@@ -26,12 +26,14 @@ def main() -> QuerySet:
      update(first_name="Keanu", last_name="Reeves"))
 
     action_genre = Genre.objects.filter(name="Action")
-    if action_genre is not None:
+    if action_genre.exists():
         action_genre.delete()
 
     actress_scarlett = Actor.objects.filter(first_name="Scarlett")
-    if actress_scarlett is not None:
+    if actress_scarlett.exists():
         actress_scarlett.delete()
 
-    sorted_actors = Actor.objects.filter(last_name="Smith").order_by("first_name")
+    sorted_actors = (Actor.objects.
+                     filter(last_name="Smith").
+                     order_by("first_name"))
     return sorted_actors
