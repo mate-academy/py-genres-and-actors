@@ -1,6 +1,6 @@
 # Сheck Your Code Against the Following Points
 
-### 1. Don't add this fragment:
+### 1. Don"t add this fragment:
 ```python
 if __name__ == "__main__":
     main()
@@ -43,5 +43,5 @@ Model.objects.create(first="b")
 Model.objects.create(first="c")
 ```
 
-### 4. Don't forget to add migrations to your PR.
+### 4. Don"t forget to add migrations to your PR.
 
