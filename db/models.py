@@ -8,4 +8,4 @@ class Genre(models.Model):
 class Actor(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    #SOME TEXT
+    # SOME TEXT
