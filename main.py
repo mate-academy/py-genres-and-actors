@@ -5,9 +5,9 @@ from django.db.models import QuerySet
 
 
 def main() -> QuerySet:
-    Genre.objects.create(genre="Western")
-    Genre.objects.create(genre="Action")
-    Genre.objects.create(genre="Dramma")
+    Genre.objects.create(name="Western")
+    Genre.objects.create(name="Action")
+    Genre.objects.create(name="Dramma")
 
     Actor.objects.create(first_name="George", last_name="Klooney")
     Actor.objects.create(first_name="Kianu", last_name="Reaves")
@@ -16,11 +16,11 @@ def main() -> QuerySet:
     Actor.objects.create(first_name="Jaden", last_name="Smith")
     Actor.objects.create(first_name="Scarlett", last_name="Johansson")
 
-    Genre.objects.filter(genre="Dramma").update(genre="Drama")
+    Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
-    Actor.objects.filter(last_name="Keanu").update(last_name="Reeves")
+    Actor.objects.filter(last_name="Reaves").update(first_name="Keanu", last_name="Reeves")
 
-    Genre.objects.filter(genre="Action").delete()
+    Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
