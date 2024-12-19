@@ -3,6 +3,7 @@ import init_django_orm  # noqa: F401
 from django.db.models import QuerySet
 from db.models import Genre, Actor
 
+
 def main() -> QuerySet:
     # Create genres
     genres = [("Western",), ("Action",), ("Dramma",)]
@@ -30,7 +31,9 @@ def main() -> QuerySet:
         print("Genre 'Dramma' not found.")
 
     try:
-        actor = Actor.objects.get(first_name="George", last_name="Klooney")
+        actor = Actor.objects.get(
+            first_name="George", last_name="Klooney"
+        )
         actor.last_name = "Clooney"
         actor.save()
     except Actor.DoesNotExist:
@@ -38,7 +41,9 @@ def main() -> QuerySet:
 
     # Update actor Kianu Reaves to Keanu Reeves
     try:
-        actor = Actor.objects.get(first_name="Kianu", last_name="Reaves")
+        actor = Actor.objects.get(
+            first_name="Kianu", last_name="Reaves"
+        )
         actor.first_name = "Keanu"
         actor.last_name = "Reeves"
         actor.save()
@@ -54,12 +59,15 @@ def main() -> QuerySet:
     # Delete all actresses with first_name "Scarlett"
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    # QuerySet of actors with last_name "Smith", ordered by first_name
-    smith_actors = Actor.objects.filter(last_name="Smith").order_by("first_name")
+    smith_actors = Actor.objects.filter(
+        last_name="Smith"
+    ).order_by(
+        "first_name"
+    )
 
     # Return or print the QuerySet
     print("Actors with last name 'Smith':")
     for actor in smith_actors:
-        print(f'{actor.first_name} {actor.last_name}')
+        print(f"{actor.first_name} {actor.last_name}")
 
     return smith_actors
