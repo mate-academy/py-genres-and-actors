@@ -29,4 +29,3 @@ def main() -> QuerySet:
     actors_with_last_name_smith = Actor.objects.filter(last_name="Smith").order_by("first_name")
 
     return actors_with_last_name_smith
-
