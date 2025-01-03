@@ -32,9 +32,7 @@
 #         "first_name"
 #     ))
 #
-#
-# if __name__ == "__main__":
-#     main()
+
 from django.db.models import QuerySet
 
 from db.models import Actor, Genre
