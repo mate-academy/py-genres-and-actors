@@ -5,41 +5,30 @@ from db.models import Actor, Genre
 
 
 def main() -> QuerySet:
-    genres = [
-        Genre(name="Western"),
-        Genre(name="Action"),
-        Genre(name="Dramma")
+    genres_data = [("Western",), ("Action",), ("Drama",)]
+    Genre.objects.bulk_create([Genre(name=name) for name, in genres_data])
+
+    actors_data = [
+        ("George", "Clooney"),
+        ("Keanu", "Reeves"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
     ]
-    Genre.objects.bulk_create(genres)
+    Actor.objects.bulk_create([Actor(first_name=fn, last_name=ln) for fn, ln in actors_data])
 
-    actors = [
-        Actor(first_name="George", last_name="Klooney"),
-        Actor(first_name="Kianu", last_name="Reaves"),
-        Actor(first_name="Scarlett", last_name="Keegan"),
-        Actor(first_name="Will", last_name="Smith"),
-        Actor(first_name="Jaden", last_name="Smith"),
-        Actor(first_name="Scarlett", last_name="Johansson")
-    ]
+    genre_dramma = Genre.objects.filter(name="Dramma").first()
+    if genre_dramma:
+        genre_dramma.name = "Drama"
+        genre_dramma.save()
 
-    Actor.objects.bulk_create(actors)
+    Actor.objects.filter(first_name="George", last_name="Klooney")\
+        .update(last_name="Clooney")
+    Actor.objects.filter(first_name="Kianu", last_name="Reaves")\
+        .update(first_name="Keanu", last_name="Reeves")
 
-    genre_dramma = Genre.objects.get(name="Dramma")
-    genre_dramma.name = "Drama"
-
-    actor_george_klooney = Actor.objects.get(first_name="George",
-                                             last_name="Klooney")
-    actor_george_klooney.last_name = "Clooney"
-
-    actor_kianu = Actor.objects.get(first_name="Kianu",
-                                    last_name="Reaves")
-    actor_kianu.first_name, actor_kianu.last_name = "Keanu", "Reeves"
-
-    action = Genre.objects.get(name="Action")
-    action.delete()
-
+    Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    all_actors = Actor.objects.all()
-    filtered_actors = all_actors.objects.filter(last_name="Smith")
-    ordered_actors = filtered_actors.objects.order_by('-first_name')
+    ordered_actors = Actor.objects.filter(last_name="Smith").order_by("first_name")
+
     return ordered_actors
