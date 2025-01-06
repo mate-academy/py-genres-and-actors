@@ -2,7 +2,7 @@ import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet
 
-from db.models import *
+from db.models import Actor, Genre
 
 items = [
     ("George", "Klooney"),
@@ -22,7 +22,7 @@ def main() -> QuerySet:
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu").update(last_name="Keanu")
+    Actor.objects.filter(first_name="Kianu").update(first_name="Keanu")
     Actor.objects.filter(last_name="Reaves").update(last_name="Reeves")
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
@@ -32,6 +32,3 @@ def main() -> QuerySet:
     # print(Genre.objects.all().delete())
     # print(Actor.objects.all().delete())
 
-
-if __name__ == '__main__':
-    main()
