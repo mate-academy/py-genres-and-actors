@@ -13,6 +13,7 @@ items = [
     ("Scarlett", "Johansson")
 ]
 
+
 def main() -> QuerySet:
     for item_first, item_second in items:
         Actor.objects.create(
@@ -31,4 +32,3 @@ def main() -> QuerySet:
 
     # print(Genre.objects.all().delete())
     # print(Actor.objects.all().delete())
-
