@@ -14,7 +14,8 @@ def main() -> QuerySet:
         ("Will", "Smith"),
         ("Jaden", "Smith"),
     ]
-    Actor.objects.bulk_create([Actor(first_name=fn, last_name=ln) for fn, ln in actors_data])
+    Actor.objects.bulk_create([Actor(first_name=fn, last_name=ln)
+                               for fn, ln in actors_data])
 
     genre_dramma = Genre.objects.filter(name="Dramma").first()
     if genre_dramma:
@@ -29,6 +30,7 @@ def main() -> QuerySet:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    ordered_actors = Actor.objects.filter(last_name="Smith").order_by("first_name")
+    ordered_actors = Actor.objects.filter(last_name="Smith")\
+        .order_by("first_name")
 
     return ordered_actors
