@@ -13,13 +13,10 @@ def main() -> QuerySet:
     Actor.objects.create(first_name="George", last_name="Clooney")
     Actor.objects.create(first_name="Keanu", last_name="Reeves")
 
-    Genre.object.filter(name="Drama").update(name = "Drama")
+    Genre.object.filter(name="Drama").update(name="Drama")
     Actor.objects.filter(first_name="Jaden",
-                         last_name = "Smith").update(first_name = "Jaden",
-                                                     last_name = "Smith")
+                         last_name="Smith").update(first_name="Jaden",
+                                                     last_name="Smith")
     Genre.objects.filter(name="Drama").delete()
     Actor.objects.filter(first_name="Jaden").delete()
     return Actor.objects.filter(first_name="Jaden").order_by("last_name")
-
-
-
