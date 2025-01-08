@@ -50,3 +50,6 @@ def main() -> QuerySet:
         "first_name"
     )
     return smith_actors
+
+if __name__ == "__main__":
+    main()
