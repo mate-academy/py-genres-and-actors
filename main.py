@@ -6,14 +6,14 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    names = [
+    genres = [
         "Western",
         "Action",
         "Dramma"
     ]
-    # Create genres
-    for name in names:
-        Genre.objects.create(name=name)
+
+    for genre in genres:
+        Genre.objects.create(genre=genre)
 
     actors = [
         {
@@ -42,14 +42,11 @@ def main() -> QuerySet:
         }
     ]
 
-    # Create actors
     for actor in actors:
         Actor.objects.create(**actor)
 
-    # Update genre
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
-    # Update actors
     Actor.objects.filter(
         first_name="George",
         last_name="Klooney"
@@ -59,10 +56,8 @@ def main() -> QuerySet:
         last_name="Reaves"
     ).update(first_name="Keanu", last_name="Reeves")
 
-    # Delete genre
     Genre.objects.filter(name="Action").delete()
 
-    # Delete actresses
     Actor.objects.filter(first_name="Scarlett").delete()
 
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
