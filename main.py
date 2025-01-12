@@ -34,14 +34,13 @@ def main() -> QuerySet:
             (["Kianu", "Reaves"], ["Keanu", "Reeves"]),
         ]
         for old_name, new_name in actors_to_update:
-            for old_name, new_name in actors_to_update:
-                Actor.objects.filter(
-                    first_name=old_name[0],
-                    last_name=old_name[1],
-                ).update(
-                    first_name=new_name[0],
-                    last_name=new_name[1],
-                )
+            Actor.objects.filter(
+                first_name=old_name[0],
+                last_name=old_name[1],
+            ).update(
+                first_name=new_name[0],
+                last_name=new_name[1],
+            )
 
     def delete() -> None:
         Genre.objects.filter(
