@@ -1,5 +1,5 @@
 import os
-from pathlib import Path
+from django.core.wsgi import get_wsgi_application
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -19,5 +19,3 @@ DATABASES = {
 USE_TZ = False
 
 INSTALLED_APPS = ("db",)
-
-DEBUG = ["C:/Users/User/PycharmProjects/bin/py-genres-and-actors/db.sqlite3"]
