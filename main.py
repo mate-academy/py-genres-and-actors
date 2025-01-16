@@ -8,7 +8,7 @@ def main() -> QuerySet:
     genres = [
         Genre(name="Western"),
         Genre(name="Action"),
-        Genre(name="Dramma") # Misspelled for testing purposes
+        Genre(name="Dramma")  # Misspelled for testing purposes
     ]
     actors = [
         Actor(first_name="George", last_name="Klooney"),
