@@ -4,6 +4,7 @@ from django.db.models import QuerySet
 from db.models import Actor
 from db.models import Genre
 
+
 def main() -> QuerySet:
     create_actor("George", "Klooney")
     create_actor("Kianu", "Reaves")
@@ -49,16 +50,15 @@ def main() -> QuerySet:
         last_name="Smith",
     ).order_by("first_name")
 
-def create_actor(first_name, last_name) -> None:
+
+def create_actor(first_name: str, last_name: str) -> None:
     Actor.objects.create(
         first_name=first_name,
         last_name=last_name,
     )
 
 
-
-def create_genre(name) -> None:
+def create_genre(name: str) -> None:
     Genre.objects.create(
         name=name,
     )
-
