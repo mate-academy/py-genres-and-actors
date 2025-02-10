@@ -12,7 +12,7 @@ characters;
 - char field `last_name`, surname of the actor with the maximum length of 255 
 characters.
 
-Inside `main.py`, create `main` function.
+~~Inside `main.py`, create `main` function.
 This function should perform these actions:
 1. Create:
    - genre Western
@@ -25,7 +25,7 @@ This function should perform these actions:
    - actor Jaden Smith
    - actress Scarlett Johansson
 2. Update:
-   - genre Dramma, set `name` to "Drama"
+   - genre Dramma, set `name` to "Drama"~~
    - actor George Klooney, set `last_name` to "Clooney"
    - actor Kianu Reaves, set `first_name` to "Keanu" and `last_name` to "Reeves"
 3. Delete:
