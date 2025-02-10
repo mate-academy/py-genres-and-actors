@@ -56,7 +56,7 @@ def create_actor(profiles: list) -> None:
 
 
 def create_genre(genres: list) -> None:
-    for genre in genres:
+    for gen in genres:
         Genre.objects.create(
-            name=genre,
+            name=gen,
         )
