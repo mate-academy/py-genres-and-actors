@@ -6,16 +6,12 @@ from db.models import Genre
 
 
 def main() -> QuerySet:
-    create_actor("George", "Klooney")
-    create_actor("Kianu", "Reaves")
-    create_actor("Scarlett", "Keegan")
-    create_actor("Will", "Smith")
-    create_actor("Jaden", "Smith")
-    create_actor("Scarlett", "Johansson")
+    create_actor([("George", "Klooney"), ("Kianu", "Reaves"),
+                  ("Scarlett", "Keegan"), ("Will", "Smith"),
+                  ("Jaden", "Smith"), ("Scarlett", "Johansson"),
+                  ("Scarlett", "Johansson")])
 
-    create_genre("Western")
-    create_genre("Action")
-    create_genre("Dramma")
+    create_genre(["Western", "Action", "Dramma"])
 
     Genre.objects.filter(
         name="Dramma"
@@ -51,14 +47,16 @@ def main() -> QuerySet:
     ).order_by("first_name")
 
 
-def create_actor(first_name: str, last_name: str) -> None:
-    Actor.objects.create(
-        first_name=first_name,
-        last_name=last_name,
-    )
+def create_actor(profiles: list) -> None:
+    for profile in profiles:
+        Actor.objects.create(
+            first_name=profile[0],
+            last_name=profile[1],
+        )
 
 
-def create_genre(name: str) -> None:
-    Genre.objects.create(
-        name=name,
-    )
+def create_genre(genres: list) -> None:
+    for genre in genres:
+        Genre.objects.create(
+            name=genre,
+        )
