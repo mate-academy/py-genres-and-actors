@@ -6,5 +6,5 @@ class Genre(models.Model):
 
 
 class Actor(models.Model):
-    first_name = models.CharField(max_length=255, verbose_name="Ім'я")
-    last_name = models.CharField(max_length=255, verbose_name="Прізвище")
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
