@@ -5,7 +5,7 @@ from django.db.models import QuerySet
 
 def main() -> QuerySet:
     # Create Genres
-    western = Genre.objects.create(name="Western")
+    Genre.objects.create(name="Western")
     action = Genre.objects.create(name="Action")
     dramma = Genre.objects.create(name="Dramma")
 
