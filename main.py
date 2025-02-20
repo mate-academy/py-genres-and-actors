@@ -5,6 +5,9 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
+    Genre.objects.all().delete()
+    Actor.objects.all().delete()
+
     # CREATE
     genre_list = ["Western", "Action", "Dramma"]
     for genre in genre_list:
@@ -13,17 +16,15 @@ def main() -> QuerySet:
         )
 
     actor_list = [
-        "George Klooney",
-        "Kianu Reaves",
-        "Scarlett Keegan",
-        "Will Smith",
-        "Jaden Smith",
-        "Scarlett Johansson",
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
     ]
     for people in actor_list:
-        initials = people.split()
-        first_name = initials[0]
-        last_name = " ".join(initials[1:])
+        first_name, last_name = people
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
     # UPDATE
@@ -53,9 +54,3 @@ def main() -> QuerySet:
     return Actor.objects.filter(
         last_name="Smith"
     ).order_by("first_name")
-
-
-if __name__ == "__main__":
-    print(main())
-    print(Genre.objects.all())
-    print(Actor.objects.all())
