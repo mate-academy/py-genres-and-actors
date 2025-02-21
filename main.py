@@ -13,14 +13,15 @@ def main() -> QuerySet:
                        "Scarlett Keegan",
                        "Will Smith",
                        "Jaden Smith",
-                       "Scarlet Johansson"]:
+                       "Scarlett Johansson"]:
         name_parts = actor_name.split(" ")
         Actor.objects.create(first_name=name_parts[0], last_name=name_parts[1])
-    Genre.objects.filter(name="Dramma").update(new_name="Drama")
-    Actor.objects.filter(last_name="Klooney").update(name="Clooney")
-    Actor.objects.filter(first_name="Kianu").update(name="Keanu")
-    Actor.objects.filter(last_name="Reaves").update(name="Reeves")
+
+    Genre.objects.filter(name="Dramma").update(name="Drama")
+    Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
+    Actor.objects.filter(first_name="Kianu").update(first_name="Keanu")
+    Actor.objects.filter(last_name="Reaves").update(last_name="Reeves")
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    return Actor.objects.filter(last_name="Smith").order_by("last_name")
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
