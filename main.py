@@ -1,30 +1,28 @@
 import init_django_orm  # noqa: F401
 
-from models import Genre, Actor
+from db.models import Genre, Actor
 
 
-def main():
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Drama")
+def main() -> None:
+    genres: list[str] = ["Western", "Action", "Dramma"]
+    actors: list[tuple[str, str]] = [
+        ("George", "Cloney"),
+        ("Keanu", "Reevs"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
 
-    Actor.objects.create(first_name="George", last_name="Clooney")
-    Actor.objects.create(first_name="Keanu", last_name="Reeves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    for genre in genres:
+        Genre.objects.create(name=genre)
+
+    for first_name, last_name in actors:
+        Actor.objects.create(first_name=first_name, last_name=last_name)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(first_name="George").update(last_name="Clooney")
-    Actor.objects.filter(first_name="Keanu").update(last_name="Reeves")
+    Actor.objects.filter(first_name="George", last_name="Cloney").update(last_name="Clooney")
 
-    Genre.objects.filter(name="Action").delete()
-    Actor.objects.filter(first_name="Scarlett").delete()
-
-    actors = Actor.objects.filter(last_name="Smith").order_by("first_name")
-    for actor in actors:
-        print(actor)
 
 if __name__ == "__main__":
     main()
