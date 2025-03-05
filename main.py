@@ -21,7 +21,9 @@ def main() -> None:
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(first_name="George", last_name="Cloney").update(last_name="Clooney")
+    Actor.objects.filter(first_name="George", last_name="Cloney").update(
+        last_name="Clooney"
+    )
 
 
 if __name__ == "__main__":
