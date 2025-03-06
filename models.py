@@ -1,7 +1,6 @@
 from django.db import models # noqa: F401
 
 
-
 class Genre(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
