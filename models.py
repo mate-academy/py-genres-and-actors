@@ -1,4 +1,5 @@
-from django.db import models
+from django.db import models # noqa: F401
+
 
 
 class Genre(models.Model):
