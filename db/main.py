@@ -5,6 +5,7 @@ from db.models import Genre, Actor
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 django.setup()
 
+
 def main() -> None:
     genres: list[str] = ["Western", "Action", "Dramma"]
     actors: list[tuple[str, str]] = [
