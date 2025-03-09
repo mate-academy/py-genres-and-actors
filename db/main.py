@@ -1,7 +1,10 @@
-import init_django_orm  # noqa: F401
+import os
+import django
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
+django.setup()
 
 from db.models import Genre, Actor
-
 
 def main() -> None:
     genres: list[str] = ["Western", "Action", "Dramma"]
