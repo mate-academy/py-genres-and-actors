@@ -17,14 +17,19 @@ def main() -> QuerySet:
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(first_name="Keanu", last_name="Reeves")
+    Actor.objects.filter(
+        first_name="Kianu",
+        last_name="Reaves"
+    ).update(
+        first_name="Keanu",
+        last_name="Reeves"
+    )
 
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
     queryset = Actor.objects.order_by("first_name").filter(last_name="Smith")
     return queryset
-
 
 
 if __name__ == "__main__":
