@@ -33,13 +33,14 @@ class ManagerActor:
             last_name=new_last_name)
 
     @staticmethod
-    def actor_delete(first_name_to_delete: str) -> None:
-        Actor.objects.filter(first_name=first_name_to_delete).delete()
+    def actor_delete(first_name_to_delete: str,
+                     last_name_to_delete: str) -> None:
+        Actor.objects.filter(first_name=first_name_to_delete,
+                             last_name=last_name_to_delete).delete()
 
 
 def main() -> QuerySet:
-    Genre.objects.all().delete()
-    Actor.objects.all().delete()
+
     genre_list = ["Western", "Action", "Dramma"]
     for char in genre_list:
         ManagerGenre.genre_create(char)
@@ -60,5 +61,6 @@ def main() -> QuerySet:
     ManagerActor.actor_update(1, "George", "Clooney")
     ManagerActor.actor_update(2, "Keanu", "Reeves")
     ManagerGenre.genre_delete("Action")
-    ManagerActor.actor_delete("Scarlett")
+    ManagerActor.actor_delete("Scarlett", "Johansson")
+    ManagerActor.actor_delete("Scarlett", "Keegan")
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
