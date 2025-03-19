@@ -87,7 +87,3 @@ def main() -> QuerySet:
                               )  # Добавляем удаление Scarlett Keegan
 
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
-
-
-if __name__ == "__main__":
-    main()
