@@ -68,14 +68,25 @@ def main() -> QuerySet:
         first, last = actor
         ManagerActor.create_actor(first, last)
 
-    ManagerActor.update_actor("George", "Klooney", "George", "Clooney")
-    ManagerActor.update_actor("Kianu", "Reaves", "Keanu", "Reeves")
+    ManagerActor.update_actor("George",
+                              "Klooney",
+                              "George",
+                              "Clooney"
+                              )
+    ManagerActor.update_actor("Kianu",
+                              "Reaves",
+                              "Keanu",
+                              "Reeves"
+                              )
 
-    ManagerActor.delete_actor("Scarlett", "Johansson")
-    ManagerActor.delete_actor("Scarlett", "Keegan")  # Добавляем удаление Scarlett Keegan
+    ManagerActor.delete_actor("Scarlett",
+                              "Johansson"
+                              )
+    ManagerActor.delete_actor("Scarlett",
+                              "Keegan"
+                              )  # Добавляем удаление Scarlett Keegan
 
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
-
 
 
 if __name__ == "__main__":
