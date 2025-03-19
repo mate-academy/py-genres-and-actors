@@ -43,8 +43,3 @@ def main() -> list[tuple[str, str]]:
     smith_actors = (Actor.objects.filter(last_name="Smith")
                     .order_by("first_name"))
     return smith_actors.values_list("first_name", "last_name")
-
-
-if __name__ == "__main__":
-    result = main()
-    print(result)
