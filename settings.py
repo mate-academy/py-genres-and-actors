@@ -6,11 +6,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # SECURITY WARNING: Modify this secret key if using in production!
 SECRET_KEY = "6few3nci_q_o@l1dlbk81%wcxe!*6r29yu629&d97!hiqat9fa"
 
-DEBUG = True  # АБО False, якщо проект на продакшн-сервері
-
-# Allowed hosts (обов'язково вказати, якщо DEBUG = False)
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
-
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 DATABASES = {
