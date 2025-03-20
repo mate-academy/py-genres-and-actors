@@ -15,7 +15,7 @@ def main() -> QuerySet:
     for genre_data in genre_data_list:
         Genre.objects.create(**genre_data)
 
-    actors_data_list =[
+    actors_data_list = [
         {"first_name": "George", "last_name": "Klooney"},
         {"first_name": "Kianu", "last_name": "Reaves"},
         {"first_name": "Scarlett", "last_name": "Keegan"},
