@@ -9,5 +9,5 @@ class Actor(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
 
-    def __str__(self) -> None:
+    def __str__(self) -> str:
         return f"Actor: {self.first_name} {self.last_name}"
