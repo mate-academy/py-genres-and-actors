@@ -55,7 +55,7 @@ def main() -> QuerySet:
 
     actors_with_smith = Actor.objects.filter(
         last_name="Smith"
-    ).order_by('first_name')
+    ).order_by("first_name")
 
     for actor in actors_with_smith:
         print(actor)
