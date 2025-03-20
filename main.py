@@ -28,9 +28,3 @@ def main() -> QuerySet:
     return models.Actor.objects.filter(
         last_name="Smith"
     ).all().order_by("first_name")
-
-
-if __name__ == "__main__":
-    print(main())
-    print(models.Genre.objects.all())
-    print(models.Actor.objects.all())
