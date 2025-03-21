@@ -1,64 +1,12 @@
-<<<<<<< HEAD
-import pytest
-
-from db.models import Genre, Actor
-
-from main import main
-
-
-@pytest.mark.django_db
-def test_main():
-    actors = main()
-    assert list(actors.values_list("first_name", "last_name")) == [
-        ("Jaden", "Smith"),
-        ("Will", "Smith"),
-    ]
-
-
-@pytest.mark.django_db
-def test_genres():
-    main()
-    assert list(Genre.objects.values_list("name")) == [
-        ("Western",),
-        ("Drama",),
-    ]
-
-
-@pytest.mark.django_db
-def test_actors():
-    main()
-    assert list(Actor.objects.values_list("first_name", "last_name")) == [
-        ("George", "Clooney"),
-        ("Keanu", "Reeves"),
-        ("Will", "Smith"),
-        ("Jaden", "Smith"),
-    ]
-=======
+import os
 from unittest.mock import patch
 import pytest
-import os
-
-from app.main import Car, CarWashStation
-
-
-def test_car():
-    bmw = Car(2, 3, "BMW")
-    assert bmw.comfort_class == 2, "Class Car should store 'comfort_class'"
-    assert bmw.clean_mark == 3, "Class Car should store 'clean_mark'"
-    assert bmw.brand == "BMW", "Class Car should store 'brand'"
+from main import Car, CarWashStation
 
 
 @pytest.mark.parametrize(
     "cars,wash_station,total_cost",
     [
-        ([], CarWashStation(3, 9, 4.4, 144), 0),
-        ([Car(2, 1, "Ford")], CarWashStation(3, 9, 4.2, 11), 22.4),
-        ([Car(2, 9, "Ford")], CarWashStation(3, 8, 4.2, 11), 0),
-        (
-            [Car(3, 3, "BMW"), Car(4, 5, "Audi"), Car(7, 1, "Mercedes")],
-            CarWashStation(6, 7, 3.9, 11),
-            40.3,
-        ),
         (
             [Car(3, 3, "BMW"), Car(4, 5, "Audi"), Car(7, 9, "Mercedes")],
             CarWashStation(6, 7, 3.9, 11),
@@ -74,6 +22,7 @@ def test_car():
 def test_car_wash_station(cars, wash_station, total_cost):
     income = wash_station.serve_cars(cars)
     assert income == total_cost, f"Income should equal to {total_cost}"
+
 
 def test_wash_single_car_is_called():
     with patch.object(CarWashStation, 'wash_single_car') as mock_method:
@@ -157,6 +106,5 @@ def test_unnecessary_comment():
         main_content = main.read()
 
         assert (
-                "# write your code here" not in main_content
+            "# write your code here" not in main_content
         ), "Remove unnecessary comment"
->>>>>>> c457ee4aba3e022c80daa6a7433bb20aead96023

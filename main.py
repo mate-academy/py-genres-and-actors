@@ -1,4 +1,3 @@
-import init_django_orm  # noqa: F401
 from db.models import Genre, Actor
 from django.db.models import QuerySet
 
@@ -60,13 +59,20 @@ class CarWashStation:
 def main() -> QuerySet:
     # Створюємо жанри
     Genre.objects.get_or_create(name="Western")
-    Genre.objects.get_or_create(name="Drama")
+
+    # Створюємо жанр 'Dramma' і оновлюємо його на 'Drama'
+    drama_genre, created = Genre.objects.get_or_create(name="Dramma")
+    if created:
+        drama_genre.name = "Drama"
+        drama_genre.save()
 
     # Створюємо акторів
-    Actor.objects.get_or_create(first_name="George", last_name="Clooney")
-    Actor.objects.get_or_create(first_name="Keanu", last_name="Reeves")
+    Actor.objects.get_or_create(first_name="George", last_name="Klooney")
+    Actor.objects.get_or_create(first_name="Kianu", last_name="Reaves")
+    Actor.objects.get_or_create(first_name="Scarlett", last_name="Keegan")
     Actor.objects.get_or_create(first_name="Will", last_name="Smith")
     Actor.objects.get_or_create(first_name="Jaden", last_name="Smith")
+    Actor.objects.get_or_create(first_name="Scarlett", last_name="Johansson")
 
     # Повертаємо список акторів для перевірки тестами
     return Actor.objects.filter(
