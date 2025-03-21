@@ -4,7 +4,10 @@ ignore = E203, E266, W503, ANN002, ANN003, ANN101, ANN102, ANN401, N807, N818
 max-line-length = 79
 max-complexity = 18
 select = B,C,E,F,W,T4,B9,ANN,Q0,N8,VNE
+HEAD
 exclude =
     **migrations
     venv
     tests
+exclude = venv, tests
+c457ee4aba3e022c80daa6a7433bb20aead96023
