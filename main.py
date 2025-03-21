@@ -4,31 +4,29 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    genres = ["Western", "Action", "Dramma"]
-    for genre in genres:
-        Genre.objects.create(name=genre)
-    actors = [
-        "George Klooney",
-        "Kianu Reaves",
-        "Scarlett Keegan",
-        "Will Smith",
-        "Jaden Smith",
-        "Scarlett Johansson"
+    genres = [
+        ("Western",),
+        ("Action",),
+        ("Dramma",)
     ]
-    for actor in actors:
-        actor_split = actor.split(" ")
-        Actor.objects.create(
-            first_name=actor_split[0],
-            last_name=actor_split[1]
-        )
+    Genre.objects.bulk_create([Genre(name=name) for (name,) in genres])
+    actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
+    ]
+    Actor.objects.bulk_create([Actor(
+        first_name=f,
+        last_name=l
+    ) for f, l in actors])
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(
         first_name="George",
         last_name="Klooney"
-    ).update(
-        first_name="George",
-        last_name="Clooney"
-    )
+    ).update(last_name="Clooney")
     Actor.objects.filter(
         first_name="Kianu",
         last_name="Reaves"
@@ -37,5 +35,8 @@ def main() -> QuerySet:
         last_name="Reeves"
     )
     Genre.objects.filter(name="Action").delete()
-    Actor.objects.filter(first_name="Scarlett").delete()
+    Actor.objects.filter(
+        first_name="Scarlett",
+        last_name__in=["Keegan", "Johansson"]
+    ).delete()
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
