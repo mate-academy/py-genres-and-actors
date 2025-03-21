@@ -6,10 +6,11 @@ from typing import Tuple, List
 
 
 def main() -> QuerySet:
-    genres: List[str] = ["Western", "Action", "Drama"]
+    genres: List[str] = ["Western", "Action", "Dramma"]
+
     actors: List[Tuple[str, str]] = [
         ("George", "Klooney"),
-        ("Keanu", "Reaves"),
+        ("Kianu", "Reaves"),
         ("Scarlett", "Keegan"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
@@ -19,8 +20,11 @@ def main() -> QuerySet:
     for genre_name in genres:
         Genre.objects.create(name=genre_name)
 
-    for first, last in actors:
-        Actor.objects.create(first_name=first, last_name=last)
+    for first_name, last_name in actors:
+        Actor.objects.create(
+            first_name=first_name,
+            last_name=last_name
+        )
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(
