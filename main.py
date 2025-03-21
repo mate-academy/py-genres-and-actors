@@ -5,15 +5,20 @@ import db.models as models
 
 
 def main() -> QuerySet:
-    models.Genre.objects.create(name="Western")
-    models.Genre.objects.create(name="Action")
-    models.Genre.objects.create(name="Dramma")
-    models.Actor.objects.create(first_name="George", last_name="Klooney")
-    models.Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    models.Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    models.Actor.objects.create(first_name="Will", last_name="Smith")
-    models.Actor.objects.create(first_name="Jaden", last_name="Smith")
-    models.Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    genres = ["Western", "Action", "Dramma"]
+    for genre in genres:
+        models.Genre.objects.create(name=genre)
+    actors = [
+        {"first_name": "George", "last_name": "Klooney"},
+        {"first_name": "Kianu", "last_name": "Reaves"},
+        {"first_name": "Scarlett", "last_name": "Keegan"},
+        {"first_name": "Will", "last_name": "Smith"},
+        {"first_name": "Jaden", "last_name": "Smith"},
+        {"first_name": "Scarlett", "last_name": "Johansson"}
+    ]
+    for actor in actors:
+        models.Actor.objects.create(**actor)
+
     models.Genre.objects.filter(name="Dramma").update(name="Drama")
     models.Actor.objects.filter(last_name="Klooney").update(
         last_name="Clooney"
@@ -28,3 +33,5 @@ def main() -> QuerySet:
     return models.Actor.objects.filter(
         last_name="Smith"
     ).all().order_by("first_name")
+
+print(main())
