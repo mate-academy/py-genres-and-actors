@@ -6,10 +6,10 @@ from typing import Tuple, List
 
 
 def main() -> QuerySet:
-    genres: List[str] = ["Western", "Action", "Dramma"]
+    genres: List[str] = ["Western", "Action", "Drama"]
     actors: List[Tuple[str, str]] = [
         ("George", "Klooney"),
-        ("Kianu", "Reaves"),
+        ("Keanu", "Reaves"),
         ("Scarlett", "Keegan"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
