@@ -1,5 +1,4 @@
 django==4.0.2
-c457ee4aba3e022c80daa6a7433bb20aead96023
 flake8==5.0.4
 flake8-annotations==2.9.1
 flake8-quotes==3.3.1
