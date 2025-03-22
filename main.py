@@ -1,7 +1,7 @@
-import init_django_orm  # noqa: F401
+import init_django_orm  # noqa 401
 
-from django.db.models import QuerySet  # type: ignore
-from models import Actor, Genre  # type: ignore
+from django.db.models import QuerySet
+from db.models import Actor, Genre
 
 
 def main() -> QuerySet:
