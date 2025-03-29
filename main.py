@@ -11,9 +11,8 @@ actors = [("George", "Klooney"), ("Kianu", "Reaves"), ("Scarlett", "Keegan"),
 def main() -> QuerySet:
     for genre in genres:
         Genre.objects.create(name=genre)
-    for actor in actors:
-        for first_tile, second_tile in actor:
-            Actor.objects.create(first_name=first_tile, last_name=second_tile)
+    for first_tile, second_tile in actors:
+        Actor.objects.create(first_name=first_tile, last_name=second_tile)
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(
         first_name="George", last_name="Klooney").update(last_name="Clooney")
@@ -22,3 +21,7 @@ def main() -> QuerySet:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
+
+
+if __name__ == "__main__":
+    main()
