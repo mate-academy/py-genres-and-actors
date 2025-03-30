@@ -7,7 +7,7 @@ from db.models import Genre, Actor
 def main() -> QuerySet:
     western = Genre.objects.create(name="Western")
     action = Genre.objects.create(name="Action")
-    drama = Genre.objects.create(name="Drama")
+    drama = Genre.objects.create(name="Dramma")
 
     george_klooney = Actor.objects.create(first_name="George", last_name="Klooney")
     keanu_reeves = Actor.objects.create(first_name="Keanu", last_name="Reeves")
@@ -32,7 +32,3 @@ def main() -> QuerySet:
     smith_actors = Actor.objects.filter(last_name="Smith").order_by('first_name')
 
     return smith_actors
-
-
-if __name__ == "__main__":
-    main()
