@@ -18,3 +18,7 @@ DATABASES = {
 USE_TZ = False
 
 INSTALLED_APPS = ("db",)
+
+DEBUG = True
+
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
