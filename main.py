@@ -19,7 +19,7 @@ def main() -> QuerySet:
 
     for actor_first_name, actor_last_name in actors_list:
         Actor.objects.create(
-            first_name=actor_first_name, 
+            first_name=actor_first_name,
             last_name=actor_last_name
         )
 
