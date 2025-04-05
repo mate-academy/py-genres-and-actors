@@ -1,37 +1,37 @@
 import init_django_orm  # noqa: F401
+
 from django.db.models import QuerySet
+
 from db.models import Genre, Actor
 
+
 def main() -> QuerySet:
-    # Create genres
-    genres = [
-        ("Western",),
-        ("Action",),
-        ("Dramma",)
-    ]
-    for name in genres:
-        Genre.objects.get_or_create(name=name[0])
+    genre_names = ["Western",
+                   "Action",
+                   "Drama"]
+    actor_data = [("George", "Klooney"),
+                  ("Kianu", "Reaves"),
+                  ("Scarlett", "Keegan"),
+                  ("Will", "Smith"),
+                  ("Jaden", "Smith"),
+                  ("Scarlett", "Johansson")]
 
-    # Create actors
-    actors = [
-        ("George", "Klooney"),
-        ("Kianu", "Reaves"),
-        ("Scarlett", "Keegan"),
-        ("Will", "Smith"),
-        ("Jaden", "Smith"),
-        ("Scarlett", "Johansson")
-    ]
-    for first_name, last_name in actors:
-        Actor.objects.get_or_create(first_name=first_name, last_name=last_name)
+    Genre.objects.bulk_create(
+        [Genre(name=name) for name in genre_names]
+    )
 
-    # Update genres and actors
+    Actor.objects.bulk_create(
+        [Actor(first_name=first_name, last_name=last_name)
+         for first_name, last_name in actor_data]
+    )
+
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(first_name="George", last_name="Klooney").update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(first_name="Keanu", last_name="Reeves")
-
-    # Delete genre and actors
+    Actor.objects.filter(first_name="George").update(last_name="Clooney")
+    Actor.objects.filter(first_name="Kianu").update(
+        first_name="Keanu",
+        last_name="Reeves"
+    )
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    # Return remaining actors ordered by first_name
-    return Actor.objects.filter(last_name="Smith").order_by('first_name')
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
