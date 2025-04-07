@@ -8,7 +8,7 @@ def main() -> QuerySet:
 
     genres = ["Western", "Action", "Drama"]
     for genre_name in genres:
-        Genre.objects.get_or_create(name=genre_name)
+        Genre.objects.create(name=genre_name)
 
     Genre.objects.filter(name="Drumma").update(name="Drama")
 
@@ -23,7 +23,7 @@ def main() -> QuerySet:
         {"first_name": "Scarlett", "last_name": "Johansson"},
     ]
     for actor_data in actors:
-        Actor.objects.get_or_create(**actor_data)
+        Actor.objects.create(**actor_data)
 
     Actor.objects.filter(
         first_name="George", last_name="Klooney"
