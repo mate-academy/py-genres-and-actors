@@ -23,7 +23,6 @@ def main() -> QuerySet:
     for actor_data in actors:
         Actor.objects.get_or_create(**actor_data)
 
-
     Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(
         first_name="Keanu", last_name="Reeves"
     )
