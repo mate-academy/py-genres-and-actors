@@ -1,28 +1,24 @@
 import init_django_orm  # noqa: F401
-
 from django.db.models import QuerySet
+from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
 
-    genres = ["Western", "Action", "Drama"]
-    for genre_name in genres:
-        Genre.objects.create(name=genre_name)
+    Genre.objects.create(name="Western")
+    Genre.objects.create(name="Action")
+    Genre.objects.create(name="Dramma")
 
-    Genre.objects.filter(name="Drumma").update(name="Drama")
+    Genre.objects.filter(name="Dramma").update(name="Drama")
 
     Genre.objects.filter(name="Action").delete()
 
-    actors = [
-        {"first_name": "George", "last_name": "Klooney"},
-        {"first_name": "Kianu", "last_name": "Reaves"},
-        {"first_name": "Scarlett", "last_name": "Keegan"},
-        {"first_name": "Will", "last_name": "Smith"},
-        {"first_name": "Jaden", "last_name": "Smith"},
-        {"first_name": "Scarlett", "last_name": "Johansson"},
-    ]
-    for actor_data in actors:
-        Actor.objects.create(**actor_data)
+    Actor.objects.create(first_name="George", last_name="Klooney")
+    Actor.objects.create(first_name="Kianu", last_name="Reaves")
+    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
+    Actor.objects.create(first_name="Will", last_name="Smith")
+    Actor.objects.create(first_name="Jaden", last_name="Smith")
+    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
 
     Actor.objects.filter(
         first_name="George", last_name="Klooney"
