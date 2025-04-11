@@ -1,4 +1,3 @@
-from django.template.defaultfilters import first
 
 import init_django_orm  # noqa: F401
 
