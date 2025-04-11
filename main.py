@@ -1,5 +1,3 @@
-from django.template.defaultfilters import first
-
 import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet
@@ -30,7 +28,6 @@ def main() -> QuerySet:
         name="Dramma"
     ).update(name="Drama")
 
-
     george = Actor.objects.get(first_name="George", last_name="Klooney")
     kianu = Actor.objects.get(first_name="Kianu", last_name="Reaves")
 
@@ -38,10 +35,11 @@ def main() -> QuerySet:
     kianu.first_name = "Keanu"
     kianu.last_name = "Reeves"
 
-    Actor.objects.bulk_update([george,kianu], ["first_name", "last_name"])
+    Actor.objects.bulk_update([george, kianu], ["first_name", "last_name"])
 
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    smith_actors = Actor.objects.filter(last_name="Smith").order_by("first_name")
+    smith_actors = (Actor.objects.filter(last_name="Smith")
+                    .order_by("first_name"))
     return smith_actors
