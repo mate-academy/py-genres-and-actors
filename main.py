@@ -8,7 +8,7 @@ from django.db.models import QuerySet
 def main() -> QuerySet:
     genres = ["Western", "Action", "Dramma"]
     for genre_name in genres:
-        genre = Genre.objects.get(name=genre_name)
+        Genre.objects.create(name=genre_name)
 
     actors = [
         ("George", "Klooney"),
@@ -19,7 +19,7 @@ def main() -> QuerySet:
         ("Scarlett", "Johansson")
     ]
     for first_name, last_name in actors:
-        actor = Actor(first_name=first_name, last_name=last_name)
+        Actor.objects.create(first_name=first_name, last_name=last_name)
 
     Genre.objects.filter(
         name="Dramma"
