@@ -43,7 +43,6 @@ def main() -> QuerySet:
         last_name="Smith",
     )
 
-
     Actor.objects.create(
         first_name="Scarlett",
         last_name="Johansson",
@@ -83,4 +82,3 @@ if __name__ == "__main__":
     main()
 
     pass
-
