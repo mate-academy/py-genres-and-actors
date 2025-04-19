@@ -116,7 +116,7 @@ def main() -> QuerySet:
     Sorted_Actors = Actor.objects.filter(
         last_name="Smith"
     ).order_by("first_name")
-    print(Sorted_Actors)
+    return Sorted_Actors
 <<<<<<< HEAD
 
 
