@@ -7,7 +7,7 @@ def main() -> QuerySet:
     # Gêneros
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")  # erro intencional para corrigir depois
+    Genre.objects.create(name="Dramma")
 
     # Atores
     Actor.objects.create(first_name="George", last_name="Klooney")
@@ -26,9 +26,9 @@ def main() -> QuerySet:
         first_name="Kianu", last_name="Reaves"
     ).update(first_name="Keanu", last_name="Reeves")
 
-    # Deletar especificamente "Scarlett Keegan"
-    Actor.objects.filter(first_name="Scarlett").delete()
+    # Deletar
     Genre.objects.filter(name="Action").delete()
+    Actor.objects.filter(first_name="Scarlett").delete()
 
     # Consultar atores com o sobrenome "Smith" e ordená-los pelo primeiro nome
     smith_actors = Actor.objects.filter(
