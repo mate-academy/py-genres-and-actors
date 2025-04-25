@@ -1,9 +1,7 @@
-import init_django_orm  # noqa: F401
-from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def main() -> QuerySet:
+def main():
     """Main function to perform CRUD operations on Genre and Actor models."""
     # 1. Create objects
     # Create genres
@@ -17,10 +15,7 @@ def main() -> QuerySet:
     Actor.objects.create(first_name="Scarlett", last_name="Keegan")
     Actor.objects.create(first_name="Will", last_name="Smith")
     Actor.objects.create(first_name="Jaden", last_name="Smith")
-    scarlett_j = Actor.objects.create(
-        first_name="Scarlett",
-        last_name="Johansson"
-    )
+    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
 
     # 2. Update objects
     # Update genre
@@ -43,7 +38,7 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="Scarlett").delete()
 
     # 4. Return QuerySet of Smith actors ordered by first_name
-    return Actor.objects.filter(last_name="Smith").order_by("first_name")
+    return Actor.objects.filter(last_name="Smith").order_by('first_name')
 
 
 if __name__ == "__main__":
