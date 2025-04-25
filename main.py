@@ -1,8 +1,13 @@
+from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def main():
-    """Main function to perform CRUD operations on Genre and Actor models."""
+def main() -> QuerySet[Actor]:
+    """Main function to perform CRUD operations on Genre and Actor models.
+
+    Returns:
+        QuerySet[Actor]: Filtered and ordered queryset of actors
+    """
     # 1. Create objects
     # Create genres
     Genre.objects.create(name="Western")
@@ -38,7 +43,7 @@ def main():
     Actor.objects.filter(first_name="Scarlett").delete()
 
     # 4. Return QuerySet of Smith actors ordered by first_name
-    return Actor.objects.filter(last_name="Smith").order_by('first_name')
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
 
 if __name__ == "__main__":
