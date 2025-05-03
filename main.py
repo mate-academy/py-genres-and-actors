@@ -12,8 +12,9 @@ def main() -> QuerySet:
     actors = ["George Klooney", "Kianu Reaves", "Scarlett Keegan",
               "Will Smith", "Jaden Smith", "Scarlett Johansson"]
     for actor in actors:
-        (name, surname) = actor.split(" ", 1)
-        Actor.objects.get_or_create(first_name=name, last_name=surname)
+        *first_part, last_name = actor.split()
+        first_name = " ".join(first_part)
+        Actor.objects.get_or_create(first_name=first_name, last_name=last_name)
 
     # 2
     Genre.objects.filter(name="Dramma").update(name="Drama")
