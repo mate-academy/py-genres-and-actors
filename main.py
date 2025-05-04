@@ -1,5 +1,3 @@
-import init_django_orm
-
 from django.db.models import QuerySet
 
 from db.models import Genre, Actor
@@ -23,7 +21,6 @@ def main() -> QuerySet:
     ]
     Actor.objects.bulk_create(actors)
 
-
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney"),
     Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(
@@ -33,6 +30,7 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="Scarlett").delete()
 
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
+
 
 if __name__ == "__main__":
     main()
