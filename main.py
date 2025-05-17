@@ -8,12 +8,16 @@ def main() -> QuerySet:
     list_of_actor = ["George Klooney", "Scarlett Johansson", "Kianu Reaves",
                      "Scarlett Keegan", "Will Smith", "Jaden Smith"]
 
-    for genre in list_of_genre:
-        Genre.objects.create(name=genre)
+    Genre.objects.bulk_create([
+        Genre(name=genre)
+        for genre in list_of_genre
+    ])
 
-    for actor in list_of_actor:
-        actor = actor.split()
-        Actor.objects.create(first_name=actor[0], last_name=actor[1])
+    Actor.objects.bulk_create([
+        Actor(first_name=actor.split()[0],
+              last_name="".join(actor.split()[1:]))
+        for actor in list_of_actor
+    ])
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(first_name="George", last_name="Klooney").update(
