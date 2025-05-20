@@ -3,7 +3,7 @@ import init_django_orm  # noqa: F401
 from db.models import Actor, Genre
 
 
-def main():
+def main() -> None:
     Genre.objects.bulk_create([
         Genre(name="Western"),
         Genre(name="Action"),
@@ -25,7 +25,8 @@ def main():
     Actor.objects.filter(first_name="Kianu", last_name="Reaves"
                          ).update(first_name="Keanu",
                                   last_name="Reeves")
-    actors_named_smith = Actor.objects.filter(last_name="Smith").order_by("first_name")
+    actors_named_smith = Actor.objects.filter(
+        last_name="Smith").order_by("first_name")
     return actors_named_smith
 
 
