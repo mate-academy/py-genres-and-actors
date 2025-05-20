@@ -10,4 +10,4 @@ class Actor(models.Model):
     last_name = models.CharField(max_length=255)
 
     class Meta:
-        unique_together = ('first_name', 'last_name')
+        unique_together = ("first_name", "last_name")
