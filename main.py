@@ -25,6 +25,9 @@ def main() -> None:
     Actor.objects.filter(first_name="Kianu", last_name="Reaves"
                          ).update(first_name="Keanu",
                                   last_name="Reeves")
+    Genre.objects.filter(name="Action").delete()
+    Actor.objects.filter(first_name="Scarlett").delete()
+
     actors_named_smith = Actor.objects.filter(
         last_name="Smith").order_by("first_name")
     return actors_named_smith
