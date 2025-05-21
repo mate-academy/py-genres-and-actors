@@ -5,7 +5,7 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    create_actors = [
+    actors_list = [
         ("George", "Klooney",),
         ("Kianu", "Reaves",),
         ("Scarlett", "Keegan",),
@@ -13,15 +13,15 @@ def main() -> QuerySet:
         ("Jaden", "Smith",),
         ("Scarlett", "Johansson",)
     ]
-    create_geners = ["Western", "Action", "Dramma"]
+    create_genres = ["Western", "Action", "Dramma"]
 
-    for actor_first_name, actor_last_name in create_actors:
+    for actor_first_name, actor_last_name in actors_list:
         Actor.objects.create(
             first_name=actor_first_name,
             last_name=actor_last_name
         )
 
-    for gener in create_geners:
+    for gener in create_genres:
         Genre.objects.create(
             name=gener
         )
