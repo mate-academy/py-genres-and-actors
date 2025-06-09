@@ -1,4 +1,4 @@
-# import init_django_orm
+import init_django_orm
 
 from django.db.models import QuerySet
 from db.models import Genre, Actor
@@ -6,8 +6,8 @@ from db.models import Genre, Actor
 
 def main() -> QuerySet:
 
-    western = Genre.objects.create(name="Western")
-    action = Genre.objects.create(name="Action")
+    _ = Genre.objects.create(name="Western")
+    _ = Genre.objects.create(name="Action")
     dramma = Genre.objects.create(name="Dramma")
 
     Actor.objects.create(first_name="George", last_name="Klooney")
