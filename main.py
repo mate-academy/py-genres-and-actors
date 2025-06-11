@@ -39,7 +39,7 @@ def main() -> QuerySet:
         first_name="Scarlett",
         last_name="Johansson",
     )
-    #update
+    # update
     Genre.objects.filter(
         name="Dramma",
     ).update(
