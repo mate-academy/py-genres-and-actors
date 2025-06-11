@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, migrations
 
 
 class Genre:
@@ -6,6 +6,7 @@ class Genre:
 
     def __str__(self) -> chr:
         return self.name
+
 
 class Actor:
     first_name = models.CharField(max_length=255)
