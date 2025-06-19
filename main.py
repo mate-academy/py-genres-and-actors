@@ -4,15 +4,18 @@ from django.db.models import QuerySet
 
 
 def main() -> QuerySet:
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")
-    Actor.objects.create(first_name="George", last_name="Klooney")
-    Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    genres = ["Western", "Action", "Dramma"]
+    for genre in genres:
+        Genre.objects.create(name=genre)
+
+    for actor in ["George Klooney",
+                  "Kianu Reaves",
+                  "Scarlett Keegan",
+                  "Will Smith",
+                  "Jaden Smith",
+                  "Scarlett Johansson"]:
+        name_parts = actor.split(" ")
+        Actor.objects.create(first_name=name_parts[0], last_name=name_parts[1])
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
@@ -22,6 +25,4 @@ def main() -> QuerySet:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    smith_actors = (Actor.objects.filter(last_name="Smith")
-                    .order_by("first_name"))
-    return smith_actors
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
