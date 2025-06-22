@@ -29,3 +29,4 @@ def main() -> QuerySet:
 
     query_set = Actor.objects.filter(last_name="Smith").order_by("first_name")
     return query_set
+
