@@ -56,5 +56,5 @@ def main() -> QuerySet:
     return query_set
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
