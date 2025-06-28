@@ -18,11 +18,12 @@ DATABASES = {
 USE_TZ = False
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "db",  # <--- Цей рядок є критично важливим!
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    # ... інші встановлені додатки, якщо є
+    'db',  # <--- Ось тут додайте ваш додаток 'db'
 ]
