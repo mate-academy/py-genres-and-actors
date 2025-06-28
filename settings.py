@@ -25,5 +25,5 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # ... інші встановлені додатки, якщо є
-    'db',  # <--- Ось тут додайте ваш додаток 'db'
+    "db",  # <--- Ось тут додайте ваш додаток 'db'
 ]
