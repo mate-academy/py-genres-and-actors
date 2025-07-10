@@ -4,12 +4,14 @@ from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def create(genre: list = [], actor: list = []) -> None:
-    for name in genre:
-        Genre.objects.create(name=name)
-    for full_name in actor:
-        first_name, last_name = full_name.split()
-        Actor.objects.create(first_name=first_name, last_name=last_name)
+def create(genre: list = None, actor: list = None) -> None:
+    if genre:
+        for name in genre:
+            Genre.objects.create(name=name)
+    if actor:
+        for full_name in actor:
+            first_name, last_name = full_name.split()
+            Actor.objects.create(first_name=first_name, last_name=last_name)
 
 
 def update() -> None:
