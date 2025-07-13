@@ -28,20 +28,20 @@ def main() -> QuerySet:
         )
 
 
-Genre.objects.filter(name="Dramma").update(name="Drama")
-Actor.objects.filter(
+    Genre.objects.filter(name="Dramma").update(name="Drama")
+    Actor.objects.filter(
     first_name="George",
     last_name="Klooney"
-).update(last_name="Clooney")
-(Actor.objects.filter(
+    ).update(last_name="Clooney")
+    (Actor.objects.filter(
     first_name="Kianu",
     last_name="Reaves"
-).update(
+    ).update(
     first_name="Keanu",
     last_name="Reeves"
-))
+    ))
 
-Genre.objects.filter(name="Action").delete()
+    Genre.objects.filter(name="Action").delete()
 
-Actor.objects.filter(first_name="Scarlett").delete()
-Actor.objects.filter(last_name="Smith").order_by("first_name")
+    Actor.objects.filter(first_name="Scarlett").delete()
+    Actor.objects.filter(last_name="Smith").order_by("first_name")
