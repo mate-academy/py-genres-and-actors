@@ -1,53 +1,43 @@
-# Cinema Hall
+# db/models.py
+from django.db import models
 
-Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
+class Genre(models.Model):
+    name = models.CharField(max_length=255)
 
-In `db/models.py` create table `Genre` with such fields:
-- char field `name`, name of the genre with the maximum length of 255 
-characters.
+class Actor(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
 
-Also, create table `Actor` with such fields:
-- char field `first_name`, name of the actor with the maximum length of 255 
-characters;
-- char field `last_name`, surname of the actor with the maximum length of 255 
-characters.
+# main.py
+from db.models import Genre, Actor
 
-Inside `main.py`, create `main` function.
-This function should perform these actions:
-1. Create:
-   - genre Western
-   - genre Action
-   - genre Dramma
-   - actor George Klooney
-   - actor Kianu Reaves
-   - actress Scarlett Keegan
-   - actor Will Smith
-   - actor Jaden Smith
-   - actress Scarlett Johansson
-2. Update:
-   - genre Dramma, set `name` to "Drama"
-   - actor George Klooney, set `last_name` to "Clooney"
-   - actor Kianu Reaves, set `first_name` to "Keanu" and `last_name` to "Reeves"
-3. Delete:
-   - genre Action
-   - all actresses with the `first_name` "Scarlett"
-4. Return:
-   - QuerySet of actors with `last_name` "Smith" and ordered by `first_name`
-   
-**Note**: if you need to sort the QuerySet, you can use 
-[.order_by()](https://docs.djangoproject.com/en/4.0/ref/models/querysets/#order-by) 
-method
-
-Example:
-```python
-print(main())
-# <QuerySet [<Actor: Jaden Smith>, <Actor: Will Smith>]>
-
-print(Genre.objects.all())
-# <QuerySet [<Genre: Western>, <Genre: Drama>]>
-
-print(Actor.objects.all())
-# <QuerySet [<Actor: George Clooney>, <Actor: Keanu Reeves>, <Actor: Will Smith>, <Actor: Jaden Smith>]>
-```
-
-### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
+def main():
+    # Create genres and actors
+    Genre.objects.bulk_create([
+        Genre(name="Western"),
+        Genre(name="Action"),
+        Genre(name="Dramma"),
+    ])
+    
+    Actor.objects.bulk_create([
+        Actor(first_name="George", last_name="Klooney"),
+        Actor(first_name="Kianu", last_name="Reaves"),
+        Actor(first_name="Scarlett", last_name="Keegan"),
+        Actor(first_name="Will", last_name="Smith"),
+        Actor(first_name="Jaden", last_name="Smith"),
+        Actor(first_name="Scarlett", last_name="Johansson"),
+    ])
+    
+    # Update records
+    Genre.objects.filter(name="Dramma").update(name="Drama")
+    Actor.objects.filter(first_name="George").update(last_name="Clooney")
+    Actor.objects.filter(first_name="Kianu").update(
+        first_name="Keanu", last_name="Reeves"
+    )
+    
+    # Delete records
+    Genre.objects.filter(name="Action").delete()
+    Actor.objects.filter(first_name="Scarlett").delete()
+    
+    # Return QuerySet
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
