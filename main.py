@@ -13,6 +13,7 @@ actors = [
     ("Jaden", "Smith"),
     ("Scarlett", "Johansson")
 ]
+
 def main() -> QuerySet:
     for genre in genres:
         Genre.objects.create(
