@@ -1,8 +1,3 @@
-import os
-
-import django
-from django.core.management import call_command
-
 import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet
@@ -10,16 +5,7 @@ from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def setup_django_and_migrate() -> None:
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "your_project.settings")
-    django.setup()
-    call_command("makemigrations", "db")
-    call_command("migrate")
-
-
 def main() -> QuerySet:
-    setup_django_and_migrate()
-
     Genre.objects.bulk_create([
         Genre(name="Western"),
         Genre(name="Action"),
