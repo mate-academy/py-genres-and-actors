@@ -19,8 +19,6 @@ def main() -> QuerySet:
         ("Jaden", "Smith"),
         ("Scarlett", "Johansson"),
     ]
-    for first_name, last_name in actors:
-        Actor(first_name=first_name, last_name=last_name)
 
     for first_name, last_name in actors:
         Actor.objects.create(first_name=first_name, last_name=last_name)
