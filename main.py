@@ -11,10 +11,10 @@ from db.models import Genre, Actor
 
 
 def setup_django_and_migrate():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'your_project.settings')
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "your_project.settings")
     django.setup()
-    call_command('makemigrations', 'db')
-    call_command('migrate')
+    call_command("makemigrations", "db")
+    call_command("migrate")
 
 
 def main() -> QuerySet:
