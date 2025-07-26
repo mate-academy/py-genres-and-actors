@@ -17,7 +17,7 @@ jobs:
       - name: Set Up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: "3.10"
+          python-version: "3.10.18"
 
       - name: Install requirements
         run: |
@@ -25,6 +25,9 @@ jobs:
           pip install -r requirements.txt
       - name: Run flake8
         run: flake8
+
+      - name: Run migrations
+        run: python manage.py migrate
 
       - name: Run tests
         timeout-minutes: 5
