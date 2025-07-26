@@ -10,7 +10,7 @@ from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def setup_django_and_migrate():
+def setup_django_and_migrate() -> None:
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "your_project.settings")
     django.setup()
     call_command("makemigrations", "db")
