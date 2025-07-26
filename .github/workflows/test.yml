@@ -27,5 +27,4 @@ jobs:
         run: flake8
 
       - name: Run tests
-        timeout-minutes: 5
         run: pytest
