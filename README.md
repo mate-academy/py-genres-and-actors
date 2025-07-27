@@ -51,3 +51,5 @@ print(Actor.objects.all())
 ```
 
 ### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
+
+[![Pony Powered](https://media.djangopony.com/img/small/badge.png)](https://djangopony.com/)
