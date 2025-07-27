@@ -1,4 +1,4 @@
-[![Pony Powered](https://media.djangopony.com/img/small/badge.png)](https://djangopony.com/)
+[![kitten](https://placecats.com/300/200?fit=contain&position=top)](https://www.placecats.com/)
 
 
 # Cinema Hall
