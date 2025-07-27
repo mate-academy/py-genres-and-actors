@@ -24,13 +24,26 @@ def main() -> QuerySet:
     )
 
     update_dramma = Genre.objects.filter(name="Dramma").update(name="Drama")
-    update_klooney = Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
-    update_kianu = Actor.objects.filter(first_name="Kianu").update(first_name="Keanu", last_name="Reeves")
+    update_klooney = Actor.objects.filter(last_name="Klooney").update(
+        last_name="Clooney"
+    )
+    update_kianu = Actor.objects.filter(first_name="Kianu").update(
+        first_name="Keanu",
+        last_name="Reeves"
+    )
 
     delete_action = Genre.objects.filter(name="Action").delete()
     delete_scarlett = Actor.objects.filter(first_name="Scarlett").delete()
 
-    print(create_genres, create_actors, update_dramma, update_klooney, update_kianu, delete_action, delete_scarlett)
+    print(
+        create_genres,
+        create_actors,
+        update_dramma,
+        update_klooney,
+        update_kianu,
+        delete_action,
+        delete_scarlett
+    )
 
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
