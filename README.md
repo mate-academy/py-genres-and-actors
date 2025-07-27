@@ -1,3 +1,6 @@
+[![Pony Powered](https://media.djangopony.com/img/small/badge.png)](https://djangopony.com/)
+
+
 # Cinema Hall
 
 Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
@@ -51,5 +54,3 @@ print(Actor.objects.all())
 ```
 
 ### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
-
-[![Pony Powered](https://media.djangopony.com/img/small/badge.png)](https://djangopony.com/)
