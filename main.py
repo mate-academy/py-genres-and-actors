@@ -4,7 +4,7 @@ from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def main():
+def main() -> QuerySet:
 
     genres = ["Western", "Action", "Dramma"]
     actors = [("George", "Klooney"),
@@ -23,7 +23,6 @@ def main():
             first_name=f_name,
             last_name=l_name
         )
-
 
     Genre.objects.filter(
         name="Dramma"
