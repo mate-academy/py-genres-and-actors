@@ -2,12 +2,10 @@ from db.models import Genre, Actor
 
 
 def main() -> list[Actor]:
-    # Create genres
     genres = ["Western", "Action", "Dramma"]
     for name in genres:
         Genre.objects.create(name=name)
 
-    # Create actors/actresses
     actors = [
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
@@ -17,12 +15,13 @@ def main() -> list[Actor]:
         ("Scarlett", "Johansson"),
     ]
     for first_name, last_name in actors:
-        Actor.objects.create(first_name=first_name, last_name=last_name)
+        Actor.objects.create(
+            first_name=first_name,
+            last_name=last_name
+        )
 
-    # Update genre "Dramma" to "Drama"
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
-    # Fix actor names
     Actor.objects.filter(
         first_name="George",
         last_name="Klooney"
@@ -33,11 +32,9 @@ def main() -> list[Actor]:
         last_name="Reaves"
     ).update(first_name="Keanu", last_name="Reeves")
 
-    # Delete genre "Action"
     Genre.objects.filter(name="Action").delete()
-
-    # Delete all actresses with first_name "Scarlett"
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    # Return actors with last_name "Smith", ordered by first_name
-    return list(Actor.objects.filter(last_name="Smith").order_by("first_name"))
+    return list(
+        Actor.objects.filter(last_name="Smith").order_by("first_name")
+    )
