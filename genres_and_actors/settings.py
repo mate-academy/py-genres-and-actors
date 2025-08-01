@@ -46,7 +46,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = None
+WSGI_APPLICATION = 'genres_and_actors.wsgi.application'
 
 DATABASES = {
     "default": {
