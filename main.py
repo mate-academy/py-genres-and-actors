@@ -8,7 +8,7 @@ from db.models import Genre, Actor
 def main() -> QuerySet[Actor]:
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
-    Genre.objects.create(name="Drama")
+    Genre.objects.create(name="Dramma")
 
     Actor.objects.create(first_name="George", last_name="Klooney")
     Actor.objects.create(first_name="Kianu", last_name="Reaves")
