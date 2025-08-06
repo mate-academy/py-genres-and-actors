@@ -13,5 +13,5 @@ class Actor(models.Model):
     last_name = models.CharField(max_length=100)
     birth_year = models.IntegerField()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.first_name} {self.last_name} ({self.birth_year})"
