@@ -18,3 +18,7 @@ DATABASES = {
 USE_TZ = False
 
 INSTALLED_APPS = ("db",)
+
+DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
+
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split() if not DEBUG else []
