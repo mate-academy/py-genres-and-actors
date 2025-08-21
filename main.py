@@ -1,14 +1,17 @@
-import django
 import os
+import django
 
 # konfiguracja Django (zakładam że projekt nazywa się "cinema")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cinema.settings")
 django.setup()
 
-from db.models import Genre, Actor
+from db.models import Genre, Actor  # noqa: E402
+from django.db.models import QuerySet
 
 
-def main():
+def main() -> QuerySet[Actor]:
+    """Main function that creates, updates, deletes and returns actors."""
+
     # Tworzenie gatunków filmowych
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
@@ -24,8 +27,12 @@ def main():
 
     # Aktualizacje
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(first_name="George", last_name="Klooney").update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(first_name="Keanu", last_name="Reeves")
+    Actor.objects.filter(
+        first_name="George", last_name="Klooney"
+    ).update(last_name="Clooney")
+    Actor.objects.filter(
+        first_name="Kianu", last_name="Reaves"
+    ).update(first_name="Keanu", last_name="Reeves")
 
     # Usuwanie
     Genre.objects.filter(name="Action").delete()
