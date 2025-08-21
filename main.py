@@ -4,7 +4,8 @@ from django.db.models.query import QuerySet
 
 
 def main() -> QuerySet[Actor]:
-    """Create, update, delete records and return actors with last name 'Smith'."""
+    """Create, update, delete records and return actors
+    with last name 'Smith'."""
     # CREATE genres
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
