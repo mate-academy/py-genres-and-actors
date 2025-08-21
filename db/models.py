@@ -1,9 +1,7 @@
-# db/models.py
 from django.db import models
 
 
 class Genre(models.Model):
-    """Model representing a movie genre."""
     name = models.CharField(max_length=255)
 
     def __str__(self) -> str:
@@ -11,7 +9,6 @@ class Genre(models.Model):
 
 
 class Actor(models.Model):
-    """Model representing an actor or actress."""
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
 
