@@ -1,30 +1,33 @@
 from db.models import Genre, Actor
 
 def main():
-    western = Genre.objects.create(name="Western")
-    action = Genre.objects.create(name="Action")
-    dramma = Genre.objects.create(name="Dramma")
+    genres = ["Western", "Action", "Dramma"]
+    for g in genres:
+        Genre.objects.create(name=g)
 
-    george = Actor.objects.create(first_name="George", last_name="Klooney")
-    kianu = Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    scarlett = Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    will = Actor.objects.create(first_name="Will", last_name="Smith")
-    jaden = Actor.objects.create(first_name="Jaden", last_name="Smith")
-    second_scarlett = Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    actors = [("George", "Klooney"), ("Kianu", "Reaves"),
+              ("Scarlett", "Keegan"), ("Will", "Smith"),
+              ("Jaden", "Smith"), ("Scarlett", "Johansson")]
+    for first_name, last_name in actors:
+        Actor.objects.create(first_name=first_name, last_name=last_name)
 
+
+    dramma = Genre.objects.get(name="Drama")
     dramma.name = "Drama"
     dramma.save()
 
+    george = Actor.objects.get(last_name="Klooney")
     george.last_name = "Clooney"
     george.save()
 
+    kianu = Actor.objects.get(first_name="Kianu")
     kianu.first_name = "Keanu"
+    kianu.last_name = "Reeves"
     kianu.save()
 
-    action.delete()
+    Genre.objects.get(name="Action").delete()
 
-    scarlets = Actor.objects.get(first_name="Scarlett")
-    scarlets.delete()
+    Actor.objects.filter(first_name="Scarlett").delete()
 
-    actors_smith = Actor.objects.filter(first_name="Smith").order_by("first_name")
+    actors_smith = Actor.objects.filter(last_name="Smith").order_by("first_name")
     return actors_smith
