@@ -1,6 +1,9 @@
 from db.models import Genre, Actor
 
 def main():
+    Genre.objects.all().delete()
+    Actor.objects.all().delete()
+
     genres = ["Western", "Action", "Dramma"]
     for g in genres:
         Genre.objects.create(name=g)
@@ -12,7 +15,7 @@ def main():
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
 
-    dramma = Genre.objects.get(name="Drama")
+    dramma = Genre.objects.get(name="Dramma")
     dramma.name = "Drama"
     dramma.save()
 
