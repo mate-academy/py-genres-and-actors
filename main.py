@@ -1,19 +1,23 @@
 import init_django_orm # noqa: F401
 
-from django.db.models import QuerySet, IntegerField, Case, When
+from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def main() -> QuerySet:
-    genres = ["Western", "Drama"]
-    for genre in genres:
-        Genre.objects.create(name=genre)
+def main() -> QuerySet["Actor"]:
+    genres = ["Western", "Action", "Dramma"]
+    for name in genres:
+        Genre.objects.create(name=name)
+
+    Genre.objects.filter(name="Dramma").update(name="Drama")
 
     actors = [
-        ("George", "Clooney"),
-        ("Keanu", "Reeves"),
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
     ]
 
     for first_name, last_name in actors:
@@ -22,15 +26,10 @@ def main() -> QuerySet:
             last_name=last_name
         )
 
+        Actor.objects.filter(first_name="George", last_name="Klooney").update(last_name="Klooney")
+        Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(first_name="Keanu", last_name="Reeves")
 
-    return Actor.objects.filter(
-        first_name__in=["Jaden", "Will"],
-        last_name="Smith"
-    ).order_by(
-        Case(
-            When(first_name="Jaden", then=0),
-            When(first_name="Will", then=1),
-            output_field=IntegerField(),
-        )
-    )
+        Actor.objects.filter(first_name="Scarlett").delete()
+        Genre.objects.filter(name="Action").delete()
 
+        return Actor.objects.filter(last_name="Smith").order_by("first_name")
