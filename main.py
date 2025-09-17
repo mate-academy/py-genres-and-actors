@@ -8,30 +8,30 @@ def main() -> QuerySet:
 
     genre_to_add = ["Western", "Action", "Dramma"]
     actors_to_add = [
-        [
+        (
             "George",
             "Klooney"
-        ],
-        [
+        ),
+        (
             "Kianu",
             "Reaves"
-        ],
-        [
+        ),
+        (
             "Scarlett",
             "Keegan"
-        ],
-        [
+        ),
+        (
             "Will",
             "Smith"
-        ],
-        [
+        ),
+        (
             "Jaden",
             "Smith"
-        ],
-        [
+        ),
+        (
             "Scarlett",
             "Johansson"
-        ]
+        )
 
     ]
     for genre in genre_to_add:
