@@ -8,45 +8,50 @@ def main() -> QuerySet:
 
     genre_to_add = ["Western", "Action", "Dramma"]
     actors_to_add = [
-        {
-            "nombre": "George",
-            "apellido": "Klooney"
-        },
-        {
-            "nombre": "Kianu",
-            "apellido": "Reaves"
-        },
-        {
-            "nombre": "Scarlett",
-            "apellido": "Keegan"
-        },
-        {
-            "nombre": "Will",
-            "apellido": "Smith"
-        },
-        {
-            "nombre": "Jaden",
-            "apellido": "Smith"
-        },
-        {
-            "nombre": "Scarlett",
-            "apellido": "Johansson"
-        }
+        [
+            "George",
+            "Klooney"
+        ],
+        [
+            "Kianu",
+            "Reaves"
+        ],
+        [
+            "Scarlett",
+            "Keegan"
+        ],
+        [
+            "Will",
+            "Smith"
+        ],
+        [
+            "Jaden",
+            "Smith"
+        ],
+        [
+            "Scarlett",
+            "Johansson"
+        ]
 
     ]
     for genre in genre_to_add:
         Genre.objects.create(name=genre)
 
-    for actor in actors_to_add:
+    for first, second in actors_to_add:
         Actor.objects.create(
-            first_name=actor["nombre"],
-            last_name=actor["apellido"])
+            first_name=first,
+            last_name=second)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(first_name="George").update(last_name="Clooney")
-    (Actor.objects.filter(first_name="Kianu")
+    (Actor.objects.filter(
+        first_name="George",
+        last_name="Klooney")
+     .update(last_name="Clooney"))
+    (Actor.objects.filter(
+        first_name="Kianu",
+        last_name="Reaves")
      .update(first_name="Keanu", last_name="Reeves"))
-    genre_to_delete = Genre.objects.get(name="Action")
+    genre_to_delete = Genre.objects.filter(name="Action")
     genre_to_delete.delete()
     all_actresses_scarlet = Actor.objects.filter(first_name="Scarlett")
     all_actresses_scarlet.delete()
