@@ -8,12 +8,12 @@ from db.models import Genre, Actor
 def main() -> QuerySet:
     genres = ["Western", "Action", "Dramma"]
     actors = [
-        {"first_name": "George", "last_name": "Klooney"},
-        {"first_name": "Kianu", "last_name": "Reaves"},
-        {"first_name": "Scarlett", "last_name": "Keegan"},
-        {"first_name": "Will", "last_name": "Smith"},
-        {"first_name": "Jaden", "last_name": "Smith"},
-        {"first_name": "Scarlett", "last_name": "Johansson"},
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
     ]
 
     for genre in genres:
@@ -21,8 +21,8 @@ def main() -> QuerySet:
 
     for actor in actors:
         Actor.objects.create(
-            first_name=actor["first_name"],
-            last_name=actor["last_name"]
+            first_name=actor[0],
+            last_name=actor[1]
         )
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
