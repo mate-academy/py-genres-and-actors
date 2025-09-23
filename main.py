@@ -59,7 +59,7 @@ def main() -> QuerySet:
         first_name="Scarlett",
     ).delete()
 
-    # Retrieve
+    # Returned retrieve
     return Actor.objects.filter(
         last_name="Smith",
     ).order_by("first_name")
