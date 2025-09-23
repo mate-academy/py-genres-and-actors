@@ -9,12 +9,12 @@ def main() -> QuerySet:
     # Create
     iter_genre = ["Western", "Action", "Dramma"]
     iter_actor = [
-        "George Klooney",
-        "Kianu Reaves",
-        "Scarlett Keegan",
-        "Will Smith",
-        "Jaden Smith",
-        "Scarlett Johansson"
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
     ]
 
     for _iter in iter_genre:
@@ -22,11 +22,10 @@ def main() -> QuerySet:
             name=_iter,
         )
 
-    for _iter in iter_actor:
-        name = _iter.split()
+    for first_name, last_name in iter_actor:
         Actor.objects.create(
-            first_name=name[0],
-            last_name=name[1],
+            first_name=first_name,
+            last_name=last_name,
         )
 
     # Update
