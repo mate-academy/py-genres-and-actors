@@ -36,6 +36,7 @@ def main() -> QuerySet:
     )
 
     Actor.objects.filter(
+        first_name="George",
         last_name="Klooney",
     ).update(
         last_name="Clooney",
