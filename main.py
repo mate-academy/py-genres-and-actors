@@ -15,18 +15,10 @@ def main() -> QuerySet:
         ("Jaden", "Smith"),
         ("Scarlett", "Johansson")
     ]
-    Genre.objects.bulk_create(
-        [
-            Genre(name=genre_name) for genre_name in genres
-        ]
-    )
-    Actor.objects.bulk_create(
-        [
-            Actor(
-                first_name=first_n, last_name=last_n
-            ) for first_n, last_n in actors
-        ]
-    )
+    for genre in genres:
+        Genre.objects.create(name=genre)
+    for first_n, last_n in actors:
+        Actor.objects.create(first_name=first_n, last_name=last_n)
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(
         first_name="George", last_name="Klooney"
