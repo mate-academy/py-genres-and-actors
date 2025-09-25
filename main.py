@@ -4,28 +4,31 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    # CREATE
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")
+    # CREATE (listas + loops)
+    genres = ["Western", "Action", "Dramma"]
+    actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
+    for name in genres:
+        Genre.objects.create(name=name)
+    for first, last in actors:
+        Actor.objects.create(first_name=first, last_name=last)
 
-    Actor.objects.create(first_name="George", last_name="Klooney")
-    Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
-
-    # UPDATE
+    # UPDATE (genres)
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(
-        first_name="George",
-        last_name="Klooney",
-    ).update(last_name="Clooney")
-    Actor.objects.filter(
-        first_name="Kianu",
-        last_name="Reaves",
-    ).update(first_name="Keanu", last_name="Reeves")
+
+    # UPDATE (actors)
+    updates = {
+        ("George", "Klooney"): {"last_name": "Clooney"},
+        ("Kianu", "Reaves"): {"first_name": "Keanu", "last_name": "Reeves"},
+    }
+    for (first, last), fields in updates.items():
+        Actor.objects.filter(first_name=first, last_name=last).update(**fields)
 
     # DELETE
     Genre.objects.filter(name="Action").delete()
@@ -33,7 +36,3 @@ def main() -> QuerySet:
 
     # RETURN
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
-
-
-if __name__ == "__main__":
-    print(main())
