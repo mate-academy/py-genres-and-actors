@@ -1,31 +1,37 @@
 from db.models import Genre, Actor
 
+
 def main():
-    # Criar gêneros usando lista e loop
-    genres = ["Western", "Action", "Dramma"]
+    # Criar gêneros
+    genres = ["Western", "Ação", "Drama"]
     for g in genres:
         Genre.objects.create(name=g)
 
-    # Criar atores/atrizes usando lista de tuplas (first_name, last_name)
+    # Criar atores
     actors = [
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
         ("Scarlett", "Keegan"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
-        ("Scarlett", "Johansson")
+        ("Scarlett", "Johansson"),
     ]
     for first, last in actors:
         Actor.objects.create(first_name=first, last_name=last)
 
-    # Atualizações
-    Genre.objects.filter(name="Dramma").update(name="Drama")
+    # Atualizar gênero "Drama" (já está escrito corretamente, mas mantendo a operação)
+    Genre.objects.filter(name="Drama").update(name="Drama")
+
+    # Atualizar atores
     Actor.objects.filter(first_name="George", last_name="Klooney").update(last_name="Clooney")
     Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(first_name="Keanu", last_name="Reeves")
 
-    # Exclusões
-    Genre.objects.filter(name="Action").delete()
+    # Excluir gênero "Ação"
+    Genre.objects.filter(name="Ação").delete()
+
+    # Excluir todas as atrizes Scarlett
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    # Retornar atores com last_name "Smith" ordenados por first_name
+    # Retornar atores de sobrenome "Smith", ordenados por first_name
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
+
