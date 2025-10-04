@@ -37,8 +37,8 @@ def main() -> QuerySet:
         first_name="Kianu",
         last_name="Reaves"
     ).update(
-        first_name="Keanu",,
-        last_name="Reeves",
+        first_name="Keanu",
+        last_name="Reeves"
     )
 
     Genre.objects.filter(name="Action").delete()
