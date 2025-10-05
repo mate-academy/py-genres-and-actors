@@ -6,13 +6,12 @@ from django.db.models import QuerySet
 def main() -> QuerySet:
     for genre in ["Western", "Action", "Dramma"]:
         Genre.objects.create(name=genre)
-    for first_name, last_name in [("George","Klooney"),
+    for first_name, last_name in [("George", "Klooney"),
                                   ("Kianu", "Reaves"),
                                   ("Scarlett", "Keegan"),
                                   ("Will", "Smith"),
                                   ("Jaden", "Smith"),
-                                  ("Scarlett", "Johansson")
-                   ]:
+                                  ("Scarlett", "Johansson")]:
         Actor.objects.create(
             first_name=first_name,
             last_name=last_name
