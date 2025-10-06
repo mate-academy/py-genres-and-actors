@@ -6,56 +6,22 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    western_genre = Genre.objects.create(
-        name="Western",
+    for name in ["Western", "Action", "Dramma"]:
+        Genre.objects.create(
+        name=name,
     )
-    print(western_genre)
 
-    action_genre = Genre.objects.create(
-        name="Action",
-    )
-    print(action_genre)
+    actors = [
+        ("George", "Klooney"), ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"), ("Will", "Smith"), ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
+    ]
 
-    drama_genre = Genre.objects.create(
-        name="Dramma",
-    )
-    print(drama_genre)
-
-    george_actor = Actor.objects.create(
-        first_name="George",
-        last_name="Klooney",
-    )
-    print(george_actor)
-
-    kianu_actor = Actor.objects.create(
-        first_name="Kianu",
-        last_name="Reaves",
-    )
-    print(kianu_actor)
-
-    scarlet_actress = Actor.objects.create(
-        first_name="Scarlett",
-        last_name="Keegan",
-    )
-    print(scarlet_actress)
-
-    will_actor = Actor.objects.create(
-        first_name="Will",
-        last_name="Smith",
-    )
-    print(will_actor)
-
-    jaden_actress = Actor.objects.create(
-        first_name="Jaden",
-        last_name="Smith",
-    )
-    print(jaden_actress)
-
-    johansson_actress = Actor.objects.create(
-        first_name="Scarlett",
-        last_name="Johansson",
-    )
-    print(johansson_actress)
+    for first, last in actors:
+        Actor.objects.create(
+            first_name=first,
+            last_name=last,
+        )
 
     update_drama_genre = Genre.objects.filter(
         name="Dramma",
