@@ -13,18 +13,16 @@ def main() -> QuerySet[Actor]:
 
     # --- Створення початкових акторів ---
     initial_actors = [
-        {"first_name": "George", "last_name": "Klooney"},
-        {"first_name": "Kianu", "last_name": "Reeves"},
-        {"first_name": "Scarlett", "last_name": "Keegan"},
-        {"first_name": "Will", "last_name": "Smith"},
-        {"first_name": "Jaden", "last_name": "Smith"},
-        {"first_name": "Scarlett", "last_name": "Johansson"},
+        ("George", "Klooney"),
+        ("Kianu", "Reeves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
     ]
-    for actor_data in initial_actors:
-        Actor.objects.get_or_create(
-            first_name=actor_data["first_name"],
-            last_name=actor_data["last_name"]
-        )
+
+    for first_name, last_name in initial_actors:
+        Actor.objects.get_or_create(first_name=first_name, last_name=last_name)
 
     # --- Оновлення помилок у іменах ---
     Actor.objects.filter(first_name="George",
