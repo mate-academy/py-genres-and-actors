@@ -1,30 +1,40 @@
+from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def main() -> None:
-    """Створює жанри та акторів, повертає Jaden і Will для тесту."""
-    genre_names = ["Western", "Drama"]
-    for genre_name in genre_names:
+def main() -> QuerySet[Actor]:
+    # --- Створення початкових жанрів ---
+    initial_genres = ["Western", "Action", "Dramma"]
+    for genre_name in initial_genres:
         Genre.objects.get_or_create(name=genre_name)
 
-    actors_data = [
-        ("George", "Clooney"),
-        ("Keanu", "Reeves"),
-        ("Will", "Smith"),
-        ("Jaden", "Smith"),
+    # --- Оновлення та видалення жанрів ---
+    Genre.objects.filter(name="Dramma").update(name="Drama")
+    Genre.objects.filter(name="Action").delete()
+
+    # --- Створення початкових акторів ---
+    initial_actors = [
+        {"first_name": "George", "last_name": "Klooney"},
+        {"first_name": "Kianu", "last_name": "Reeves"},
+        {"first_name": "Scarlett", "last_name": "Keegan"},
+        {"first_name": "Will", "last_name": "Smith"},
+        {"first_name": "Jaden", "last_name": "Smith"},
+        {"first_name": "Scarlett", "last_name": "Johansson"},
     ]
-    for first_name, last_name in actors_data:
-        Actor.objects.get_or_create(first_name=first_name, last_name=last_name)
+    for actor_data in initial_actors:
+        Actor.objects.get_or_create(
+            first_name=actor_data["first_name"],
+            last_name=actor_data["last_name"]
+        )
 
-    # Вивід для наочності
-    print("Genres:")
-    for genre in Genre.objects.all():
-        print("-", genre.name)
+    # --- Оновлення помилок у іменах ---
+    Actor.objects.filter(first_name="George",
+                         last_name="Klooney").update(last_name="Clooney")
+    Actor.objects.filter(first_name="Kianu",
+                         last_name="Reeves").update(first_name="Keanu")
 
-    print("\nActors:")
-    for actor in Actor.objects.all():
-        print("-", actor.first_name, actor.last_name)
+    # --- Видалення акторів ---
+    Actor.objects.filter(first_name="Scarlett").delete()
 
-    # Повертаємо тільки Jaden і Will для тестів
-    return Actor.objects.filter(first_name__in=[
-        "Jaden", "Will"]).order_by("first_name")
+    # Повертаємо лише акторів із прізвищем 'Smith', відсортованих по імені
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
