@@ -11,8 +11,8 @@ def main() -> QuerySet:
               ("Scarlett", "Keegan"),
               ("Will", "Smith"),
               ("Jaden", "Smith"),
-              ("Scarlett", "Johansson"),
-    ]
+              ("Scarlett", "Johansson"),]
+
     for genre in genres:
         Genre.objects.create(name=genre)
     for first_name, last_name in actors:
@@ -20,12 +20,10 @@ def main() -> QuerySet:
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(first_name="George",
-                         last_name="Klooney"
-                        ).update(last_name="Clooney")
+                         last_name="Klooney").update(last_name="Clooney")
     Actor.objects.filter(first_name="Kianu",
-                         last_name="Reaves"
-                         ).update(first_name="Keanu",
-                                  last_name="Reeves")
+                         last_name="Reaves").update(first_name="Keanu",
+                         last_name="Reeves")
 
     Genre.objects.filter(name="Action",).delete()
     Actor.objects.filter(first_name="Scarlett",).delete()
