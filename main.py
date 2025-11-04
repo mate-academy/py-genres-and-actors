@@ -6,16 +6,20 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")
+    film_name = ["Western", "Action", "Dramma"]
+    for name in film_name:
+        Genre.objects.create(name=name)
 
-    Actor.objects.create(first_name="George", last_name="Klooney")
-    Actor.objects.create(first_name="Keanu", last_name="Reeves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    full_name = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
+    ]
+    for name in full_name:
+        Actor.objects.create(first_name=name[0], last_name=name[1])
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
@@ -23,8 +27,11 @@ def main() -> QuerySet:
         first_name="George", last_name="Klooney"
     ).update(last_name="Clooney")
     Actor.objects.filter(
-        first_name="Keanu", last_name="Reaves"
-    ).update(last_name="Reeves")
+        first_name="Kianu", last_name="Reaves"
+    ).update(
+        first_name="Keanu",
+        last_name="Reeves"
+    )
 
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
