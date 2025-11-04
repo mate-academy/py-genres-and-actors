@@ -2,6 +2,39 @@ import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet
 
+from db.models import Genre, Actor
+
 
 def main() -> QuerySet:
-    pass
+    genres_list = ["Western", "Action", "Dramma"]
+
+    for genre in genres_list:
+        Genre.objects.create(name=genre)
+
+    Genre.objects.filter(name="Dramma").update(name="Drama")
+
+    Genre.objects.filter(name="Action").delete()
+
+    actors = (
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    )
+    Actor.objects.bulk_create([
+        Actor(
+            first_name=first_name,
+            last_name=last_name,
+        )
+        for first_name, last_name in actors
+    ])
+
+    Actor.objects.filter(first_name="George").update(last_name="Clooney")
+    Actor.objects.filter(first_name="Kianu").update(first_name="Keanu",
+                                                    last_name="Reeves")
+
+    Actor.objects.filter(first_name="Scarlett").delete()
+
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
