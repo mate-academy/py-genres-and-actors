@@ -2,7 +2,7 @@ from db.models import Actor
 from db.models import Genre
 
 
-def main():
+def main() -> Actor:
     genres = [
         Genre(name="Western"),
         Genre(name="Action"),
