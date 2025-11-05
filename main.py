@@ -10,18 +10,18 @@ def main() -> QuerySet:
     for genre in list_of_genres:
         Genre.objects.create(name=genre)
 
-    actors_dict = [
-        {"first_name": "George", "last_name": "Klooney"},
-        {"first_name": "Kianu", "last_name": "Reaves"},
-        {"first_name": "Scarlett", "last_name": "Keegan"},
-        {"first_name": "Will", "last_name": "Smith"},
-        {"first_name": "Jaden", "last_name": "Smith"},
-        {"first_name": "Scarlett", "last_name": "Johansson"},
+    actors_list = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
     ]
-    for actor in actors_dict:
+    for first, last in actors_list:
         Actor.objects.create(
-            first_name=actor["first_name"],
-            last_name=actor["last_name"])
+            first_name=first,
+            last_name=last)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(first_name="George").update(last_name="Clooney")
