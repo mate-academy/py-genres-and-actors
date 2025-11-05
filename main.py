@@ -7,7 +7,7 @@ from db.models import Actor
 from db.models import Genre
 
 
-def main() -> QuerySet:
+def main() -> QuerySet[Actor]:
     genres = [
         Genre(name="Western"),
         Genre(name="Action"),
@@ -41,4 +41,3 @@ def main() -> QuerySet:
 
     return Actor.objects.filter(
         last_name="Smith").order_by("first_name")
-
