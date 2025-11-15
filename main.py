@@ -1,16 +1,18 @@
 from django.db.models import QuerySet
+import init_django_orm # noqa: F401
+
 from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
     # CREATE
     new_genres = ["Western", "Action", "Dramma"]
-    for genre in new_genres:
-        Genre.objects.create(name=genre)
+    for genre_name in new_genres:
+        Genre.objects.create(name=genre_name)
 
     actors = [
         ("George", "Klooney"),
-        ("Keanu", "Reeves"),
+        ("Kianu", "Reaves"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
         ("Scarlett", "Keegan"),
