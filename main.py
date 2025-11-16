@@ -11,12 +11,12 @@ def main() -> QuerySet:
         "Dramma"
     ]
     actors = [
-        ["George", "Klooney"],
-        ["Kianu", "Reaves"],
-        ["Scarlett", "Keegan"],
-        ["Will", "Smith"],
-        ["Jaden", "Smith"],
-        ["Scarlett", "Johansson"]
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
     ]
 
     for genre in genres:
