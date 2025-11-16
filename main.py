@@ -21,7 +21,9 @@ def main() -> QuerySet:
     for actress in actresses:
         actress = actress.split()
         final_actress = (Actor(first_name=actress[0],
-                                              last_name=actress[1]))
+                               last_name=actress[1]
+                               )
+                         )
         final_actress.save()
     # Update
     Genre.objects.filter(name="Dramma").update(name="Drama")
