@@ -12,7 +12,8 @@ def main() -> QuerySet:
         final_genre = Genre(name=genre)
         final_genre.save()
     actors = [("George", "Klooney"), ("Kianu", "Reaves"), ("Will", "Smith"),
-              ("Jaden", "Smith"), ("Scarlett", "Keegan") , ("Scarlett", "Johansson")]
+              ("Jaden", "Smith"), ("Scarlett", "Keegan") ,
+              ("Scarlett", "Johansson")]
     for fn, ln in actors:
         final_actor = Actor(
             first_name=fn, last_name=ln)
