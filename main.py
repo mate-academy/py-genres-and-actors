@@ -36,3 +36,13 @@ def main() -> QuerySet:
 
     # RETURN
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
+# result = main()
+#
+# # Wypisz żądane rzeczy
+# print("GENRES:", list(Genre.objects.all()))
+# print("ACTORS:", list(Actor.objects.all()))
+# print("MAIN():", list(result))
+
+print(main())
+print(Genre.objects.all())
+print(Actor.objects.all())
