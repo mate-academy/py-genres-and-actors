@@ -42,7 +42,7 @@ def main() -> QuerySet:
 # print("GENRES:", list(Genre.objects.all()))
 # print("ACTORS:", list(Actor.objects.all()))
 # print("MAIN():", list(result))
-
-print(main())
-print(Genre.objects.all())
-print(Actor.objects.all())
+#
+# # print(main())
+# # print(Genre.objects.all())
+# # print(Actor.objects.all())
