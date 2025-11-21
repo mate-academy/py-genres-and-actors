@@ -1,5 +1,3 @@
-from django.template.defaultfilters import first
-
 import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet
@@ -9,19 +7,25 @@ from db.models import Genre, Actor
 
 def main() -> QuerySet:
     Genre.objects.bulk_create([
-        Genre(genre)
+        Genre(name=genre)
         for genre in ("Western", "Action", "Dramma")
     ])
 
     Actor.objects.bulk_create([
-        Actor(full_name.split())
-        for full_name in (
-            "George Klooney",
-            "Kianu Reaves",
-            "Scarlett Keegan",
-            "Will Smith",
-            "Jaden Smith",
-            "Scarlett Johansson"
+        Actor(
+            first_name=first_name,
+            last_name=last_name
+        )
+        for first_name, last_name in (
+            tuple(fullname.strip().split())
+            for fullname in (
+                "George Klooney",
+                "Kianu Reaves",
+                "Scarlett Keegan",
+                "Will Smith",
+                "Jaden Smith",
+                "Scarlett Johansson"
+            )
         )
     ])
 
