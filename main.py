@@ -11,22 +11,20 @@ def main() -> QuerySet:
         for genre in ("Western", "Action", "Dramma")
     ])
 
+    actors_data = (
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
+    )
     Actor.objects.bulk_create([
         Actor(
             first_name=first_name,
             last_name=last_name
         )
-        for first_name, last_name in (
-            tuple(fullname.strip().split())
-            for fullname in (
-                "George Klooney",
-                "Kianu Reaves",
-                "Scarlett Keegan",
-                "Will Smith",
-                "Jaden Smith",
-                "Scarlett Johansson"
-            )
-        )
+        for first_name, last_name in actors_data
     ])
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
