@@ -10,7 +10,7 @@ def main() -> QuerySet:
 
     actors = [("George", "Klooney"), ("Kianu", "Reaves"),
               ("Scarlett", "Keegan"),
-              ("Will", "Smith"), ("Jaden", "Smith"), ("Scarlett", "Johnasson")]
+              ("Will", "Smith"), ("Jaden", "Smith"), ("Scarlett", "Johansson")]
     for f_name, l_name in actors:
         Actor.objects.create(first_name=f_name, last_name=l_name)
 
