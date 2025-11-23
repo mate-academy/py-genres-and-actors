@@ -13,7 +13,7 @@ def main() -> QuerySet:
         ("Scarlett", "Keegan"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
-        ("Scarlet", "Johansson"),
+        ("Scarlett", "Johansson"),
     ]
 
     for name in genres:
@@ -30,7 +30,7 @@ def main() -> QuerySet:
 
     deletes = [
         Genre.objects.filter(name="Action"),
-        Actor.objects.filter(first_name="Scarlet"),
+        Actor.objects.filter(first_name="Scarlett"),
     ]
 
     for queryset in deletes:
