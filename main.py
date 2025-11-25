@@ -15,7 +15,7 @@ def main() -> QuerySet:
     for first, last in actors:
         Actor.objects.create(first_name=first, last_name=last)
 
-    #Updating all step by step
+    # Updating all step by step
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(
         first_name="George",
