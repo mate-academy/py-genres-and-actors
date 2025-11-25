@@ -5,23 +5,36 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    _ = Genre.objects.create(name="Western")
-    _ = Genre.objects.create(name="Action")
-    dramma = Genre.objects.create(name="Dramma")
+    genres = [
+        ("Western",),
+        ("Action",),
+        ("Dramma",),
+    ]
 
-    george = Actor.objects.create(first_name="George", last_name="Klooney")
-    keanu = Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    _ = Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    _ = Actor.objects.create(first_name="Will", last_name="Smith")
-    _ = Actor.objects.create(first_name="Jaden", last_name="Smith")
-    _ = Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    for (name,) in genres:
+        Genre.objects.create(name=name)
 
+    actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
+
+    for first_name, last_name in actors:
+        Actor.objects.create(first_name=first_name, last_name=last_name)
+
+    dramma = Genre.objects.get(name="Dramma")
     dramma.name = "Drama"
     dramma.save()
 
+    george = Actor.objects.get(first_name="George")
     george.last_name = "Clooney"
     george.save()
 
+    keanu = Actor.objects.get(first_name="Kianu")
     keanu.first_name = "Keanu"
     keanu.last_name = "Reeves"
     keanu.save()
