@@ -13,14 +13,14 @@ actors = (
 )
 
 genres = (
-    "Western",
-    "Action",
-    "Dramma"
+    ("Western",),
+    ("Action",),
+    ("Dramma",),
 )
 
 
 def main() -> QuerySet:
-    for genre in genres:
+    for genre, in genres:
         Genre.objects.create(name=genre)
 
     for fname, lname in actors:
