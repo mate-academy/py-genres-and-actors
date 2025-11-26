@@ -32,7 +32,3 @@ def main() -> QuerySet:
     ).order_by("first_name")
 
     return get_sorted_smith
-
-
-if __name__ == "__main__":
-    main()
