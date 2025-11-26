@@ -1,4 +1,4 @@
-import init_django_orm
+import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet
 from db.models import Genre, Actor
@@ -6,49 +6,61 @@ from db.models import Genre, Actor
 
 def create_records() -> None:
     genres = [
-        {"name": "Western"},
-        {"name": "Action"},
-        {"name": "Dramma"},
+        "Western",
+        "Action",
+        "Dramma",
     ]
 
     actors = [
-        {"first_name": "George", "last_name": "Klooney"},
-        {"first_name": "Kianu", "last_name": "Reaves"},
-        {"first_name": "Scarlett", "last_name": "Keegan"},
-        {"first_name": "Will", "last_name": "Smith"},
-        {"first_name": "Jaden", "last_name": "Smith"},
-        {"first_name": "Scarlett", "last_name": "Johansson"},
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
     ]
 
-    for g in genres:
-        Genre.objects.create(**g)
+    for name in genres:
+        Genre.objects.create(name=name)
 
-    for a in actors:
-        Actor.objects.create(**a)
+    for first_name, last_name in actors:
+        Actor.objects.create(first_name=first_name, last_name=last_name)
 
 
 def update_records() -> None:
-    updates = [
-        (Genre.objects.filter(name="Dramma"), {"name": "Drama"}),
-        (Actor.objects.filter(last_name="Klooney"), {"last_name": "Clooney"}),
+    updates_genres = [
+        ({"name": "Dramma"}, {"name": "Drama"}),
+    ]
+
+    updates_actors = [
+        ({"last_name": "Klooney"}, {"last_name": "Clooney"}),
         (
-            Actor.objects.filter(first_name="Kianu", last_name="Reaves"),
+            {"first_name": "Kianu", "last_name": "Reaves"},
             {"first_name": "Keanu", "last_name": "Reeves"},
         ),
     ]
 
-    for qs, data in updates:
-        qs.update(**data)
+    for query, data in updates_genres:
+        Genre.objects.filter(**query).update(**data)
+
+    for query, data in updates_actors:
+        Actor.objects.filter(**query).update(**data)
 
 
 def delete_records() -> None:
-    deletions = [
-        Genre.objects.filter(name="Action"),
-        Actor.objects.filter(first_name="Scarlett"),
+    deletions_genres = [
+        {"name": "Action"},
     ]
 
-    for qs in deletions:
-        qs.delete()
+    deletions_actors = [
+        {"first_name": "Scarlett"},
+    ]
+
+    for genre in deletions_genres:
+        Genre.objects.filter(**genre).delete()
+
+    for actor in deletions_actors:
+        Actor.objects.filter(**actor).delete()
 
 
 def main() -> QuerySet:
