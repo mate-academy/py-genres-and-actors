@@ -1,7 +1,3 @@
-from tkinter.font import names
-
-from django.template.defaultfilters import first
-
 import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet, OrderBy
@@ -23,7 +19,10 @@ def main() -> QuerySet:
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu").update(first_name="Keanu", last_name="Reeves")
+    Actor.objects.filter(first_name="Kianu").update(
+        first_name="Keanu",
+        last_name="Reeves"
+    )
 
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
