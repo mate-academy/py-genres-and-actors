@@ -13,19 +13,22 @@ django.setup()
 
 def main() -> QuerySet:
     # Create genres
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    dramma = Genre.objects.create(name="Dramma")  # треба для оновлення
+    genre_names = ["Western", "Action", "Dramma"]
+    genres = {name: Genre.objects.create(name=name) for name in genre_names}
 
-    # Create actors/actresses
-    (Actor.objects.
-     create(first_name="George", last_name="Klooney"))  # змінна не потрібна
-    (Actor.objects.
-     create(first_name="Kianu", last_name="Reaves"))  # змінна не потрібна
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    dramma = genres["Dramma"]
+
+    actors_data = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
+
+    for first_name, last_name in actors_data:
+        Actor.objects.create(first_name=first_name, last_name=last_name)
 
     # Update operations
     dramma.name = "Drama"
@@ -49,10 +52,3 @@ def main() -> QuerySet:
     # Return queryset of actors with last_name "Smith" ordered by first_name
     result = Actor.objects.filter(last_name="Smith").order_by("first_name")
     return result
-
-
-if __name__ == "__main__":
-    qs = main()
-    print(qs)
-    print(Genre.objects.all())
-    print(Actor.objects.all())
