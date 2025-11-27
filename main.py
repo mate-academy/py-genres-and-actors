@@ -14,7 +14,6 @@ from db.models import Genre, Actor
 
 def main() -> QuerySet:
 
-
     # 1. Create
     # genres
     genres = ["Western", "Action", "Dramma"]
@@ -28,7 +27,7 @@ def main() -> QuerySet:
     # # actor and actress
     actors_data = [
         ("George", "Klooney"),
-        ("Kianu", "Reeves"),  # imię specjalnie z literówką, nazwisko już poprawne
+        ("Kianu", "Reeves"),
         ("Scarlett", "Keegan"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
@@ -70,10 +69,6 @@ def main() -> QuerySet:
     #     print(actor.first_name, actor.last_name)
 
     return actors_smith
-
-
-
-
 
 
 # if __name__ == "__main__":
