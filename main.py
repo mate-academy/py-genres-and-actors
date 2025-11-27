@@ -11,7 +11,9 @@ from db.models import Genre, Actor
 # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 # django.setup()
 
+
 def main() -> QuerySet:
+
 
     # 1. Create
     # genres
