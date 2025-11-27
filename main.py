@@ -47,12 +47,12 @@ def main() -> QuerySet:
     # 2. Update
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu").update(first_name="Keanu", last_name="Reeves")
+    Actor.objects.filter(first_name="Kianu").update(
+        first_name="Keanu", last_name="Reeves")
 
     # 3. Delete
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
-
 
     # all_actors = Actor.objects.all()
     # for actor in all_actors:
@@ -64,7 +64,8 @@ def main() -> QuerySet:
     #     print(genre.name)
     #
     # print("\nSmith:")
-    actors_smith = Actor.objects.all().filter(last_name="Smith").order_by("first_name")
+    actors_smith = Actor.objects.all().filter(
+        last_name="Smith").order_by("first_name")
     # for actor in actors_smith:
     #     print(actor.first_name, actor.last_name)
 
