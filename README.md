@@ -39,6 +39,9 @@ This function should perform these actions:
 method
 
 Example:
+class Actor:
+pass
+
 ```python
 print(main())
 # <QuerySet [<Actor: Jaden Smith>, <Actor: Will Smith>]>
