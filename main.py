@@ -3,42 +3,36 @@ import init_django_orm  # noqa: F401
 from django.db.models import QuerySet
 from db.models import Genre, Actor
 
+genres = ["Western", "Action", "Dramma"]
+
+actors = [
+    ("George", "Klooney"),
+    ("Kianu", "Reaves"),
+    ("Scarlett", "Keegan"),
+    ("Will", "Smith"),
+    ("Jaden", "Smith"),
+    ("Scarlett", "Johansson")
+]
 
 def main() -> QuerySet:
-    Genre.objects.create(name="Western")
-    action = Genre.objects.create(name="Action")
-    drama = Genre.objects.create(name="Drama")
+    for genre in genres:
+        Genre.objects.create(name=genre)
 
-    george_clooney = Actor.objects.create(
-        first_name="George",
-        last_name="Klooney")
-    keanu_reeves = Actor.objects.create(
-        first_name="Kianu",
-        last_name="Reaves")
-    Actor.objects.create(
-        first_name="Scarlett",
-        last_name="Keegan")
-    Actor.objects.create(
-        first_name="Will",
-        last_name="Smith")
-    Actor.objects.create(
-        first_name="Jaden",
-        last_name="Smith")
-    Actor.objects.create(
-        first_name="Scarlett",
-        last_name="Johanson")
+    for first_name, last_name in actors:
+        Actor.objects.create(first_name=first_name, last_name=last_name)
 
-    drama.name = "Drama"
-    drama.save()
+    Genre.objects.filter(name="Dramma").update(name="Drama")
 
-    george_clooney.last_name = "Clooney"
-    george_clooney.save()
+    Actor.objects.filter(first_name="George", last_name="Klooney").update(
+        last_name="Clooney"
+    )
 
-    keanu_reeves.first_name = "Keanu"
-    keanu_reeves.last_name = "Reeves"
-    keanu_reeves.save()
+    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(
+        first_name="Keanu",
+        last_name="Reeves"
+    )
 
-    action.delete()
+    Genre.objects.filter(name="Action").delete()
 
     Actor.objects.filter(first_name="Scarlett").delete()
 
