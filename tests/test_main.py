@@ -1,12 +1,11 @@
 import pytest
 
 from db.models import Genre, Actor
-
 from main import main
 
 
 @pytest.mark.django_db
-def test_main():
+def test_main() -> None:
     actors = main()
     assert list(actors.values_list("first_name", "last_name")) == [
         ("Jaden", "Smith"),
@@ -15,7 +14,7 @@ def test_main():
 
 
 @pytest.mark.django_db
-def test_genres():
+def test_genres() -> None:
     main()
     assert list(Genre.objects.values_list("name")) == [
         ("Western",),
@@ -24,7 +23,7 @@ def test_genres():
 
 
 @pytest.mark.django_db
-def test_actors():
+def test_actors() -> None:
     main()
     assert list(Actor.objects.values_list("first_name", "last_name")) == [
         ("George", "Clooney"),
