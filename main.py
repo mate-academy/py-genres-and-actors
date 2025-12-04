@@ -1,12 +1,13 @@
-import init_django_orm  # noqa: F401
-
 from django.db.models import QuerySet
+
+import init_django_orm  # noqa: F401
 from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    genres = [("Western",), ("Action",), ("Dramma",)]
-    for (name,) in genres:
+    genres = ["Western", "Action", "Dramma"]
+
+    for name in genres:
         Genre.objects.create(name=name)
 
     actors = [
@@ -17,15 +18,22 @@ def main() -> QuerySet:
         ("Jaden", "Smith"),
         ("Scarlett", "Johansson"),
     ]
-    for first, last in actors:
-        Actor.objects.create(first_name=first, last_name=last)
+
+    for first_name, last_name in actors:
+        Actor.objects.create(
+            first_name=first_name,
+            last_name=last_name
+        )
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(first_name="George", last_name="Klooney"
-                         ).update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu", last_name="Reaves"
-                         ).update(first_name="Keanu", last_name="Reeves")
-
+    Actor.objects.filter(
+        first_name="George",
+        last_name="Klooney"
+    ).update(last_name="Clooney")
+    Actor.objects.filter(
+        first_name="Kianu",
+        last_name="Reaves"
+    ).update(first_name="Keanu", last_name="Reeves")
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
