@@ -13,7 +13,7 @@ def main() -> QuerySet:
     Genre.objects.create(name="Action")
     Genre.objects.create(name="Dramma")
 
-    Actor.objects.create(first_name="George", last_name="Klonney")
+    Actor.objects.create(first_name="George", last_name="Klooney")
     Actor.objects.create(first_name="Kianu", last_name="Reaves")
     Actor.objects.create(first_name="Scarlett", last_name="Keegan")
     Actor.objects.create(first_name="Will", last_name="Smith")
