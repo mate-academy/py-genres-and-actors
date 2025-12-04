@@ -48,15 +48,15 @@ def main() -> QuerySet:
 
 
 def create_actor(profiles: list) -> None:
-    for profile in profiles:
+    for first_name, last_name in profiles:
         Actor.objects.create(
-            first_name=profile[0],
-            last_name=profile[1],
+            first_name=first_name,
+            last_name=last_name,
         )
 
 
 def create_genre(genres: list) -> None:
-    for gen in genres:
+    for genre in genres:
         Genre.objects.create(
-            name=gen,
+            name=genre,
         )
