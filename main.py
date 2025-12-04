@@ -1,25 +1,37 @@
 from db.models import Genre, Actor
+from django.db.models.query import QuerySet
 
 
-def main():
+def main() -> QuerySet[Actor]:
     # ---------- CREATE ----------
-    # Genres
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
     Genre.objects.create(name="Dramma")
 
-    # Actors
     Actor.objects.create(first_name="George", last_name="Klooney")
     Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")   # actress
+    Actor.objects.create(
+        first_name="Scarlett",
+        last_name="Keegan"
+    )
     Actor.objects.create(first_name="Will", last_name="Smith")
     Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")  # actress
+    Actor.objects.create(
+        first_name="Scarlett",
+        last_name="Johansson"
+    )
 
     # ---------- UPDATE ----------
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(first_name="George", last_name="Klooney").update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(
+    Actor.objects.filter(
+        first_name="George",
+        last_name="Klooney"
+    ).update(last_name="Clooney")
+
+    Actor.objects.filter(
+        first_name="Kianu",
+        last_name="Reaves"
+    ).update(
         first_name="Keanu",
         last_name="Reeves"
     )
