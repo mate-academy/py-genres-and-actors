@@ -2,12 +2,15 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# SECURITY WARNING: Modify this secret key if using in production!
 SECRET_KEY = "6few3nci_q_o@l1dlbk81%wcxe!*6r29yu629&d97!hiqat9fa"
 
-# Required for running Django ORM in scripts
 DEBUG = True
 ALLOWED_HOSTS = ["*"]
+
+INSTALLED_APPS = [
+    "django.contrib.contenttypes",
+    "db",
+]
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
