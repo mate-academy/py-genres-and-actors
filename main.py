@@ -1,7 +1,7 @@
 from db.models import Genre, Actor
 
 
-def main():
+def main() -> object:
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
     Genre.objects.create(name="Dramma")
