@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-
 BASE_DIR: Path = Path(__file__).resolve().parent
 
 SECRET_KEY: str = os.environ.get("DJANGO_SECRET_KEY", "dev-secret")
@@ -29,3 +28,14 @@ MIDDLEWARE: list[str] = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+DATABASES: dict[str, dict[str, str]] = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.environ.get("DB_NAME", ":memory:"),
+    }
+}
+
+DEFAULT_AUTO_FIELD: str = "django.db.models.BigAutoField"
+
+STATIC_URL: str = "/static/"
