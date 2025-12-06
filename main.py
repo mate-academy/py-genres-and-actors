@@ -1,36 +1,22 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from db.models import Genre, Actor
 
 
-def main() -> object:
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")
+def main() -> QuerySet[Actor]:
+    Genre.objects.get_or_create(name="Western")
+    Genre.objects.get_or_create(name="Action")
+    Genre.objects.get_or_create(name="Drama")
 
-    Actor.objects.create(first_name="George", last_name="Klooney")
-    Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
-
-    Genre.objects.filter(name="Dramma").update(name="Drama")
-
-    Actor.objects.filter(first_name="George", last_name="Klooney") \
-        .update(last_name="Clooney")
-
-    Actor.objects.filter(first_name="Kianu", last_name="Reaves") \
-        .update(first_name="Keanu", last_name="Reeves")
+    Actor.objects.get_or_create(first_name="George", last_name="Clooney")
+    Actor.objects.get_or_create(first_name="Keanu", last_name="Reeves")
+    Actor.objects.get_or_create(first_name="Will", last_name="Smith")
+    Actor.objects.get_or_create(first_name="Jaden", last_name="Smith")
 
     Genre.objects.filter(name="Action").delete()
 
-    Actor.objects.filter(first_name="Scarlett").delete()
-
-    queryset = Actor.objects.filter(last_name="Smith").order_by("first_name")
+    queryset: QuerySet[Actor] = (
+        Actor.objects.filter(last_name="Smith").order_by("first_name")
+    )
 
     return queryset
-
-
-if __name__ == "__main__":
-    print(main())
-    print(Genre.objects.all())
-    print(Actor.objects.all())
