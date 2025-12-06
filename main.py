@@ -1,4 +1,3 @@
-from typing import Any
 from django.db.models.query import QuerySet
 from db.models import Genre, Actor
 

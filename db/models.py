@@ -26,8 +26,13 @@ class Actor(models.Model):
 class Movie(models.Model):
     title = models.CharField(max_length=255)
     release_year = models.PositiveIntegerField()
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, related_name="movies")
-    actors = models.ManyToManyField(Actor, related_name="movies")
+    genre = models.ForeignKey(
+        Genre,
+        on_delete=models.CASCADE,
+        related_name="movies")
+    actors = models.ManyToManyField(
+        Actor,
+        related_name="movies")
 
     class Meta:
         app_label = "db"
