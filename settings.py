@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-from typing import Any
 
 
 BASE_DIR: Path = Path(__file__).resolve().parent
