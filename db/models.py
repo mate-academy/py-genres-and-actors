@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import CharField
 
 
 class Genre(models.Model):
@@ -7,8 +6,8 @@ class Genre(models.Model):
 
     objects = models.Manager()
 
-    def __str__(self) -> CharField:
-        return self.name
+    def __str__(self) -> str:
+        return f"{self.name}"
 
 
 class Actor(models.Model):
