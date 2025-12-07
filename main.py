@@ -4,9 +4,13 @@ from django.db.models import QuerySet
 
 
 def main() -> QuerySet:
-    genres_to_create = ["Western", "Action", "Dramma"]
-    for genre_data in genres_to_create:
-        Genre.objects.create(name=genre_data)
+    genres_to_create = [
+        ("Western",),
+        ("Action",),
+        ("Dramma",),
+    ]
+    for name in genres_to_create:
+        Genre.objects.create(name=name[0])
 
     first_and_last_name = [
         ("George", "Klooney"),
