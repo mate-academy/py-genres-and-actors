@@ -1,12 +1,20 @@
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# SECURITY WARNING: Modify this secret key if using in production!
-SECRET_KEY = "6few3nci_q_o@l1dlbk81%wcxe!*6r29yu629&d97!hiqat9fa"
+SECRET_KEY = "super-secret-key-just-for-testing"
 
-DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+DEBUG = False
+
+ALLOWED_HOSTS = []
+INSTALLED_APPS = [
+    # Wymagane komponenty Django
+    "django.contrib.contenttypes",
+    "django.contrib.auth",
+
+    # Twoja aplikacja
+    "db.apps.DbConfig",
+]
 
 DATABASES = {
     "default": {
@@ -14,7 +22,11 @@ DATABASES = {
         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
+# Użyto podwójnych cudzysłowów dla ROOT_URLCONF
+ROOT_URLCONF = "main"
 
 USE_TZ = False
 
-INSTALLED_APPS = ("db",)
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+SILENCED_SYSTEM_CHECKS = ["urls.W002"]

@@ -23,8 +23,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
       - name: Run flake8
         run: flake8
+
+      # NOWY KROK: Uruchomienie migracji Django
+      - name: Run migrations
+        run: python manage.py migrate
 
       - name: Run tests
         timeout-minutes: 5
