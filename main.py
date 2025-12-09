@@ -1,6 +1,8 @@
-from db.models import Genre, Actor # << DODAJ LUB POPRAW TĘ LINIĘ
+from db.models import Genre, Actor
+
 
 urlpatterns = []
+
 
 def main() -> list[Actor]:
     genres_to_create = ["Western", "Dramma", "Action"]
@@ -18,7 +20,11 @@ def main() -> list[Actor]:
         Genre.objects.create(name=name)
 
     for first_name, last_name, is_actress in actors_to_create:
-        Actor.objects.create(first_name=first_name, last_name=last_name, is_actress=is_actress)
+        Actor.objects.create(
+            first_name=first_name,
+            last_name=last_name,
+            is_actress=is_actress,
+        )
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
@@ -28,13 +34,16 @@ def main() -> list[Actor]:
 
     Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(
         first_name="Keanu",
-        last_name="Reeves"
+        last_name="Reeves",
     )
 
     Genre.objects.filter(name="Action").delete()
 
     Actor.objects.filter(is_actress=True, first_name="Scarlett").delete()
 
-    smith_actors = Actor.objects.filter(last_name="Smith").order_by("first_name")
+    smith_actors = (
+        Actor.objects.filter(last_name="Smith")
+        .order_by("first_name")
+    )
 
     return smith_actors

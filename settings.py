@@ -8,22 +8,21 @@ DEBUG = False
 
 ALLOWED_HOSTS = []
 INSTALLED_APPS = [
-    # Poprawka Q000: użycie podwójnych cudzysłowów
+    # Wymagane komponenty Django
     "django.contrib.contenttypes",
     "django.contrib.auth",
 
-    # Poprawka Q000: użycie podwójnych cudzysłowów
+    # Twoja aplikacja
     "db.apps.DbConfig",
 ]
 
 DATABASES = {
     "default": {
-        # Poprawka Q000: użycie podwójnych cudzysłowów
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
-# Poprawka Q000: użycie podwójnych cudzysłowów
+# Użyto podwójnych cudzysłowów dla ROOT_URLCONF
 ROOT_URLCONF = "main"
 
 USE_TZ = False
@@ -31,4 +30,3 @@ USE_TZ = False
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SILENCED_SYSTEM_CHECKS = ["urls.W002"]
-# W292: Została dodana nowa linia na końcu pliku002"]
