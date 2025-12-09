@@ -4,21 +4,32 @@ from db.models import Genre, Actor
 
 from django.urls import path
 
+# Zgodnie z wymaganiem, urlpatterns jest zachowane, jeśli jest częścią struktury projektu
 urlpatterns = []
 
 
 def main():
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Dramma")
-    Genre.objects.create(name="Action")
+    # Dane do utworzenia obiektów Genre i Actor
+    genres_to_create = ["Western", "Dramma", "Action"]
 
-    Actor.objects.create(first_name="George", last_name="Klooney", is_actress=False)
-    Actor.objects.create(first_name="Kianu", last_name="Reaves", is_actress=False)
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan", is_actress=True)
-    Actor.objects.create(first_name="Will", last_name="Smith", is_actress=False)
-    Actor.objects.create(first_name="Jaden", last_name="Smith", is_actress=False)
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson", is_actress=True)
+    actors_to_create = [
+        ("George", "Klooney", False),
+        ("Kianu", "Reaves", False),
+        ("Scarlett", "Keegan", True),
+        ("Will", "Smith", False),
+        ("Jaden", "Smith", False),
+        ("Scarlett", "Johansson", True),
+    ]
 
+    # CHECKLIST ITEM #2 & #3: Refaktoryzacja tworzenia obiektów Genre za pomocą pętli
+    for name in genres_to_create:
+        Genre.objects.create(name=name)
+
+    # CHECKLIST ITEM #2 & #3: Refaktoryzacja tworzenia obiektów Actor za pomocą pętli
+    for first_name, last_name, is_actress in actors_to_create:
+        Actor.objects.create(first_name=first_name, last_name=last_name, is_actress=is_actress)
+
+    # Pozostała logika bazodanowa
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
     Actor.objects.filter(first_name="George", last_name="Klooney").update(last_name="Clooney")
@@ -35,18 +46,3 @@ def main():
     smith_actors = Actor.objects.filter(last_name="Smith").order_by('first_name')
 
     return smith_actors
-
-
-if __name__ == "__main__":
-
-    try:
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
-        django.setup()
-    except Exception as e:
-        print(f"Błąd konfiguracji Django. Upewnij się, że masz skonfigurowany projekt i settings.py. Szczegóły: {e}")
-
-    print(main())
-
-    print(Genre.objects.all())
-
-    print(Actor.objects.all())
