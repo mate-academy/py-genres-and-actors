@@ -6,12 +6,12 @@ from db.models import Genre, Actor
 def main() -> None:
     Genre.objects.get_or_create(name="Western")
     Genre.objects.get_or_create(name="Action")
-    Genre.objects.get_or_create(name="Drama")
+    Genre.objects.get_or_create(name="Dramma")
 
     Actor.objects.get_or_create(first_name="George", last_name="Klooney")
     Actor.objects.get_or_create(first_name="Kianu", last_name="Reaves")
     Actor.objects.get_or_create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.get_or_create(first_name="Smith", last_name="Smith")
+    Actor.objects.get_or_create(first_name="Will", last_name="Smith")
     Actor.objects.get_or_create(first_name="Jaden", last_name="Smith")
     Actor.objects.get_or_create(first_name="Scarlett", last_name="Johansson")
 
@@ -31,4 +31,4 @@ def main() -> None:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    return Actor.objects.filter(last_name="Smith").order_by("last_name")
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
