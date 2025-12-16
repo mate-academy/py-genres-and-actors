@@ -6,8 +6,10 @@ class Genre(models.Model):
         max_length=255,
         unique=True
     )
+
     def __str__(self) -> str:
         return self.name
+
 
 class Actor(models.Model):
     first_name = models.CharField(
