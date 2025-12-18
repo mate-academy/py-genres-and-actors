@@ -2,9 +2,10 @@ import init_django_orm  # noqa: F401
 
 from django.core.management import call_command
 from db.models import Genre, Actor
+from django.db.models import QuerySet
 
 
-def main():
+def main() -> QuerySet:
     # Create database tables directly from models
     call_command("migrate", run_syncdb=True, verbosity=0)
 
