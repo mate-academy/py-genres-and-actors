@@ -1,35 +1,54 @@
 import init_django_orm  # noqa: F401
 
-from django.db.models import QuerySet
+from django.core.management import call_command
 from db.models import Genre, Actor
 
 
-def main() -> QuerySet:
-    Genre.objects.get_or_create(name="Western")
-    Genre.objects.get_or_create(name="Action")
-    Genre.objects.get_or_create(name="Dramma")
+def main():
+    # Create database tables directly from models
+    call_command("migrate", run_syncdb=True, verbosity=0)
 
-    Actor.objects.get_or_create(first_name="George", last_name="Klooney")
-    Actor.objects.get_or_create(first_name="Kianu", last_name="Reaves")
-    Actor.objects.get_or_create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.get_or_create(first_name="Will", last_name="Smith")
-    Actor.objects.get_or_create(first_name="Jaden", last_name="Smith")
-    Actor.objects.get_or_create(first_name="Scarlett", last_name="Johansson")
+    # Create genres using loop
+    genres = [
+        "Western",
+        "Action",
+        "Dramma",
+    ]
+    for name in genres:
+        Genre.objects.get_or_create(name=name)
 
+    # Create actors using loop
+    actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
+    for first_name, last_name in actors:
+        Actor.objects.get_or_create(
+            first_name=first_name,
+            last_name=last_name,
+        )
+
+    # Update records
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(
         first_name="George",
-        last_name="Klooney"
+        last_name="Klooney",
     ).update(last_name="Clooney")
     Actor.objects.filter(
         first_name="Kianu",
-        last_name="Reaves"
+        last_name="Reaves",
     ).update(
         first_name="Keanu",
-        last_name="Reeves"
+        last_name="Reeves",
     )
 
+    # Delete records
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
+    # Return required QuerySet
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
