@@ -29,7 +29,6 @@ def main() -> QuerySet:
         name="Dramma"
     ).update(name="Drama")
 
-
     Actor.objects.filter(
         last_name="Klooney"
     ).update(last_name="Clooney")
