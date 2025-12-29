@@ -6,12 +6,26 @@ from db.models import Actor, Genre
 
 
 def _ensure_tables() -> None:
-    existing = set(connection.introspection.table_names())
-    with connection.schema_editor() as schema_editor:
-        if Genre._meta.db_table not in existing:
-            schema_editor.create_model(Genre)
-        if Actor._meta.db_table not in existing:
-            schema_editor.create_model(Actor)
+    genre_table = Genre._meta.db_table
+    actor_table = Actor._meta.db_table
+    with connection.cursor() as cursor:
+        cursor.execute(
+            f"""
+            CREATE TABLE IF NOT EXISTS "{genre_table}" (
+                "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+                "name" varchar(255) NOT NULL
+            )
+            """
+        )
+        cursor.execute(
+            f"""
+            CREATE TABLE IF NOT EXISTS "{actor_table}" (
+                "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+                "first_name" varchar(255) NOT NULL,
+                "last_name" varchar(255) NOT NULL
+            )
+            """
+        )
 
 
 def main() -> QuerySet[Actor]:
