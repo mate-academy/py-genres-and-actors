@@ -1,15 +1,23 @@
 # main.py
+from django.db import connection
 from django.db.models import QuerySet
 
 from db.models import Actor, Genre
 
 
+def _ensure_tables() -> None:
+    existing = set(connection.introspection.table_names())
+    with connection.schema_editor() as schema_editor:
+        if Genre._meta.db_table not in existing:
+            schema_editor.create_model(Genre)
+        if Actor._meta.db_table not in existing:
+            schema_editor.create_model(Actor)
+
+
 def main() -> QuerySet[Actor]:
-    genres = [
-        ("Western",),
-        ("Action",),
-        ("Dramma",),
-    ]
+    _ensure_tables()
+
+    genres = [("Western",), ("Action",), ("Dramma",)]
     for (name,) in genres:
         Genre.objects.create(name=name)
 
