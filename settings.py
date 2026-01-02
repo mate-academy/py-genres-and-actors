@@ -8,6 +8,13 @@ SECRET_KEY = "6few3nci_q_o@l1dlbk81%wcxe!*6r29yu629&d97!hiqat9fa"
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -18,3 +25,5 @@ DATABASES = {
 USE_TZ = False
 
 INSTALLED_APPS = ("db",)
+
+ALLOWED_HOSTS = ['*']
