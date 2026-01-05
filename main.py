@@ -7,21 +7,21 @@ from db.models import Actor, Genre
 def main() -> QuerySet:
     genres = ["Western", "Action", "Dramma"]
     actors = [
-        "George Klooney",
-        "Kianu Reaves",
-        "Scarlett Keegan",
-        "Will Smith",
-        "Jaden Smith",
-        "Scarlett Johansson"
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
     ]
 
     for genre in genres:
         Genre.objects.create(name=genre)
 
-    for actor in actors:
+    for first, last in actors:
         Actor.objects.create(
-            first_name=actor.split()[0],
-            last_name=actor.split()[1])
+            first_name=first,
+            last_name=last)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
