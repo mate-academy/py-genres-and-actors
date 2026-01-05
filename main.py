@@ -12,7 +12,7 @@ def main() -> QuerySet:
     ]
 
     for genre_name, in genres_to_create:
-        Genre.objects.create(name=genre_name[0])
+        Genre.objects.create(name=genre_name)
 
     actors_to_create = [
         ("George", "Klooney"),
