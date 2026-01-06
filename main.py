@@ -9,16 +9,25 @@ def main() -> QuerySet:
     genres: QuerySet[Genre] = Genre.objects
     actors: QuerySet[Actor] = Actor.objects
 
-    genres.create(name="Western")
-    genres.create(name="Action")
-    genres.create(name="Dramma")
+    genres_list = ["Western", "Action", "Dramma"]
 
-    actors.create(first_name="George", last_name="Klooney")
-    actors.create(first_name="Kianu", last_name="Reaves")
-    actors.create(first_name="Scarlett", last_name="Keegan")
-    actors.create(first_name="Will", last_name="Smith")
-    actors.create(first_name="Jaden", last_name="Smith")
-    actors.create(first_name="Scarlett", last_name="Johansson")
+    genres.bulk_create([Genre(name=name) for name in genres_list])
+
+    actors_list = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
+
+    actors.bulk_create(
+        [
+            Actor(first_name=first, last_name=last)
+            for first, last in actors_list
+        ]
+    )
 
     genres.filter(name="Dramma").update(name="Drama")
     actors.filter(last_name="Klooney").update(last_name="Clooney")
