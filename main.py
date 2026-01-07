@@ -5,47 +5,26 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    Genre.objects.create(
-        name="Western"
-    )
+    genres = ["Western", "Action", "Dramma"]
+    actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
+    ]
 
-    Genre.objects.create(
-        name="Action"
-    )
+    for name in genres:
+        Genre.objects.create(
+            name=name
+        )
 
-    Genre.objects.create(
-        name="Dramma"
-    )
-
-    Actor.objects.create(
-        first_name="George",
-        last_name="Klooney"
-    )
-
-    Actor.objects.create(
-        first_name="Kianu",
-        last_name="Reaves"
-    )
-
-    Actor.objects.create(
-        first_name="Scarlett",
-        last_name="Keegan"
-    )
-
-    Actor.objects.create(
-        first_name="Will",
-        last_name="Smith"
-    )
-
-    Actor.objects.create(
-        first_name="Jaden",
-        last_name="Smith"
-    )
-
-    Actor.objects.create(
-        first_name="Scarlett",
-        last_name="Johansson"
-    )
+    for first, last in actors:
+        Actor.objects.create(
+            first_name=first,
+            last_name=last
+        )
 
     Genre.objects.filter(
         name="Dramma"
@@ -76,7 +55,3 @@ def main() -> QuerySet:
     ).delete()
 
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
-
-
-if __name__ == "__main__":
-    main()
