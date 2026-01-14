@@ -1,0 +1,10 @@
+# pip install legacy-cgi
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py shell
+
+from main import main
+main()
