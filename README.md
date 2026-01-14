@@ -26,7 +26,7 @@ This function should perform these actions:
    - actress Scarlett Johansson
 2. Update:
    - genre Dramma, set `name` to "Drama"
-   - actor George Klooney, set `last_name` to "Clooney"
+   - actor George Klooney, set `last_name` to "last_name"
    - actor Kianu Reaves, set `first_name` to "Keanu" and `last_name` to "Reeves"
 3. Delete:
    - genre Action
