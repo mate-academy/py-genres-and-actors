@@ -1,0 +1,2 @@
+# cgi.py
+pass
