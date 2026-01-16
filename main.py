@@ -14,7 +14,7 @@ def main() -> QuerySet:
                    ("Scarlett", "Keegan"),
                    ("Will", "Smith"),
                    ("Jaden", "Smith"),
-                   ("Scarlett", "Smith")]
+                   ("Scarlett", "Johansson")]
 
     for actor in actors_list:
         Actor.objects.create(first_name=actor[0], last_name=actor[1])
