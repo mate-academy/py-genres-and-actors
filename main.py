@@ -7,23 +7,18 @@ from db.models import Genre, Actor
 
 def main() -> QuerySet:
     genres_list = ["Western", "Action", "Dramma"]
-    actors_dict = {
-        "George": "Klooney",
-        "Kianu": "Reaves",
-        "Scarlett": "Keegan",
-        "Will": "Smith",
-        "Jaden": "Smith",
-        "Johanson": "Scarlett",
-    }
+    actors_list = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johanson")]
     for genre in genres_list:
         Genre.objects.create(name=genre)
-    for actor in actors_dict.keys():
-        if actor != "Johanson":
-            Actor.objects.create(first_name=actor,
-                                 last_name=actors_dict[actor])
-        else:
-            Actor.objects.create(first_name=actors_dict[actor],
-                                 last_name=actor)
+    for name, surname in actors_list:
+        Actor.objects.create(first_name=name,
+                             last_name=surname)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Genre.objects.filter(name="Action").delete()
