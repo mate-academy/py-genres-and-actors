@@ -22,8 +22,8 @@ def main() -> QuerySet:
 
     for first_name, last_name in actors:
         Actor.objects.get_or_create(
-            first_name = first_name,
-            last_name = last_name
+            first_name=first_name,
+            last_name=last_name
         )
     Actor.objects.filter(
         first_name="George", last_name="Klooney"
