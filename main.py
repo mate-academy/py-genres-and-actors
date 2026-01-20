@@ -8,8 +8,8 @@ from db.models import *
 def main() -> QuerySet:
     for genre_ in ('Western', 'Action', 'Dramma'):
         genre = Genre.objects.create(name=genre_)
-    for first_name, last_name in (['George', 'Klooney'], ['Kianu', 'Reaves'], ['Scarlett', 'Keegan'],
-                   ['Will', 'Smith'], ['Jaden', 'Smith'], ['Scarlett', 'Johansson']):
+    for first_name, last_name in [('George', 'Klooney'), ('Kianu', 'Reaves'), ('Scarlett', 'Keegan'),
+                                  ('Will', 'Smith'), ('Jaden', 'Smith'), ('Scarlett', 'Johansson')]:
         actor = Actor.objects.create(first_name=first_name, last_name=last_name)
     Genre.objects.filter(name='Dramma').update(name='Drama')
     Actor.objects.filter(last_name='Klooney').update(last_name='Clooney')
