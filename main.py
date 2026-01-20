@@ -2,17 +2,24 @@ from db.models import Genre, Actor
 
 
 def main() -> Actor.objects.all().__class__:
-    # 1. Create
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")  # com dois "m" de propósito
+    # 1. Create gêneros usando for loop + lista
+    genres = [
+        "Western", "Action", "Dramma"
+    ]  # "Dramma" com dois "m" de propósito
+    for name in genres:
+        Genre.objects.create(name=name)
 
-    Actor.objects.create(first_name="George", last_name="Klooney")
-    Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    # 1. Create atores usando for loop + lista de tuplas
+    actors_data = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
+    for first_name, last_name in actors_data:
+        Actor.objects.create(first_name=first_name, last_name=last_name)
 
     # 2. Update
     Genre.objects.filter(name="Dramma").update(name="Drama")
@@ -32,5 +39,5 @@ def main() -> Actor.objects.all().__class__:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    # 4. Return
+    # 4. Return QuerySet ordenado
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
