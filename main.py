@@ -9,7 +9,7 @@ def main() -> QuerySet:
     Genre.objects.create(name="Action")
     Genre.objects.create(name="Dramma")
 
-    # Create Actors
+    # Create Actors/Actresses
     Actor.objects.create(first_name="George", last_name="Klooney")
     Actor.objects.create(first_name="Kianu", last_name="Reaves")
     Actor.objects.create(first_name="Scarlett", last_name="Keegan")
@@ -17,19 +17,22 @@ def main() -> QuerySet:
     Actor.objects.create(first_name="Jaden", last_name="Smith")
     Actor.objects.create(first_name="Scarlett", last_name="Johansson")
 
-    # Updates
+    # Update records
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(first_name="George", last_name="Klooney").update(
-        last_name="Clooney"
-    )
-    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(
-        first_name="Keanu",
-        last_name="Reeves"
-    )
 
-    # Deletions
+    Actor.objects.filter(
+        first_name="George",
+        last_name="Klooney"
+    ).update(last_name="Clooney")
+
+    Actor.objects.filter(
+        first_name="Kianu",
+        last_name="Reaves"
+    ).update(first_name="Keanu", last_name="Reeves")
+
+    # Delete records
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    # Return filtered and ordered QuerySet
+    # Return final QuerySet
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
