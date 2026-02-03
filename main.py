@@ -1,34 +1,29 @@
-from django.template.defaultfilters import first
-
 import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet
 from db.models import Genre, Actor
 
-
 def main() -> QuerySet:
-    # створення жанрів
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")
+    genres = ["Western", "Action", "Dramma"]
+    for name in genres:
+        Genre.objects.create(name=name)
 
-    # створення акторів
-    Actor.objects.create(first_name="George", last_name="Klooney")
-    Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
+    for first, last in actors:
+        Actor.objects.create(first_name=first, last_name=last)
 
-    # оновлення
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
     Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(first_name="Keanu", last_name="Reeves")
 
-    # видалення
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    # повернення потрібного QuerySet
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
-
