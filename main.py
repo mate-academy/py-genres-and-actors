@@ -10,7 +10,7 @@ def main() -> QuerySet:
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
         ("Scarlett", "Keegan"),
-        ("Will", "Will"),
+        ("Will", "Smith"),
         ("Jaden", "Smith"),
         ("Scarlett", "Johansson"),
     ]
