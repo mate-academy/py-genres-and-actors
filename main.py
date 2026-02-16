@@ -1,46 +1,16 @@
-from django.db.models import QuerySet
-
-from db.models import Genre, Actor
+from django.db import models
 
 
-def main() -> QuerySet[Actor]:
-    # CREATE
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Dramma")
+class Genre(models.Model):
+    name = models.CharField(max_length=255)
 
-    Actor.objects.create(first_name="George", last_name="Klooney")
-    Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    def __str__(self) -> str:
+        return self.name
 
-    # UPDATE
-    drama = Genre.objects.get(name="Dramma")
-    drama.name = "Drama"
-    drama.save()
 
-    george = Actor.objects.get(
-        first_name="George",
-        last_name="Klooney",
-    )
-    george.last_name = "Clooney"
-    george.save()
+class Actor(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
 
-    keanu = Actor.objects.get(
-        first_name="Kianu",
-        last_name="Reaves",
-    )
-    keanu.first_name = "Keanu"
-    keanu.last_name = "Reeves"
-    keanu.save()
-
-    # DELETE
-    Genre.objects.filter(name="Action").delete()
-    Actor.objects.filter(first_name="Scarlett").delete()
-
-    # RETURN
-    return Actor.objects.filter(
-        last_name="Smith",
-    ).order_by("first_name")
+    def __str__(self) -> str:
+        return f"{self.first_name} {self.last_name}"
