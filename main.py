@@ -28,7 +28,7 @@ def main() -> QuerySet:
     # Create
     genres = ["Western", "Action", "Dramma"]
     actors = [
-        {"first_name": "George", "last_name": "Clooney"},
+        {"first_name": "George", "last_name": "Klooney"},
         {"first_name": "Kianu", "last_name": "Reaves"},
         {"first_name": "Scarlett", "last_name": "Keegan"},
         {"first_name": "Will", "last_name": "Smith"},
