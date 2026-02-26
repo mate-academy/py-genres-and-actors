@@ -3,39 +3,36 @@ import init_django_orm  # noqa: F401
 from db.models import Actor, Genre
 from django.db.models import QuerySet
 
-from typing import Optional, Any
+from typing import Any
 from django.db.models import Model
 
 
 def operate(
         model: type[Model],
         action: str,
-        data: list[dict] | list[Any],
-        column: Optional[str] = None
+        data: list[tuple] | list[Any],
 ) -> None:
     for item in data:
-        if isinstance(item, dict):
-            getattr(model.objects, action)(**item)
+        if isinstance(item, tuple):
+            getattr(model.objects, action)(
+                first_name=item[0], last_name=item[1]
+            )
         else:
-            if column is None:
-                raise ValueError(
-                    "Column name must be provided for single-value data"
-                )
-            getattr(model.objects, action)(**{column: item})
+            getattr(model.objects, action)(name=item)
 
 
 def main() -> QuerySet:
     # Create
-    genres = ["Western", "Action", "Dramma"]
+    genres = [("Western"), ("Action"), ("Dramma")]
     actors = [
-        {"first_name": "George", "last_name": "Klooney"},
-        {"first_name": "Kianu", "last_name": "Reaves"},
-        {"first_name": "Scarlett", "last_name": "Keegan"},
-        {"first_name": "Will", "last_name": "Smith"},
-        {"first_name": "Jaden", "last_name": "Smith"},
-        {"first_name": "Scarlett", "last_name": "Johansson"},
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
     ]
-    operate(Genre, "create", genres, column="name")
+    operate(Genre, "create", genres)
     operate(Actor, "create", actors)
 
     # Update
