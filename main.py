@@ -1,32 +1,38 @@
+from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def main():
+def main() -> QuerySet:
     # CREATE
-    western = Genre.objects.create(name="Western")
-    action = Genre.objects.create(name="Action")
-    dramma = Genre.objects.create(name="Dramma")
+    genres = ["Western", "Action", "Dramma"]
+    for name in genres:
+        Genre.objects.create(name=name)
 
-    george = Actor.objects.create(first_name="George", last_name="Klooney")
-    kianu = Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    scarlett1 = Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    will_smith = Actor.objects.create(first_name="Will", last_name="Smith")
-    jaden_smith = Actor.objects.create(first_name="Jaden", last_name="Smith")
-    scarlett2 = Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
+
+    for first, last in actors:
+        Actor.objects.create(
+            first_name=first,
+            last_name=last,
+        )
 
     # UPDATE
-    dramma.name = "Drama"
-    dramma.save()
-
-    george.last_name = "Clooney"
-    george.save()
-
-    kianu.first_name = "Keanu"
-    kianu.last_name = "Reeves"
-    kianu.save()
+    Genre.objects.filter(name="Dramma").update(name="Drama")
+    Actor.objects.filter(first_name="George").update(last_name="Clooney")
+    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(
+        first_name="Keanu",
+        last_name="Reeves",
+    )
 
     # DELETE
-    action.delete()
+    Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
     # RETURN
