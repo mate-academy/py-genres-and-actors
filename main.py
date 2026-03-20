@@ -17,13 +17,16 @@ def main() -> QuerySet:
         ("Jaden", "Smith"),
         ("Scarlett", "Johansson")
     ]
-    for actor in actor_list:
-        Actor.objects.create(first_name=actor[0], last_name=actor[1])
+    for first_name, last_name in actor_list:
+        Actor.objects.create(first_name=first_name, last_name=last_name)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
     Actor.objects.filter(
-        last_name="Reaves").update(
+        first_name="George", last_name="Klooney").update(
+        last_name="Clooney"
+    )
+    Actor.objects.filter(
+        last_name="Reaves", first_name="Kianu").update(
         last_name="Reeves", first_name="Keanu"
     )
 
