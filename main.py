@@ -6,24 +6,27 @@ from django.db.models import QuerySet
 def main() -> QuerySet:
     # create
     genres = ["Western", "Action", "Dramma"]
-    actors_and_actresses = {"George": "Klooney",
-                            "Kianu": "Reaves",
-                            "Scarlett": "Keegan",
-                            "Will ": "Smith",
-                            "Jaden": "Smith",
-                            "Scarlett": "Johansson"}
+    actors_and_actresses = [("George", "Klooney"),
+                            ("Kianu", "Reaves"),
+                            ("Scarlett", "Keegan"),
+                            ("Will", "Smith"),
+                            ("Jaden", "Smith"),
+                            ("Scarlett", "Johansson")]
 
     for i in genres:
-        Genre.objects.create(i)
+        Genre.objects.create(name=i)
 
     for key, value in actors_and_actresses:
-        Actor.objects.create(key, value)
+        Actor.objects.create(first_name=key, last_name=value)
 
     # Update
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(first_name="George", last_name="Klooney").update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(first_name="Keanu", last_name="Reeves")
+    (Actor.objects.filter(first_name="George",
+                          last_name="Klooney").update(last_name="Clooney"))
+    Actor.objects.filter(first_name="Kianu",
+                         last_name="Reaves").update(first_name="Keanu",
+                                                    last_name="Reeves")
 
     # Delete
 
@@ -32,4 +35,4 @@ def main() -> QuerySet:
 
     # Final return
 
-    return Actor.objects.filter(last_name="Smith").order_by("last_name")
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
