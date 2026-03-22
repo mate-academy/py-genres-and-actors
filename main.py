@@ -16,7 +16,8 @@ def main() -> QuerySet:
         ("Kianu", "Reaves"),
         ("Scarlett", "Keegan"),
         ("Will", "Smith"),
-        ("Jaden", "Smith")
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson")
     ]
 
     for first_name, last_name in actors:
