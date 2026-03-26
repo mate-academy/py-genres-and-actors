@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class OrmintroAppConfig(AppConfig):
-    name = 'ormintro_app'
+    name = "ormintro_app"
