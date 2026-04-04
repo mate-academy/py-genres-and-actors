@@ -1,5 +1,3 @@
-from os import name  # noqa: F401
-
 import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet
@@ -19,7 +17,7 @@ def main() -> QuerySet:
         Actor.objects.create(first_name=first, last_name=last)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
-    Actor.objects.filter(last_name="Klooney").update(last_name="Clooney")
+    Actor.objects.filter(first_name="George", last_name="Klooney").update(last_name="Clooney")
     Actor.objects.filter(first_name="Kianu",
                          last_name="Reaves").update(first_name="Keanu",
                                                     last_name="Reeves")
