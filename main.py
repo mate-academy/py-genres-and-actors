@@ -1,20 +1,21 @@
 import os
-import django
+import sys
 from typing import Any
 
-from db.models import Actor, Genre
-
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(BASE_DIR)
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
-django.setup()
+
+import django  # noqa: E402
+django.setup()  # noqa: E402
+
+from db.models import Actor, Genre  # noqa: E402
 
 
 def main() -> Any:
-    # limpar dados (evita duplicação)
     Genre.objects.all().delete()
     Actor.objects.all().delete()
 
-    # CREATE
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
     Genre.objects.create(name="Dramma")
@@ -26,7 +27,6 @@ def main() -> Any:
     Actor.objects.create(first_name="Jaden", last_name="Smith")
     Actor.objects.create(first_name="Scarlett", last_name="Johansson")
 
-    # UPDATE
     Genre.objects.filter(name="Dramma").update(name="Drama")
 
     Actor.objects.filter(first_name="George", last_name="Klooney").update(
@@ -38,17 +38,23 @@ def main() -> Any:
         last_name="Reeves"
     )
 
-    # DELETE
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
 
-    # RETURN
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
 
 
 if __name__ == "__main__":
     result = main()
 
-    print(result)
-    print(Genre.objects.all())
-    print(Actor.objects.all())
+    print("Resultado dos atores com sobrenome Smith:")
+    for actor in result:
+        print(f"{actor.first_name} {actor.last_name}")
+
+    print("\nGêneros restantes:")
+    for genre in Genre.objects.all():
+        print(genre.name)
+
+    print("\nTodos os atores restantes:")
+    for actor in Actor.objects.all():
+        print(f"{actor.first_name} {actor.last_name}")
