@@ -19,7 +19,10 @@ def main() -> QuerySet:
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(first_name="George").update(last_name="Clooney")
-    Actor.objects.filter(first_name="Kianu").update(last_name="Reeves", first_name="Keanu")
+    Actor.objects.filter(first_name="Kianu").update(
+        last_name="Reeves",
+        first_name="Keanu"
+    )
 
     acao = Genre.objects.filter(name="Action")
     acao.delete()
