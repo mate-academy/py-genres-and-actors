@@ -6,8 +6,12 @@ class Genre(models.Model):
 
 
 class Actor(models.Model):
+    id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
 
     def __str__(self) -> str:
+        return f"Actor: {self.first_name} {self.last_name}"
+
+    def __repr__(self) -> str:
         return f"Actor: {self.first_name} {self.last_name}"
