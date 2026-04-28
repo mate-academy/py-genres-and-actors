@@ -18,5 +18,5 @@ DATABASES = {
 USE_TZ = False
 
 INSTALLED_APPS = [
-    'db.apps.DbConfig',
+    "db.apps.DbConfig",
 ]
