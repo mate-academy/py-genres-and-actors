@@ -15,6 +15,7 @@ characters.
 Inside `main.py`, create `main` function.
 This function should perform these actions:
 1. Create:
+2. 
    - genre Western
    - genre Action
    - genre Dramma
