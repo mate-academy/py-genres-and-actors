@@ -4,15 +4,21 @@ from django.db.models import QuerySet
 
 
 def main() -> QuerySet:
-    genre_western = Genre.objects.create(name="Western")
+    Genre.objects.create(name="Western")
     genre_action = Genre.objects.create(name="Action")
     genre_dramma = Genre.objects.create(name="Dramma")
-    actor_george = Actor.objects.create(first_name="George", last_name="Klooney")
-    actor_kianu = Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    actress_scarlett = Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    actor_will = Actor.objects.create(first_name="Will", last_name="Smith")
-    actor_jaden = Actor.objects.create(first_name="Jaden", last_name="Smith")
-    actress_johansson = Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    actor_george = Actor.objects.create(
+        first_name="George",
+        last_name="Klooney"
+    )
+    actor_kianu = Actor.objects.create(
+        first_name="Kianu",
+        last_name="Reaves"
+    )
+    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
+    Actor.objects.create(first_name="Will", last_name="Smith")
+    Actor.objects.create(first_name="Jaden", last_name="Smith")
+    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
 
     genre_dramma.name = "Drama"
     genre_dramma.save()
