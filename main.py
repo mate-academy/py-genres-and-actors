@@ -1,7 +1,7 @@
 import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet
-from db.models import *
+from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
@@ -9,7 +9,7 @@ def main() -> QuerySet:
         Genre(name="Western"),
         Genre(name="Action"),
         Genre(name="Dramma"),
-              ]
+    ]
     Genre.objects.bulk_create(genres)
 
     actors = [
