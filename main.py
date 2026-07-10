@@ -5,11 +5,11 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    genres_to_create = ["Western", "Action", "Dramma"]
-    for genre_name in genres_to_create:
+    genres = ["Western", "Action", "Dramma"]
+    for genre_name in genres:
         Genre.objects.create(name=genre_name)
 
-    actors_to_create = [
+    actors = [
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
         ("Scarlett", "Keegan"),
@@ -17,9 +17,10 @@ def main() -> QuerySet:
         ("Jaden", "Smith"),
         ("Scarlett", "Johansson"),
     ]
-    for first_name, last_name in actors_to_create:
+    for first_name, last_name in actors:
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
+    # 2. Update Data
     Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(
         first_name="George", last_name="Klooney"
@@ -32,7 +33,3 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="Scarlett").delete()
 
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
-
-
-if __name__ == "__main__":
-    main()
