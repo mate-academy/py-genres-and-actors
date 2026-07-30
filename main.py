@@ -1,4 +1,3 @@
-import init_django  # noqa: F401
 from django.db.models import QuerySet
 from db.models import Actor, Genre
 
