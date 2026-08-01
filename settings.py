@@ -17,4 +17,6 @@ DATABASES = {
 
 USE_TZ = False
 
+ALLOWED_HOSTS = ["*"]
+
 INSTALLED_APPS = ("db",)
