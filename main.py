@@ -1,14 +1,11 @@
-import os
+import init_django_orm  # noqa: F401
 
-import django
+from django.db.models import QuerySet
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
-django.setup()
-
-from db.models import Actor, Genre  # noqa: E402
+from db.models import Actor, Genre
 
 
-def main() -> models.QuerySet:
+def main() -> QuerySet:
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
     Genre.objects.create(name="Dramma")
