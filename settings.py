@@ -15,6 +15,9 @@ DATABASES = {
     }
 }
 
+DEBUG = True
+ALLOWED_HOSTS = ["*"]
+
 USE_TZ = False
 
 INSTALLED_APPS = ("db",)
