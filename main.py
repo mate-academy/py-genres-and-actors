@@ -1,4 +1,5 @@
 import init_django_orm
+
 from django.db.models import QuerySet
 
 from db.models import Actor, Genre
