@@ -29,6 +29,7 @@ def main() -> QuerySet:
     keanu_reeves = Actor.objects.get(first_name="Kianu", last_name="Reaves")
     keanu_reeves.first_name = "Keanu"
     keanu_reeves.last_name = "Reeves"
+    keanu_reeves.save()
 
     # Deletions
     Genre.objects.get(name="Action").delete()
