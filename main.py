@@ -5,3 +5,6 @@ from django.db.models import QuerySet
 
 def main() -> QuerySet:
     pass
+
+if __name__ == '__main__':
+    main()
