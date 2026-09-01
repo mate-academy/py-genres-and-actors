@@ -22,10 +22,16 @@ def main() -> QuerySet:
         Actor.objects.create(first_name=actor_name, last_name=actor_surname)
 
     # Updating
-    Genre.objects.get(name="Dramma").name = "Drama"
-    Actor.objects.get(
+    drama = Genre.objects.get(name="Dramma")
+    drama.name = "Drama"
+    drama.save()
+
+    george_clooney = Actor.objects.get(
         first_name="George", last_name="Klooney"
-    ).last_name = "Clooney"
+    )
+    george_clooney.last_name = "Clooney"
+    george_clooney.save()
+
     keanu_reeves = Actor.objects.get(first_name="Kianu", last_name="Reaves")
     keanu_reeves.first_name = "Keanu"
     keanu_reeves.last_name = "Reeves"
