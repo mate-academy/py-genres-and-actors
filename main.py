@@ -32,4 +32,4 @@ def main() -> QuerySet:
     Genre.objects.get(name="Action").delete()
     Actor.objects.get(first_name="Scarlett").delete()
 
-    return Genre.objects.all()
+    return Actor.objects.get(last_name="Smith").order_by("first_name")
