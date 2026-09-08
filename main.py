@@ -4,6 +4,7 @@ from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
+# This will ?
 nlist = ["Western", "Action", "Dramma"]
 mlist = [
     "George Klooney",
