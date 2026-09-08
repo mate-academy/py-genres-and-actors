@@ -12,7 +12,7 @@ characters;
 - char field `last_name`, surname of the actor with the maximum length of 255 
 characters.
 
-Inside `main.py`, create `main` function.
+Inside `NOT_main_only_test.py`, create `NOT_main_only_test.py` function.
 This function should perform these actions:
 1. Create:
    - genre Western
