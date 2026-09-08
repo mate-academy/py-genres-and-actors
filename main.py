@@ -6,12 +6,12 @@ from db.models import Genre, Actor
 
 nlist = ["Western", "Action", "Dramma"]
 mlist = [
-    "George Klooney",
-    "Kianu Reaves",
-    "Scarlett Keegan",
-    "Will Smith",
-    "Jaden Smith",
-    "Scarlett Johansson"
+    ("George", "Klooney"),
+    ("Kianu", "Reaves"),
+    ("Scarlett", "Keegan"),
+    ("Will", "Smith"),
+    ("Jaden", "Smith"),
+    ("Scarlett", "Johansson")
 ]
 
 
@@ -21,7 +21,7 @@ def main() -> QuerySet:
             name=genre
         )
     for cred in mlist:
-        name, sur = cred.split()
+        name, sur = cred
         Actor.objects.create(
             first_name=name,
             last_name=sur
