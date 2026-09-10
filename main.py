@@ -5,13 +5,13 @@ from db.models import Actor, Genre
 
 
 def main() -> QuerySet:
-    genre_objects = [
-        "Western",
-        "Action",
-        "Dramma",
+    genres = [
+        ("Western",),
+        ("Action",),
+        ("Dramma",),
     ]
-    for genre in genre_objects:
-        Genre.objects.create(name=genre)
+    for (name,) in genres:
+        Genre.objects.create(name=name)
 
     actor_objects = [
         ("George", "Klooney"),
