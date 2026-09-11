@@ -27,7 +27,7 @@ def main() -> QuerySet:
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
     # 3. Оновлення записів
-    Genre.objects.filter(name="Drama").update(name="Drama")
+    Genre.objects.filter(name="Dramma").update(name="Drama")
     Actor.objects.filter(first_name="George").update(last_name="Clooney")
     Actor.objects.filter(last_name="Reeves").update(
         first_name="Keanu",
