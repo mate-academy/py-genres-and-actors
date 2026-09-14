@@ -1,19 +1,18 @@
 # Cinema Hall
 
-- Warning: Use `pytest app` for testing - not simple `pytest`
-- Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start
+Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
 
 In `db/models.py` create table `Genre` with such fields:
-- Char field `name`, name of the genre with the maximum length of 255 
+- char field `name`, name of the genre with the maximum length of 255 
 characters.
 
 Also, create table `Actor` with such fields:
-- Char field `first_name`, name of the actor with the maximum length of 255 
-characters.
-- Char field `last_name`, surname of the actor with the maximum length of 255 
+- char field `first_name`, name of the actor with the maximum length of 255 
+characters;
+- char field `last_name`, surname of the actor with the maximum length of 255 
 characters.
 
-Inside `app/main.py`, create `main` function.
+Inside `main.py`, create `main` function.
 This function should perform these actions:
 1. Create:
    - genre Western
@@ -51,3 +50,4 @@ print(Actor.objects.all())
 # <QuerySet [<Actor: George Clooney>, <Actor: Keanu Reeves>, <Actor: Will Smith>, <Actor: Jaden Smith>]>
 ```
 
+### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
