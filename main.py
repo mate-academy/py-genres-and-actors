@@ -40,20 +40,19 @@ def main() -> QuerySet[Actor]:
     dramma.name = "Drama"
     dramma.save()
     george_klooney = Actor.objects.get(
-        first_name="George", 
+        first_name="George",
         last_name="Klooney"
     )
 
-    george_klooney.last_name = "Clooney"   
+    george_klooney.last_name = "Clooney"
     george_klooney.save()
     kianu_reeves = Actor.objects.get(first_name="Kianu", last_name="Reaves")
     kianu_reeves.last_name = "Reeves"
-    kianu_reeves.first_name = "Kianu"
-    kianu_reeves.save() 
+    kianu_reeves.first_name = "Keanu"
+    kianu_reeves.save()
 
     # Deletando um ator
-    scarlett_keegan = Actor.objects.filter(first_name="Scarlett")
-    scarlett_keegan.delete()
+    scarlett_keegan = Actor.objects.filter(first_name="Scarlett").delete()
 
     # Deletando gênero de ação
     action = Genre.objects.get(name="Action")
