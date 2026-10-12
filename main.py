@@ -1,10 +1,9 @@
 import init_django_orm  # noqa: F401
-
-
+from django.db.models import QuerySet
 from db.models import Actor, Genre
 
 
-def main() -> None:
+def main() -> QuerySet[Actor]:
     # Criar gêneros
     western = Genre.objects.create(name="Western")
     action = Genre.objects.create(name="Action")
@@ -30,8 +29,12 @@ def main() -> None:
     kianu_reeves.save() 
 
     # Deletando um ator
-    scarlett_keegan = Actor.objects.get(first_name="Scarlett", last_name="Keegan")
+    scarlett_keegan = Actor.objects.get(first_name="Scarlett")
     scarlett_keegan.delete()
 
+    # Deletando gênero de ação
+    action = Genre.objects.get(name="Action")
+    action.delete()
+
     # Retornar todos os atores
-    return Actor.objects.filter(last_name="Smith").order_by("first_name")    
+    return Actor.objects.filter(last_name="Smith").order_by("first_name")
