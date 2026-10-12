@@ -26,10 +26,11 @@ def main() -> QuerySet[Actor]:
     george_klooney.save()
     kianu_reeves = Actor.objects.get(first_name="Kianu", last_name="Reaves")
     kianu_reeves.last_name = "Reeves"
+    kianu_reeves.first_name = "Kianu"
     kianu_reeves.save() 
 
     # Deletando um ator
-    scarlett_keegan = Actor.objects.get(first_name="Scarlett")
+    scarlett_keegan = Actor.objects.filter(first_name="Scarlett")
     scarlett_keegan.delete()
 
     # Deletando gênero de ação
