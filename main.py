@@ -5,7 +5,7 @@ from db.models import Actor, Genre
 
 def main() -> QuerySet[Actor]:
     # Criar gêneros
-    western = Genre.objects.create(name="Western")
+    Genre.objects.create(name="Western")
     action = Genre.objects.create(name="Action")
     dramma = Genre.objects.create(name="Dramma")
 
@@ -18,19 +18,19 @@ def main() -> QuerySet[Actor]:
         first_name="Kianu",
         last_name="Reaves"
     )
-    scarlett_keegan = Actor.objects.create(
+    Actor.objects.create(
         first_name="Scarlett",
         last_name="Keegan"
     )
-    will_smith = Actor.objects.create(
+    Actor.objects.create(
         first_name="Will",
         last_name="Smith"
     )
-    jaden_smith = Actor.objects.create(
+    Actor.objects.create(
         first_name="Jaden",
         last_name="Smith"
     )
-    scarlett_johansson = Actor.objects.create(
+    Actor.objects.create(
         first_name="Scarlett",
         last_name="Johansson"
     )
@@ -52,7 +52,7 @@ def main() -> QuerySet[Actor]:
     kianu_reeves.save()
 
     # Deletando um ator
-    scarlett_keegan = Actor.objects.filter(first_name="Scarlett").delete()
+    Actor.objects.filter(first_name="Scarlett").delete()
 
     # Deletando gênero de ação
     action = Genre.objects.get(name="Action")
