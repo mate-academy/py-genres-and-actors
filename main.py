@@ -10,18 +10,40 @@ def main() -> QuerySet[Actor]:
     dramma = Genre.objects.create(name="Dramma")
 
     # Criar atores e atrizes
-    george_klooney = Actor.objects.create(first_name="George", last_name="Klooney")
-    kianu_reeves = Actor.objects.create(first_name="Kianu", last_name="Reaves")
-    scarlett_keegan = Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    will_smith = Actor.objects.create(first_name="Will", last_name="Smith")
-    jaden_smith = Actor.objects.create(first_name="Jaden", last_name="Smith")
-    scarlett_johansson = Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    george_klooney = Actor.objects.create(
+        first_name="George",
+        last_name="Klooney"
+    )
+    kianu_reeves = Actor.objects.create(
+        first_name="Kianu",
+        last_name="Reaves"
+    )
+    scarlett_keegan = Actor.objects.create(
+        first_name="Scarlett",
+        last_name="Keegan"
+    )
+    will_smith = Actor.objects.create(
+        first_name="Will",
+        last_name="Smith"
+    )
+    jaden_smith = Actor.objects.create(
+        first_name="Jaden",
+        last_name="Smith"
+    )
+    scarlett_johansson = Actor.objects.create(
+        first_name="Scarlett",
+        last_name="Johansson"
+    )
 
     # Atualizando o nome do gênero sobrenome de um usuário
     dramma = Genre.objects.get(name="Dramma")
     dramma.name = "Drama"
     dramma.save()
-    george_klooney = Actor.objects.get(first_name="George", last_name="Klooney")
+    george_klooney = Actor.objects.get(
+        first_name="George", 
+        last_name="Klooney"
+    )
+
     george_klooney.last_name = "Clooney"   
     george_klooney.save()
     kianu_reeves = Actor.objects.get(first_name="Kianu", last_name="Reaves")
