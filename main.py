@@ -3,7 +3,7 @@ from calendar import firstweekday
 import init_django_orm  # noqa: F401
 
 from django.db.models import QuerySet
-from db.models import Actors, Genre
+from db.models import Actor, Genre
 
 
 def main() -> QuerySet:
@@ -18,7 +18,7 @@ def main() -> QuerySet:
     ]
 
     for actor in actors:
-        Actors.objects.create(
+        Actor.objects.create(
             first_name = actor[0],
             last_name = actor[1]
         )
@@ -35,14 +35,14 @@ def main() -> QuerySet:
     Genre.objects.filter(
         name="Dramma"
     ).update(name="Drama")
-    Actors.objects.filter(
-        last_name="Klooney"
+    Actor.objects.filter(
+        first_name="George", last_name="Klooney"
     ).update(last_name="Clooney")
-    Actors.objects.filter(
+    Actor.objects.filter(
         last_name="Reaves"
     ).update(first_name="Keanu", last_name="Reeves")
 
     Genre.objects.filter(name = "Action").delete()
-    Actors.objects.filter(first_name = "Scarlett").delete()
+    Actor.objects.filter(first_name = "Scarlett").delete()
 
-    return Actors.objects.filter(last_name = "Smith").order_by("first_name")
+    return Actor.objects.filter(last_name = "Smith").order_by("first_name")
