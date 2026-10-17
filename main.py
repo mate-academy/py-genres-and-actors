@@ -1,8 +1,10 @@
+from django.db.models import QuerySet
+
 from db.models import Genre, Actor
 
 
-def main():
-    western = Genre.objects.create(name="Western")
+def main() -> QuerySet[Actor]:
+    Genre.objects.create(name="Western")
     action = Genre.objects.create(name="Action")
     drama = Genre.objects.create(name="Dramma")
 
