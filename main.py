@@ -4,32 +4,27 @@ from django.db.models import QuerySet
 
 from db.models import Genre, Actor
 
-list_of_data = ["genre Western",
-                "genre Action",
-                "genre Dramma",
-                "actor George Klooney",
-                "actor Kianu Reaves",
-                "actress Scarlett Keegan",
-                "actor Will Smith",
-                "actor Jaden Smith",
-                "actress Scarlett Johansson"
-                ]
+GENRES = [
+    ("Western",),
+    ("Action",),
+    ("Dramma",),
+]
+
+ACTORS = [
+    ("George", "Klooney"),
+    ("Kianu", "Reaves"),
+    ("Scarlett", "Keegan"),
+    ("Will", "Smith"),
+    ("Jaden", "Smith"),
+    ("Scarlett", "Johansson"),
+]
 
 
 def main() -> QuerySet:
-    actors = []
-    genres = []
-    for elem in list_of_data:
-        words = elem.split()
-        if "actor" in words or "actress" in words:
-            actors.append((tuple(words)))
-        if "genre" in words:
-            genres.append((tuple(words)))
-
-    for s_h, f_name, l_name in actors:
+    for (f_name, l_name,) in ACTORS:
         Actor.objects.create(first_name=f_name, last_name=l_name)
 
-    for genre, movie in genres:
+    for (movie,) in GENRES:
         Genre.objects.create(name=movie)
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
