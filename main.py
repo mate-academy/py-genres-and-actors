@@ -8,11 +8,7 @@ def main() -> QuerySet:
     Genre.objects.all().delete()
     Actor.objects.all().delete()
 
-    genres = [
-        ("Western",),
-        ("Action",),
-        ("Dramma",),
-    ]
+    genres = ("Western", "Action", "Dramma")
 
     for (name,) in genres:
         Genre.objects.create(name=name)
