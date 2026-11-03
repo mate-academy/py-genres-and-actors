@@ -6,6 +6,9 @@ from db.models import Actor, Genre
 
 
 def main() -> QuerySet:
+    genres: list[tuple[str]] = [("Western",), ("Action",), ("Dramma",)]
+    Genre.objects.bulk_create(Genre(name=genre) for genre, in genres)
+
     actors: list[tuple[str, str]] = [
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
@@ -19,12 +22,8 @@ def main() -> QuerySet:
         for first_name, last_name in actors
     )
 
-    genres: list[tuple[str]] = [("Western",), ("Action",), ("Dramma",)]
-    Genre.objects.bulk_create(
-        Genre(name=genre) for genre, in genres
-    )
-
     Genre.objects.filter(name="Dramma").update(name="Drama")
+
     Actor.objects.filter(
         first_name="George", last_name="Klooney"
     ).update(last_name="Clooney")
