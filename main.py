@@ -14,14 +14,14 @@ def main() -> QuerySet:
         ("Jaden", "Smith"),
         ("Scarlett", "Johansson"),
     ]
-    Actor.objects.bulk_create([
+    Actor.objects.bulk_create(
         Actor(first_name=first_name, last_name=last_name)
         for first_name, last_name in actors
-    ])
+    )
 
-    genres: list[str] = ["Western", "Action", "Dramma"]
+    genres: list[tuple[str]] = [("Western",), ("Action",), ("Dramma",)]
     Genre.objects.bulk_create(
-        [Genre(name=genre) for genre in genres]
+        Genre(name=genre) for genre, in genres
     )
 
     Genre.objects.filter(name="Dramma").update(name="Drama")
