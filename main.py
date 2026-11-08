@@ -9,7 +9,7 @@ def main() -> QuerySet:
     genres_data = [
         ("Western",),
         ("Action",),
-        ("Dramma",),  # Created with typo as required
+        ("Dramma",),
     ]
 
     actors_data = [
@@ -21,8 +21,8 @@ def main() -> QuerySet:
         ("Scarlett", "Johansson"),
     ]
 
-    for genre_name in genres_data:
-        Genre.objects.create(name=genre_name[0])
+    for (genre_name,) in genres_data:
+        Genre.objects.create(name=genre_name)
 
     for first, last in actors_data:
         Actor.objects.create(first_name=first, last_name=last)
