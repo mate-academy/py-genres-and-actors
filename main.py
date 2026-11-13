@@ -5,8 +5,12 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    genres_to_create = ["Western", "Action", "Drama"]
-    for genre_name in genres_to_create:
+    genres_to_create = [
+        ("Western",),
+        ("Action",),
+        ("Dramma",),
+    ]
+    for (genre_name,) in genres_to_create:
         Genre.objects.create(name=genre_name)
 
     actors_to_create = [
@@ -20,7 +24,7 @@ def main() -> QuerySet:
     for first_name, last_name in actors_to_create:
         Actor.objects.create(first_name=first_name, last_name=last_name)
 
-    drama_genre = Genre.objects.get(name="Drama")
+    drama_genre = Genre.objects.get(name="Dramma")
     drama_genre.name = "Drama"
     drama_genre.save()
 
