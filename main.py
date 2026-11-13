@@ -6,6 +6,31 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
+    genres = [
+        ("Western",),
+        ("Action",),
+        ("Drama",),
+    ]
+
+    for genre in genres:
+        Genre.objects.create(name=genre[0])
+
+
+    actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
+
+    for actor in actors:
+        Actor.objects.create(
+            first_name=actor[0],
+            last_name=actor[1],
+        )
+
     Genre.objects.create(
         name="Western",
     )
@@ -70,7 +95,3 @@ def main() -> QuerySet:
     )
 
     return temp
-
-
-if __name__ == "__main__":
-    main()
