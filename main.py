@@ -15,7 +15,6 @@ def main() -> QuerySet:
     for genre in genres:
         Genre.objects.create(name=genre[0])
 
-
     actors = [
         ("George", "Klooney"),
         ("Kianu", "Reaves"),
