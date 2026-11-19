@@ -46,4 +46,5 @@ def main() -> QuerySet:
     Actor.objects.filter(first_name="Scarlett").delete()
 
     smitt = Actor.objects.filter(last_name="Smith").order_by("first_name")
+    # migrate database
     return smitt
