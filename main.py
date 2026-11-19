@@ -25,7 +25,8 @@ def main() -> QuerySet:
     dramma.name = "Drama"
     dramma.save()
 
-    george_klooney = Actor.objects.get(first_name="George", last_name="Klooney")
+    george_klooney = Actor.objects.get(
+        first_name="George", last_name="Klooney")
     george_klooney.last_name = "Clooney"
     george_klooney.save()
 
@@ -39,9 +40,5 @@ def main() -> QuerySet:
 
     Actor.objects.filter(first_name="Scarlett").delete()
 
-
     smitt = Actor.objects.filter(last_name="Smith").order_by("first_name")
     return smitt
-
-
-
