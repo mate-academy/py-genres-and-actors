@@ -17,6 +17,8 @@ def main() -> QuerySet:
     )
 
     for name in genres:
+        if name == "Dramma" and Genre.objects.filter(name="Drama").exists():
+            continue
         Genre.objects.get_or_create(name=name)
 
     for first_name, last_name in actors:
