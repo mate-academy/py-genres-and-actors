@@ -15,7 +15,7 @@ def main() -> QuerySet:
         ("Scarlett", "Keegan"),
         ("Will", "Smith"),
         ("Jaden", "Smith"),
-        ("Scarlett", "Johans"),
+        ("Scarlett", "Johansson"),
     ]
     for actor in actors:
         first_name, last_name = actor
@@ -28,3 +28,6 @@ def main() -> QuerySet:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
+
+if __name__ == "__main__":
+    main()
